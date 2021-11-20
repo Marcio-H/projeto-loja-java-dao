@@ -307,7 +307,8 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
         List<Component> componentes = new ArrayList<>();
 
         Collections.addAll(componentes, this.form.getComponents());
-        componentes.remove(id);
+        componentes.remove(this.id);
+        this.id.setText("");
         this.limparListaComponents(componentes);
     }
 
