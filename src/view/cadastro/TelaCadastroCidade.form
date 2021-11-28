@@ -154,9 +154,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="id">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idActionPerformed"/>
               </Events>
@@ -167,16 +164,12 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="descricaoTextField">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="ufTextField">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="UU" subtype="-1" type="5"/>
                 </Property>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
@@ -208,7 +201,6 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="novoEvent"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoNovoActionPerformed"/>
               </Events>
             </Component>
@@ -218,13 +210,11 @@
                   <Image iconType="3" name="/imagens/cancel.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
-                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cancelarEvent"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCancelarActionPerformed"/>
               </Events>
             </Component>
@@ -234,7 +224,6 @@
                   <Image iconType="3" name="/imagens/save.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Gravar"/>
-                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>

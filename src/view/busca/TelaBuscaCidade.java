@@ -102,25 +102,16 @@ public class TelaBuscaCidade extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/load.png"))); // NOI18N
         jButton1.setText("Carregar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                carregarEvent(evt);
-            }
-        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/exit.png"))); // NOI18N
         jButton2.setText("Sair");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sairEvent(evt);
-            }
-        });
 
         javax.swing.GroupLayout optionMenuLayout = new javax.swing.GroupLayout(optionMenu);
         optionMenu.setLayout(optionMenuLayout);
         optionMenuLayout.setHorizontalGroup(
             optionMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(optionMenuLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -163,14 +154,6 @@ public class TelaBuscaCidade extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void carregarEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carregarEvent
-        // TODO add your handling code here:
-    }//GEN-LAST:event_carregarEvent
-
-    private void sairEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairEvent
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sairEvent
 
     /**
      * @param args the command line arguments

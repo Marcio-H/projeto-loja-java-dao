@@ -5,19 +5,8 @@
  */
 package view.cadastro;
 
-import java.awt.Component;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -77,7 +66,6 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
 
         jLabel1.setText("Id");
 
-        id.setEnabled(false);
         id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idActionPerformed(evt);
@@ -86,14 +74,11 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
 
         jLabel3.setText("Descrição");
 
-        descricaoTextField.setEnabled(false);
-
         try {
             ufTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("UU")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ufTextField.setEnabled(false);
 
         jLabel4.setText("UF");
 
@@ -140,11 +125,6 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
         botaoNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/file.png"))); // NOI18N
         botaoNovo.setText("Novo");
         botaoNovo.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        botaoNovo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                novoEvent(evt);
-            }
-        });
         botaoNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoNovoActionPerformed(evt);
@@ -154,13 +134,7 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
 
         botaoCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancel.png"))); // NOI18N
         botaoCancelar.setText("Cancelar");
-        botaoCancelar.setEnabled(false);
         botaoCancelar.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        botaoCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelarEvent(evt);
-            }
-        });
         botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCancelarActionPerformed(evt);
@@ -170,7 +144,6 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
 
         botaoGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
         botaoGravar.setText("Gravar");
-        botaoGravar.setEnabled(false);
         botaoGravar.setMargin(new java.awt.Insets(5, 30, 5, 30));
         botaoGravar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -266,18 +239,6 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoSairActionPerformed
 
-    private void novoEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoEvent
-        this.estado = true;
-        this.alteraEstadoOptionMenu();
-        this.alteraEstadoFormInputs();
-    }//GEN-LAST:event_novoEvent
-
-    private void cancelarEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarEvent
-        this.estado = false;
-        this.alteraEstadoOptionMenu();
-        this.alteraEstadoFormInputs();
-    }//GEN-LAST:event_cancelarEvent
-
     private void sairEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairEvent
         this.dispose();
     }//GEN-LAST:event_sairEvent
@@ -293,74 +254,6 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
     private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idActionPerformed
-
-    private boolean estado;
-
-    public void alteraEstadoOptionMenu() {
-        this.botaoNovo.setEnabled(!this.estado);
-        this.botaoCancelar.setEnabled(this.estado);
-        this.botaoGravar.setEnabled(this.estado);
-        this.botaoBuscar.setEnabled(!this.estado);
-    }
-
-    public void alteraEstadoFormInputs() {
-        List<Component> componentes = new ArrayList<>();
-
-        Collections.addAll(componentes, this.form.getComponents());
-        componentes.remove(this.id);
-        this.id.setText("");
-        this.limparListaComponents(componentes);
-    }
-
-    private void limparListaComponents(List<Component> componentes) {
-        componentes.forEach(componente -> {
-            if (this.estado) {
-                componente.setEnabled(this.estado);
-                return;
-            }
-
-            Class classeComponente = componente.getClass();
-            Object componenteCastado = Component.class.cast(componente);
-            try {
-                Method limparComponentMetodo = TelaCadastroCidade.class.getDeclaredMethod("limparComponent", classeComponente);
-                limparComponentMetodo.invoke(this, componenteCastado);
-                componente.setEnabled(this.estado);
-            } catch (Exception e) {
-            }
-        });
-    }
-
-    private void limparComponent(JScrollPane component) {
-
-    }
-    
-    private void limparComponent(JFormattedTextField component) {
-        component.setText("");
-    }
-
-    private void limparComponent(JSpinner component) {
-        component.setValue(0);
-    }
-
-    private void limparComponent(JTextArea component) {
-        component.setText("");
-    }
-
-    private void limparComponent(JComboBox component) {
-        component.setSelectedIndex(0);
-    }
-
-    private void limparComponent(JCheckBox component) {
-        component.setSelected(false);
-    }
-
-    private void limparComponent(JTextField component) {
-        component.setText("");
-    }
-
-    private void limparComponent(JPasswordField component) {
-        component.setText("");
-    }
 
     /**
      * @param args the command line arguments
@@ -447,15 +340,7 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
         return descricaoTextField;
     }
 
-    public void setDescricaoTextField(JTextField descricaoTextField) {
-        this.descricaoTextField = descricaoTextField;
-    }
-
     public JFormattedTextField getUfTextField() {
         return ufTextField;
-    }
-
-    public void setUfTextField(JFormattedTextField ufTextField) {
-        this.ufTextField = ufTextField;
     }
 }

@@ -5,18 +5,7 @@
  */
 package view.cadastro;
 
-import java.awt.Component;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.JTextArea;
+import javax.swing.JButton;
 import javax.swing.JTextField;
 
 /**
@@ -48,13 +37,13 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        descricaoTextField = new javax.swing.JTextField();
         optionMenu = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        botaoNovo = new javax.swing.JButton();
+        botaoCancelar = new javax.swing.JButton();
+        botaoGravar = new javax.swing.JButton();
+        botaoBuscar = new javax.swing.JButton();
+        botaoSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -74,7 +63,6 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
 
         jLabel1.setText("Id");
 
-        id.setEnabled(false);
         id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idActionPerformed(evt);
@@ -83,8 +71,6 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
 
         jLabel3.setText("Descrição");
 
-        jTextField1.setEnabled(false);
-
         javax.swing.GroupLayout formLayout = new javax.swing.GroupLayout(form);
         form.setLayout(formLayout);
         formLayout.setHorizontalGroup(
@@ -92,7 +78,7 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
             .addGroup(formLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
+                    .addComponent(descricaoTextField)
                     .addGroup(formLayout.createSequentialGroup()
                         .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -111,88 +97,61 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(descricaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         optionMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/file.png"))); // NOI18N
-        jButton1.setText("Novo");
-        jButton1.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                novoEvent(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botaoNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/file.png"))); // NOI18N
+        botaoNovo.setText("Novo");
+        botaoNovo.setMargin(new java.awt.Insets(5, 30, 5, 30));
+        botaoNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botaoNovoActionPerformed(evt);
             }
         });
-        optionMenu.add(jButton1);
+        optionMenu.add(botaoNovo);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancel.png"))); // NOI18N
-        jButton2.setText("Cancelar");
-        jButton2.setEnabled(false);
-        jButton2.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelarEvent(evt);
-            }
-        });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botaoCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancel.png"))); // NOI18N
+        botaoCancelar.setText("Cancelar");
+        botaoCancelar.setMargin(new java.awt.Insets(5, 30, 5, 30));
+        botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botaoCancelarActionPerformed(evt);
             }
         });
-        optionMenu.add(jButton2);
+        optionMenu.add(botaoCancelar);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
-        jButton3.setText("Gravar");
-        jButton3.setEnabled(false);
-        jButton3.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                gravarEvent(evt);
-            }
-        });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botaoGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
+        botaoGravar.setText("Gravar");
+        botaoGravar.setMargin(new java.awt.Insets(5, 30, 5, 30));
+        botaoGravar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botaoGravarActionPerformed(evt);
             }
         });
-        optionMenu.add(jButton3);
+        optionMenu.add(botaoGravar);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
-        jButton4.setText("Buscar");
-        jButton4.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buscarEvent(evt);
-            }
-        });
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botaoBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
+        botaoBuscar.setText("Buscar");
+        botaoBuscar.setMargin(new java.awt.Insets(5, 30, 5, 30));
+        botaoBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botaoBuscarActionPerformed(evt);
             }
         });
-        optionMenu.add(jButton4);
+        optionMenu.add(botaoBuscar);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/exit.png"))); // NOI18N
-        jButton5.setText("Sair");
-        jButton5.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sairEvent(evt);
-            }
-        });
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/exit.png"))); // NOI18N
+        botaoSair.setText("Sair");
+        botaoSair.setMargin(new java.awt.Insets(5, 30, 5, 30));
+        botaoSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                botaoSairActionPerformed(evt);
             }
         });
-        optionMenu.add(jButton5);
+        optionMenu.add(botaoSair);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -226,121 +185,29 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botaoNovoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botaoCancelarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botaoGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGravarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botaoGravarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_botaoBuscarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void novoEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_novoEvent
-        this.estado = true;
-        this.alteraEstadoOptionMenu();
-        this.alteraEstadoFormInputs();
-    }//GEN-LAST:event_novoEvent
-
-    private void cancelarEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarEvent
-        this.estado = false;
-        this.alteraEstadoOptionMenu();
-        this.alteraEstadoFormInputs();
-    }//GEN-LAST:event_cancelarEvent
-
-    private void sairEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairEvent
-        this.dispose();
-    }//GEN-LAST:event_sairEvent
-
-    private void gravarEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gravarEvent
-        // TODO add your handling code here:
-    }//GEN-LAST:event_gravarEvent
-
-    private void buscarEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarEvent
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarEvent
+    }//GEN-LAST:event_botaoSairActionPerformed
 
     private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idActionPerformed
-
-    private boolean estado;
-
-    public void alteraEstadoOptionMenu() {
-        this.jButton1.setEnabled(!this.estado);
-        this.jButton2.setEnabled(this.estado);
-        this.jButton3.setEnabled(this.estado);
-        this.jButton4.setEnabled(!this.estado);
-    }
-
-    public void alteraEstadoFormInputs() {
-        List<Component> componentes = new ArrayList<>();
-
-        Collections.addAll(componentes, this.form.getComponents());
-        componentes.remove(this.id);
-        this.id.setText("");
-        this.limparListaComponents(componentes);
-    }
-
-    private void limparListaComponents(List<Component> componentes) {
-        componentes.forEach(componente -> {
-            if (this.estado) {
-                componente.setEnabled(this.estado);
-                return;
-            }
-
-            Class classeComponente = componente.getClass();
-            Object componenteCastado = Component.class.cast(componente);
-            try {
-                Method limparComponentMetodo = TelaCadastroTipoProduto.class.getDeclaredMethod("limparComponent", classeComponente);
-                limparComponentMetodo.invoke(this, componenteCastado);
-                componente.setEnabled(this.estado);
-            } catch (Exception e) {
-            }
-        });
-    }
-
-    private void limparComponent(JScrollPane component) {
-
-    }
-    
-    private void limparComponent(JFormattedTextField component) {
-        component.setText("");
-    }
-
-    private void limparComponent(JSpinner component) {
-        component.setValue(0);
-    }
-
-    private void limparComponent(JTextArea component) {
-        component.setText("");
-    }
-
-    private void limparComponent(JComboBox component) {
-        component.setSelectedIndex(0);
-    }
-
-    private void limparComponent(JCheckBox component) {
-        component.setSelected(false);
-    }
-
-    private void limparComponent(JTextField component) {
-        component.setText("");
-    }
-
-    private void limparComponent(JPasswordField component) {
-        component.setText("");
-    }
 
     /**
      * @param args the command line arguments
@@ -381,19 +248,47 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoBuscar;
+    private javax.swing.JButton botaoCancelar;
+    private javax.swing.JButton botaoGravar;
+    private javax.swing.JButton botaoNovo;
+    private javax.swing.JButton botaoSair;
+    private javax.swing.JTextField descricaoTextField;
     private javax.swing.JPanel form;
     private javax.swing.JPanel head;
     private javax.swing.JTextField id;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel optionMenu;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBotaoBuscar() {
+        return botaoBuscar;
+    }
+
+    public JButton getBotaoCancelar() {
+        return botaoCancelar;
+    }
+
+    public JButton getBotaoGravar() {
+        return botaoGravar;
+    }
+
+    public JButton getBotaoNovo() {
+        return botaoNovo;
+    }
+
+    public JButton getBotaoSair() {
+        return botaoSair;
+    }
+
+    public JTextField getId() {
+        return id;
+    }
+
+    public JTextField getDescricaoTextField() {
+        return descricaoTextField;
+    }
 }
