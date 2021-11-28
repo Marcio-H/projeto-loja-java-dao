@@ -2,26 +2,26 @@ package model.bo;
 
 public class Bairro {
 
-	private int idBairro;
-	private String descricaoBairro;
+	private Long id;
+	private String descricao;
 	
 	public Bairro() {
 	}
 	
-	public int getIdBairro() {
-		return idBairro;
+	public Long get() {
+		return id;
 	}
 	
-	public void setIdBairro(int idBairro) {
-		this.idBairro = idBairro;
+	public void setId(Long idBairro) {
+		this.id = idBairro;
 	}
 	
-	public String getDescricaoBairro() {
-		return descricaoBairro;
+	public String getDescricao() {
+		return descricao;
 	}
 	
 
-	public void setDescricaoBairro(String descricaoBairro) {
-		this.descricaoBairro = descricaoBairro;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 }

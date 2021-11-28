@@ -1,32 +1,33 @@
-package model.DAO;
+package model.dao.objects;
 
 import java.util.List;
-import model.bo.Endereco;
+import model.bo.Vendedor;
+import model.dao.InterfaceDAO;
 
-public class EnderecoDAO implements InterfaceDAO<Endereco>{
+public class VendedorDAO implements InterfaceDAO<Vendedor> {
 
     @Override
-    public void create(Endereco objeto) {
+    public void create(Vendedor objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Endereco> read() {
+    public List<Vendedor> read() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Endereco read(int codigo) {
+    public Vendedor read(int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(Endereco objeto) {
+    public void update(Vendedor objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(Endereco objeto) {
+    public void delete(Vendedor objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

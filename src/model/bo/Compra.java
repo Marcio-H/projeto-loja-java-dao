@@ -4,78 +4,79 @@ import java.time.LocalDateTime;
 
 public class Compra {
 
-	private int idCompra;
-	private Fornecedor fornecedor;
-	private CondicaoPagamento condicaoPagamento;
-	private int numNFCompra;
-	private String serieNFCompra;
-	private LocalDateTime dtHrCompra;
-	private float descontoCompra;
-	private float valorTotalCompra;
-	
-	public Compra() { }
+    private Long id;
+    private Fornecedor fornecedor;
+    private CondicaoPagamento condicaoPagamento;
+    private int numeroNotaFiscal;
+    private String serieNotaFiscal;
+    private LocalDateTime criadoNo;
+    private float desconto;
+    private float total;
 
-	public int getIdCompra() {
-		return idCompra;
-	}
+    public Compra() {
+    }
 
-	public void setIdCompra(int idCompra) {
-		this.idCompra = idCompra;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Fornecedor getFornecedor() {
-		return fornecedor;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setFornecedor(Fornecedor fornecedor) {
-		this.fornecedor = fornecedor;
-	}
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
 
-	public CondicaoPagamento getCondicaoPagamento() {
-		return condicaoPagamento;
-	}
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
+    }
 
-	public void setCondicaoPagamento(CondicaoPagamento condicaoPagamento) {
-		this.condicaoPagamento = condicaoPagamento;
-	}
+    public CondicaoPagamento getCondicaoPagamento() {
+        return condicaoPagamento;
+    }
 
-	public int getNumNFCompra() {
-		return numNFCompra;
-	}
+    public void setCondicaoPagamento(CondicaoPagamento condicaoPagamento) {
+        this.condicaoPagamento = condicaoPagamento;
+    }
 
-	public void setNumNFCompra(int numNFCompra) {
-		this.numNFCompra = numNFCompra;
-	}
+    public int getNumeroNotaFiscal() {
+        return numeroNotaFiscal;
+    }
 
-	public String getSerieNFCompra() {
-		return serieNFCompra;
-	}
+    public void setNumeroNotaFiscal(int numeroNotaFiscal) {
+        this.numeroNotaFiscal = numeroNotaFiscal;
+    }
 
-	public void setSerieNFCompra(String serieNFCompra) {
-		this.serieNFCompra = serieNFCompra;
-	}
+    public String getSerieNotaFiscal() {
+        return serieNotaFiscal;
+    }
 
-	public LocalDateTime getDtHrCompra() {
-		return dtHrCompra;
-	}
+    public void setSerieNotaFiscal(String serieNotaFiscal) {
+        this.serieNotaFiscal = serieNotaFiscal;
+    }
 
-	public void setDtHrCompra(LocalDateTime dtHrCompra) {
-		this.dtHrCompra = dtHrCompra;
-	}
+    public LocalDateTime getCriadoNo() {
+        return criadoNo;
+    }
 
-	public float getDescontoCompra() {
-		return descontoCompra;
-	}
+    public void setCriadoNo(LocalDateTime criadoNo) {
+        this.criadoNo = criadoNo;
+    }
 
-	public void setDescontoCompra(float descontoCompra) {
-		this.descontoCompra = descontoCompra;
-	}
+    public float getDesconto() {
+        return desconto;
+    }
 
-	public float getValorTotalCompra() {
-		return valorTotalCompra;
-	}
+    public void setDesconto(float desconto) {
+        this.desconto = desconto;
+    }
 
-	public void setValorTotalCompra(float valorTotalCompra) {
-		this.valorTotalCompra = valorTotalCompra;
-	}
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
 }

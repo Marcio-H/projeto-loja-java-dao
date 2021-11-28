@@ -2,24 +2,25 @@ package model.bo;
 
 public class Cor {
 
-	private int idCor;
-	private String descricaoCor;
-	
-	public Cor() { }
+    private Long id;
+    private String descricao;
 
-	public int getIdCor() {
-		return idCor;
-	}
+    public Cor() {
+    }
 
-	public void setIdCor(int idCor) {
-		this.idCor = idCor;
-	}
+    public Long getIdCor() {
+        return id;
+    }
 
-	public String getDescricaoCor() {
-		return descricaoCor;
-	}
+    public void setIdCor(Long id) {
+        this.id = id;
+    }
 
-	public void setDescricaoCor(String descricaoCor) {
-		this.descricaoCor = descricaoCor;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }

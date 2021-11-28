@@ -5,96 +5,97 @@ import java.time.LocalDateTime;
 
 public class Receber {
 
-	private int idReceber;
-	private Venda venda;
-	private LocalDateTime dtHrEmissaoRec;
-	private float valEmissaoRec;
-	private LocalDate dtVencimentoRec;
-	private LocalDate dtPgtoRec;
-	private float acrescimoRec;
-	private float descontoRec;
-	private float valPagoRec;
-	private String statusRec;
-	
-	public Receber() { }
+    private Long id;
+    private Venda venda;
+    private LocalDateTime dtHrEmissaoRec;
+    private float valEmissaoRec;
+    private LocalDate dtVencimentoRec;
+    private LocalDate dtPgtoRec;
+    private float acrescimoRec;
+    private float descontoRec;
+    private float valPagoRec;
+    private String statusRec;
 
-	public int getIdReceber() {
-		return idReceber;
-	}
+    public Receber() {
+    }
 
-	public void setIdReceber(int idReceber) {
-		this.idReceber = idReceber;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Venda getVenda() {
-		return venda;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setVenda(Venda venda) {
-		this.venda = venda;
-	}
+    public Venda getVenda() {
+        return venda;
+    }
 
-	public LocalDateTime getDtHrEmissaoRec() {
-		return dtHrEmissaoRec;
-	}
+    public void setVenda(Venda venda) {
+        this.venda = venda;
+    }
 
-	public void setDtHrEmissaoRec(LocalDateTime dtHrEmissaoRec) {
-		this.dtHrEmissaoRec = dtHrEmissaoRec;
-	}
+    public LocalDateTime getDtHrEmissaoRec() {
+        return dtHrEmissaoRec;
+    }
 
-	public float getValEmissaoRec() {
-		return valEmissaoRec;
-	}
+    public void setDtHrEmissaoRec(LocalDateTime dtHrEmissaoRec) {
+        this.dtHrEmissaoRec = dtHrEmissaoRec;
+    }
 
-	public void setValEmissaoRec(float valEmissaoRec) {
-		this.valEmissaoRec = valEmissaoRec;
-	}
+    public float getValEmissaoRec() {
+        return valEmissaoRec;
+    }
 
-	public LocalDate getDtVencimentoRec() {
-		return dtVencimentoRec;
-	}
+    public void setValEmissaoRec(float valEmissaoRec) {
+        this.valEmissaoRec = valEmissaoRec;
+    }
 
-	public void setDtVencimentoRec(LocalDate dtVencimentoRec) {
-		this.dtVencimentoRec = dtVencimentoRec;
-	}
+    public LocalDate getDtVencimentoRec() {
+        return dtVencimentoRec;
+    }
 
-	public LocalDate getDtPgtoRec() {
-		return dtPgtoRec;
-	}
+    public void setDtVencimentoRec(LocalDate dtVencimentoRec) {
+        this.dtVencimentoRec = dtVencimentoRec;
+    }
 
-	public void setDtPgtoRec(LocalDate dtPgtoRec) {
-		this.dtPgtoRec = dtPgtoRec;
-	}
+    public LocalDate getDtPgtoRec() {
+        return dtPgtoRec;
+    }
 
-	public float getAcrescimoRec() {
-		return acrescimoRec;
-	}
+    public void setDtPgtoRec(LocalDate dtPgtoRec) {
+        this.dtPgtoRec = dtPgtoRec;
+    }
 
-	public void setAcrescimoRec(float acrescimoRec) {
-		this.acrescimoRec = acrescimoRec;
-	}
+    public float getAcrescimoRec() {
+        return acrescimoRec;
+    }
 
-	public float getDescontoRec() {
-		return descontoRec;
-	}
+    public void setAcrescimoRec(float acrescimoRec) {
+        this.acrescimoRec = acrescimoRec;
+    }
 
-	public void setDescontoRec(float descontoRec) {
-		this.descontoRec = descontoRec;
-	}
+    public float getDescontoRec() {
+        return descontoRec;
+    }
 
-	public float getValPagoRec() {
-		return valPagoRec;
-	}
+    public void setDescontoRec(float descontoRec) {
+        this.descontoRec = descontoRec;
+    }
 
-	public void setValPagoRec(float valPagoRec) {
-		this.valPagoRec = valPagoRec;
-	}
+    public float getValPagoRec() {
+        return valPagoRec;
+    }
 
-	public String getStatusRec() {
-		return statusRec;
-	}
+    public void setValPagoRec(float valPagoRec) {
+        this.valPagoRec = valPagoRec;
+    }
 
-	public void setStatusRec(String statusRec) {
-		this.statusRec = statusRec;
-	}
+    public String getStatusRec() {
+        return statusRec;
+    }
+
+    public void setStatusRec(String statusRec) {
+        this.statusRec = statusRec;
+    }
 }

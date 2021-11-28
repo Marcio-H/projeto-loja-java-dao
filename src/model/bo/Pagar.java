@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class Pagar {
 
-	private int idPagar;
+	private Long id;
 	private Compra compra;
 	private LocalDateTime dtHrEmissaoPagar;
 	private LocalDate dtVencimentoPagar;
@@ -18,12 +18,12 @@ public class Pagar {
 	
 	public Pagar() { }
 
-	public int getIdPagar() {
-		return idPagar;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdPagar(int idPagar) {
-		this.idPagar = idPagar;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Compra getCompra() {

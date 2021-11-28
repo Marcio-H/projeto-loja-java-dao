@@ -4,29 +4,23 @@ public class Vendedor extends Pessoa {
 
     private Long id;
     private String cpf;
-    private String fone;
-    private String fone2;
     private float percentagemComissaoVenda;
     private float percentagemComissaoRecebimento;
 
     public Vendedor() {
     }
 
-    public Vendedor(String cpf, String fone, String fone2, float percentagemComissaoVenda, float percentagemComissaoRecebimento, String nome, String email, String complementoEndereco, Endereco endereco) {
+    public Vendedor(String cpf, float percentagemComissaoVenda, float percentagemComissaoRecebimento, String nome, String email, String complementoEndereco, Endereco endereco) {
         super(nome, email, complementoEndereco, endereco);
         this.cpf = cpf;
-        this.fone = fone;
-        this.fone2 = fone2;
         this.percentagemComissaoVenda = percentagemComissaoVenda;
         this.percentagemComissaoRecebimento = percentagemComissaoRecebimento;
     }
 
-    public Vendedor(Long id, String cpf, String fone, String fone2, float percentagemComissaoVenda, float percentagemComissaoRecebimento, String nome, String email, String complementoEndereco, Endereco endereco) {
+    public Vendedor(Long id, String cpf, float percentagemComissaoVenda, float percentagemComissaoRecebimento, String nome, String email, String complementoEndereco, Endereco endereco) {
         super(nome, email, complementoEndereco, endereco);
         this.id = id;
         this.cpf = cpf;
-        this.fone = fone;
-        this.fone2 = fone2;
         this.percentagemComissaoVenda = percentagemComissaoVenda;
         this.percentagemComissaoRecebimento = percentagemComissaoRecebimento;
     }
@@ -45,22 +39,6 @@ public class Vendedor extends Pessoa {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public String getFone() {
-        return fone;
-    }
-
-    public void setFone(String fone) {
-        this.fone = fone;
-    }
-
-    public String getFone2() {
-        return fone2;
-    }
-
-    public void setFone2(String fone2) {
-        this.fone2 = fone2;
     }
 
     public float getPercentagemComissaoVenda() {

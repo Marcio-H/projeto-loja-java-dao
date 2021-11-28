@@ -1,32 +1,33 @@
-package model.DAO;
+package model.dao.objects;
 
 import java.util.List;
-import model.bo.Produto;
+import model.bo.Cliente;
+import model.dao.InterfaceDAO;
 
-public class ProdutoDAO implements InterfaceDAO<Produto>{
+public class ClienteDAO implements InterfaceDAO<Cliente> {
 
     @Override
-    public void create(Produto objeto) {
+    public void create(Cliente objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Produto> read() {
+    public List<Cliente> read() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Produto read(int codigo) {
+    public Cliente read(int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(Produto objeto) {
+    public void update(Cliente objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(Produto objeto) {
+    public void delete(Cliente objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

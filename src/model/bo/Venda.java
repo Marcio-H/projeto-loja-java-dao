@@ -1,99 +1,91 @@
 package model.bo;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Venda {
 
-	private int idVenda;
-	private String serieVenda;
-	private LocalDate dtVenda;
-	private String hrVenda;
-	private float valDescontoVenda;
-	private float valTotalVenda;
-	private Cliente cliente;
-	private CondicaoPagamento condicaoPagamento;
-	private int diaVencimentoParcela;
-	private Vendedor vendedor;
-	
-	public Venda() { }
+    private Long id;
+    private String serie;
+    private LocalDateTime criadoNo;
+    private float desconto;
+    private float total;
+    private Cliente cliente;
+    private CondicaoPagamento condicaoPagamento;
+    private int diaVencimentoParcela;
+    private Vendedor vendedor;
 
-	public int getIdVenda() {
-		return idVenda;
-	}
+    public Venda() {
+    }
 
-	public void setIdVenda(int idVenda) {
-		this.idVenda = idVenda;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getSerieVenda() {
-		return serieVenda;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setSerieVenda(String serieVenda) {
-		this.serieVenda = serieVenda;
-	}
+    public String getSerie() {
+        return serie;
+    }
 
-	public LocalDate getDtVenda() {
-		return dtVenda;
-	}
+    public void setSerie(String serie) {
+        this.serie = serie;
+    }
 
-	public void setDtVenda(LocalDate dtVenda) {
-		this.dtVenda = dtVenda;
-	}
+    public LocalDateTime getCriadoNo() {
+        return criadoNo;
+    }
 
-	public String getHrVenda() {
-		return hrVenda;
-	}
+    public void setCriadoNo(LocalDateTime criadoNo) {
+        this.criadoNo = criadoNo;
+    }
 
-	public void setHrVenda(String hrVenda) {
-		this.hrVenda = hrVenda;
-	}
+    public float getDesconto() {
+        return desconto;
+    }
 
-	public float getValDescontoVenda() {
-		return valDescontoVenda;
-	}
+    public void setDesconto(float desconto) {
+        this.desconto = desconto;
+    }
 
-	public void setValDescontoVenda(float valDescontoVenda) {
-		this.valDescontoVenda = valDescontoVenda;
-	}
+    public float getTotal() {
+        return total;
+    }
 
-	public float getValTotalVenda() {
-		return valTotalVenda;
-	}
+    public void setTotal(float total) {
+        this.total = total;
+    }
 
-	public void setValTotalVenda(float valTotalVenda) {
-		this.valTotalVenda = valTotalVenda;
-	}
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+    public CondicaoPagamento getCondicaoPagamento() {
+        return condicaoPagamento;
+    }
 
-	public CondicaoPagamento getCondicaoPagamento() {
-		return condicaoPagamento;
-	}
+    public void setCondicaoPagamento(CondicaoPagamento condicaoPagamento) {
+        this.condicaoPagamento = condicaoPagamento;
+    }
 
-	public void setCondicaoPagamento(CondicaoPagamento condicaoPagamento) {
-		this.condicaoPagamento = condicaoPagamento;
-	}
+    public int getDiaVencimentoParcela() {
+        return diaVencimentoParcela;
+    }
 
-	public int getDiaVencimentoParcela() {
-		return diaVencimentoParcela;
-	}
+    public void setDiaVencimentoParcela(int diaVencimentoParcela) {
+        this.diaVencimentoParcela = diaVencimentoParcela;
+    }
 
-	public void setDiaVencimentoParcela(int diaVencimentoParcela) {
-		this.diaVencimentoParcela = diaVencimentoParcela;
-	}
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
 
-	public Vendedor getVendedor() {
-		return vendedor;
-	}
-
-	public void setVendedor(Vendedor vendedor) {
-		this.vendedor = vendedor;
-	}
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
 }

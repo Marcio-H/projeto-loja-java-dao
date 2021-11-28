@@ -2,24 +2,25 @@ package model.bo;
 
 public class Marca {
 
-	private int idMarca;
-	private String descricaoMarca;
-	
-	public Marca() { }
+    private Long id;
+    private String descricao;
 
-	public int getIdMarca() {
-		return idMarca;
-	}
+    public Marca() {
+    }
 
-	public void setIdMarca(int idMarca) {
-		this.idMarca = idMarca;
-	}
+    public Long getIdMarca() {
+        return id;
+    }
 
-	public String getDescricaoMarca() {
-		return descricaoMarca;
-	}
+    public void setIdMarca(Long id) {
+        this.id = id;
+    }
 
-	public void setDescricaoMarca(String descricaoMarca) {
-		this.descricaoMarca = descricaoMarca;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }

@@ -2,36 +2,61 @@ package model.bo;
 
 public class CaracteristicaProduto {
 
-	private int idCaracteristicaProduto;
-	private Produto produto;
-	private Cor cor;
-        private String tamanhoProduto;
-        private String barraProduto;
-        private int qtdEstoqueProduto;
-	
-	public CaracteristicaProduto() { }
+    private Long id;
+    private Produto produto;
+    private Cor cor;
+    private String tamanho;
+    private String barra;
+    private int quantidade;
 
-	public int getIdCaracteristicaProduto() {
-		return idCaracteristicaProduto;
-	}
+    public CaracteristicaProduto() {
+    }
 
-	public void setIdCaracteristicaProduto(int idCaracteristicaProduto) {
-		this.idCaracteristicaProduto = idCaracteristicaProduto;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Produto getProduto() {
-		return produto;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
+    public Produto getProduto() {
+        return produto;
+    }
 
-	public Cor getCor() {
-		return cor;
-	}
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
 
-	public void setCor(Cor cor) {
-		this.cor = cor;
-	}
+    public Cor getCor() {
+        return cor;
+    }
+
+    public void setCor(Cor cor) {
+        this.cor = cor;
+    }
+
+    public String getTamanho() {
+        return tamanho;
+    }
+
+    public void setTamanho(String tamanho) {
+        this.tamanho = tamanho;
+    }
+
+    public String getBarra() {
+        return barra;
+    }
+
+    public void setBarra(String barra) {
+        this.barra = barra;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 }

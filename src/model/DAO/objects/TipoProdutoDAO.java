@@ -1,32 +1,33 @@
-package model.DAO;
+package model.dao.objects;
 
 import java.util.List;
-import model.bo.FoneFornecedor;
+import model.bo.TipoProduto;
+import model.dao.InterfaceDAO;
 
-public class FoneFornecedorDAO implements InterfaceDAO<FoneFornecedor>{
+public class TipoProdutoDAO implements InterfaceDAO<TipoProduto>{
 
     @Override
-    public void create(FoneFornecedor objeto) {
+    public void create(TipoProduto objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<FoneFornecedor> read() {
+    public List<TipoProduto> read() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public FoneFornecedor read(int codigo) {
+    public TipoProduto read(int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(FoneFornecedor objeto) {
+    public void update(TipoProduto objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(FoneFornecedor objeto) {
+    public void delete(TipoProduto objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

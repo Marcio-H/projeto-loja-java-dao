@@ -2,24 +2,25 @@ package model.bo;
 
 public class TipoProduto {
 
-	private int idTipoProduto;
-	private String descricaoTipoProduto;
-	
-	public TipoProduto() { }
+    private Long id;
+    private String descricao;
 
-	public int getIdTipoProduto() {
-		return idTipoProduto;
-	}
+    public TipoProduto() {
+    }
 
-	public void setIdTipoProduto(int idTipoProduto) {
-		this.idTipoProduto = idTipoProduto;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getDescricaoTipoProduto() {
-		return descricaoTipoProduto;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setDescricaoTipoProduto(String descricaoTipoProduto) {
-		this.descricaoTipoProduto = descricaoTipoProduto;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }

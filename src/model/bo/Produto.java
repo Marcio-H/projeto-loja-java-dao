@@ -2,60 +2,61 @@ package model.bo;
 
 public class Produto {
 
-	private int idProduto;
-	private String descricaoProduto;
-	private float valProduto;
-	private Marca marca;
-	private Tamanho tamanho;
-	private TipoProduto tipoProduto;
-	
-	public Produto() { }
+    private Long id;
+    private String descricao;
+    private float valor;
+    private Marca marca;
+    private Tamanho tamanho;
+    private TipoProduto tipoProduto;
 
-	public int getIdProduto() {
-		return idProduto;
-	}
+    public Produto() {
+    }
 
-	public void setIdProduto(int idProduto) {
-		this.idProduto = idProduto;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getDescricaoProduto() {
-		return descricaoProduto;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setDescricaoProduto(String descricaoProduto) {
-		this.descricaoProduto = descricaoProduto;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
 
-	public float getValProduto() {
-		return valProduto;
-	}
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-	public void setValProduto(float valProduto) {
-		this.valProduto = valProduto;
-	}
+    public float getValor() {
+        return valor;
+    }
 
-	public Marca getMarca() {
-		return marca;
-	}
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
 
-	public void setMarca(Marca marca) {
-		this.marca = marca;
-	}
+    public Marca getMarca() {
+        return marca;
+    }
 
-	public Tamanho getTamanho() {
-		return tamanho;
-	}
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
 
-	public void setTamanho(Tamanho tamanho) {
-		this.tamanho = tamanho;
-	}
+    public Tamanho getTamanho() {
+        return tamanho;
+    }
 
-	public TipoProduto getTipoProduto() {
-		return tipoProduto;
-	}
+    public void setTamanho(Tamanho tamanho) {
+        this.tamanho = tamanho;
+    }
 
-	public void setTipoProduto(TipoProduto tipoProduto) {
-		this.tipoProduto = tipoProduto;
-	}
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
 }

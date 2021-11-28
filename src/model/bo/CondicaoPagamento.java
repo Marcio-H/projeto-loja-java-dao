@@ -2,42 +2,43 @@ package model.bo;
 
 public class CondicaoPagamento {
 
-	private int idCondicaoPagamento;
-	private String descricaoCondicaoPagamento;
-	private int numDiasAtePrimeiraParcela;
-	private int numDiasEntreParcelas;
-	
-	public CondicaoPagamento() { }
-	
-	public int getIdCondicaoPagamento() {
-		return idCondicaoPagamento;
-	}
-	
-	public void setIdCondicaoPagamento(int idCondicaoPagamento) {
-		this.idCondicaoPagamento = idCondicaoPagamento;
-	}
-	
-	public String getDescricaoCondicaoPagamento() {
-		return descricaoCondicaoPagamento;
-	}
-	
-	public void setDescricaoCondicaoPagamento(String descricaoCondicaoPagamento) {
-		this.descricaoCondicaoPagamento = descricaoCondicaoPagamento;
-	}
-	
-	public int getNumDiasAtePrimeiraParcela() {
-		return numDiasAtePrimeiraParcela;
-	}
-	
-	public void setNumDiasAtePrimeiraParcela(int numDiasAtePrimeiraParcela) {
-		this.numDiasAtePrimeiraParcela = numDiasAtePrimeiraParcela;
-	}
-	
-	public int getNumDiasEntreParcelas() {
-		return numDiasEntreParcelas;
-	}
-	
-	public void setNumDiasEntreParcelas(int numDiasEntreParcelas) {
-		this.numDiasEntreParcelas = numDiasEntreParcelas;
-	}
+    private Long id;
+    private String descricao;
+    private int numeroDiasAtePrimeiraParcela;
+    private int numeroDiasEntreParcelas;
+
+    public CondicaoPagamento() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public int getNumeroDiasAtePrimeiraParcela() {
+        return numeroDiasAtePrimeiraParcela;
+    }
+
+    public void setNumeroDiasAtePrimeiraParcela(int numeroDiasAtePrimeiraParcela) {
+        this.numeroDiasAtePrimeiraParcela = numeroDiasAtePrimeiraParcela;
+    }
+
+    public int getNumeroDiasEntreParcelas() {
+        return numeroDiasEntreParcelas;
+    }
+
+    public void setNumeroDiasEntreParcelas(int numeroDiasEntreParcelas) {
+        this.numeroDiasEntreParcelas = numeroDiasEntreParcelas;
+    }
 }

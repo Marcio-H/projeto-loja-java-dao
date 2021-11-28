@@ -1,41 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package model.DAO;
+package model.dao.objects;
 
 import java.util.List;
-import model.bo.Tamanho;
+import model.bo.Pagar;
+import model.dao.InterfaceDAO;
 
-/**
- *
- * @author aluno
- */
-public class TamanhoDAO implements InterfaceDAO<Tamanho>{
+public class PagarDAO implements InterfaceDAO<Pagar>{
 
     @Override
-    public void create(Tamanho objeto) {
+    public void create(Pagar objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Tamanho> read() {
+    public List<Pagar> read() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Tamanho read(int codigo) {
+    public Pagar read(int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(Tamanho objeto) {
+    public void update(Pagar objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(Tamanho objeto) {
+    public void delete(Pagar objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

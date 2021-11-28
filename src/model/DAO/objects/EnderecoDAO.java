@@ -1,41 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package model.DAO;
+package model.dao.objects;
 
 import java.util.List;
-import model.bo.Marca;
+import model.bo.Endereco;
+import model.dao.InterfaceDAO;
 
-/**
- *
- * @author aluno
- */
-public class MarcaDAO implements InterfaceDAO<Marca>{
+public class EnderecoDAO implements InterfaceDAO<Endereco>{
 
     @Override
-    public void create(Marca objeto) {
+    public void create(Endereco objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Marca> read() {
+    public List<Endereco> read() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Marca read(int codigo) {
+    public Endereco read(int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(Marca objeto) {
+    public void update(Endereco objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(Marca objeto) {
+    public void delete(Endereco objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

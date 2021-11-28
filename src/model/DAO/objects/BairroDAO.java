@@ -1,32 +1,33 @@
-package model.DAO;
+package model.dao.objects;
 
 import java.util.List;
-import model.bo.CondicaoPagamento;
+import model.bo.Bairro;
+import model.dao.InterfaceDAO;
 
-public class CondicaoPagamentoDAO implements InterfaceDAO<CondicaoPagamento> {
+public class BairroDAO implements InterfaceDAO<Bairro>{
 
     @Override
-    public void create(CondicaoPagamento objeto) {
+    public void create(Bairro objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<CondicaoPagamento> read() {
+    public List<Bairro> read() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public CondicaoPagamento read(int codigo) {
+    public Bairro read(int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(CondicaoPagamento objeto) {
+    public void update(Bairro objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(CondicaoPagamento objeto) {
+    public void delete(Bairro objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

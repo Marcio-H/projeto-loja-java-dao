@@ -2,24 +2,25 @@ package model.bo;
 
 public class Tamanho {
 
-	private int idTamanho;
-	private String descricaoTamanho;
-	
-	public Tamanho() { }
+    private Long id;
+    private String descricao;
 
-	public int getIdTamanho() {
-		return idTamanho;
-	}
+    public Tamanho() {
+    }
 
-	public void setIdTamanho(int idTamanho) {
-		this.idTamanho = idTamanho;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getDescricaoTamanho() {
-		return descricaoTamanho;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setDescricaoTamanho(String descricaoTamanho) {
-		this.descricaoTamanho = descricaoTamanho;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }

@@ -1,32 +1,33 @@
-package model.DAO;
+package model.dao.objects;
 
 import java.util.List;
-import model.bo.Receber;
+import model.bo.Telefone;
+import model.dao.InterfaceDAO;
 
-public class ReceberDAO implements InterfaceDAO<Receber>{
+public class FoneFornecedorDAO implements InterfaceDAO<Telefone>{
 
     @Override
-    public void create(Receber objeto) {
+    public void create(Telefone objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Receber> read() {
+    public List<Telefone> read() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Receber read(int codigo) {
+    public Telefone read(int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(Receber objeto) {
+    public void update(Telefone objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(Receber objeto) {
+    public void delete(Telefone objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

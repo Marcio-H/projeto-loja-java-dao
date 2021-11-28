@@ -2,34 +2,34 @@ package model.bo;
 
 public class Cidade {
 
-	private int idCidade;
-	private String descricaoCidade;
-	private String ufCidade;
-	
-	public Cidade() {
-	}
+    private Long id;
+    private String descricao;
+    private String uf;
 
-	public int getIdCidade() {
-		return idCidade;
-	}
+    public Cidade() {
+    }
 
-	public void setIdCidade(int idCidade) {
-		this.idCidade = idCidade;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getDescricaoCidade() {
-		return descricaoCidade;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setDescricaoCidade(String descricaoCidade) {
-		this.descricaoCidade = descricaoCidade;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
 
-	public String getUfCidade() {
-		return ufCidade;
-	}
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-	public void setUfCidade(String ufCidade) {
-		this.ufCidade = ufCidade;
-	}
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
 }

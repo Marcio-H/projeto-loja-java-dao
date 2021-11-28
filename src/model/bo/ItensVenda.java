@@ -2,51 +2,52 @@ package model.bo;
 
 public class ItensVenda {
 
-	private int idItensVenda;
-	private Venda venda;
-	private CaracteristicaProduto caracteristicaProduto;
-	private float valUnitarioProduto;
-	private float qtdProduto;
-	
-	public ItensVenda() { }
+    private Long id;
+    private Venda venda;
+    private CaracteristicaProduto caracteristicaProduto;
+    private float valor;
+    private Long quantidade;
 
-	public int getIdItensVenda() {
-		return idItensVenda;
-	}
+    public ItensVenda() {
+    }
 
-	public void setIdItensVenda(int idItensVenda) {
-		this.idItensVenda = idItensVenda;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Venda getVenda() {
-		return venda;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setVenda(Venda venda) {
-		this.venda = venda;
-	}
+    public Venda getVenda() {
+        return venda;
+    }
 
-	public CaracteristicaProduto getCaracteristicaProduto() {
-		return caracteristicaProduto;
-	}
+    public void setVenda(Venda venda) {
+        this.venda = venda;
+    }
 
-	public void setCaracteristicaProduto(CaracteristicaProduto caracteristicaProduto) {
-		this.caracteristicaProduto = caracteristicaProduto;
-	}
+    public CaracteristicaProduto getCaracteristicaProduto() {
+        return caracteristicaProduto;
+    }
 
-	public float getValUnitarioProduto() {
-		return valUnitarioProduto;
-	}
+    public void setCaracteristicaProduto(CaracteristicaProduto caracteristicaProduto) {
+        this.caracteristicaProduto = caracteristicaProduto;
+    }
 
-	public void setValUnitarioProduto(float valUnitarioProduto) {
-		this.valUnitarioProduto = valUnitarioProduto;
-	}
+    public float getValor() {
+        return valor;
+    }
 
-	public float getQtdProduto() {
-		return qtdProduto;
-	}
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
 
-	public void setQtdProduto(float qtdProduto) {
-		this.qtdProduto = qtdProduto;
-	}
+    public Long getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Long quantidade) {
+        this.quantidade = quantidade;
+    }
 }

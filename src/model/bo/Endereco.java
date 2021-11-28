@@ -2,51 +2,52 @@ package model.bo;
 
 public class Endereco {
 
-	private int idCep;
-	private String cepCep;
-	private String logradouroCep;
-	private Cidade cidade;
-	private Bairro bairro;
-	
-	public Endereco() {	}
+    private Long id;
+    private String cep;
+    private String logradouro;
+    private Cidade cidade;
+    private Bairro bairro;
 
-	public int getIdCep() {
-		return idCep;
-	}
+    public Endereco() {
+    }
 
-	public void setIdCep(int idCep) {
-		this.idCep = idCep;
-	}
+    public Long getIdCep() {
+        return id;
+    }
 
-	public String getCepCep() {
-		return cepCep;
-	}
+    public void setIdCep(Long id) {
+        this.id = id;
+    }
 
-	public void setCepCep(String cepCep) {
-		this.cepCep = cepCep;
-	}
+    public String getCep() {
+        return cep;
+    }
 
-	public String getLogradouroCep() {
-		return logradouroCep;
-	}
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
 
-	public void setLogradouroCep(String logradouroCep) {
-		this.logradouroCep = logradouroCep;
-	}
+    public String getLogradouro() {
+        return logradouro;
+    }
 
-	public Cidade getCidade() {
-		return cidade;
-	}
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
 
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
-	}
+    public Cidade getCidade() {
+        return cidade;
+    }
 
-	public Bairro getBairro() {
-		return bairro;
-	}
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
 
-	public void setBairro(Bairro bairro) {
-		this.bairro = bairro;
-	}
+    public Bairro getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(Bairro bairro) {
+        this.bairro = bairro;
+    }
 }
