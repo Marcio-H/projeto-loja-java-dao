@@ -6,6 +6,7 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -268,5 +269,9 @@ public class FormModeloCadastros extends javax.swing.JFrame {
 
     public JTextField getId() {
         return id;
+    }
+
+    public JPanel getForm() {
+        return form;
     }
 }

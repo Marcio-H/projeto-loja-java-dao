@@ -6,6 +6,7 @@
 package view.cadastro;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -317,5 +318,9 @@ public class TelaCadastroBairro extends javax.swing.JFrame {
 
     public JTextField getDescricaoTextField() {
         return descricaoTextField;
+    }
+
+    public JPanel getForm() {
+        return form;
     }
 }

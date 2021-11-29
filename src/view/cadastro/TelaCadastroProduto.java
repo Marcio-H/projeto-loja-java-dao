@@ -6,6 +6,7 @@
 package view.cadastro;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -13,12 +14,12 @@ import javax.swing.JTextField;
  *
  * @author marcio.junior
  */
-public class TelaCadastroTamanho extends javax.swing.JFrame {
+public class TelaCadastroProduto extends javax.swing.JFrame {
 
     /**
-     * Creates new form Tamanho
+     * Creates new form TelaCadastroProduto
      */
-    public TelaCadastroTamanho() {
+    public TelaCadastroProduto() {
         initComponents();
     }
 
@@ -31,6 +32,7 @@ public class TelaCadastroTamanho extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         head = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -39,12 +41,28 @@ public class TelaCadastroTamanho extends javax.swing.JFrame {
         id = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         descricaoTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        valorFormattedTextField = new javax.swing.JFormattedTextField();
+        jLabel6 = new javax.swing.JLabel();
+        marcaTextField = new javax.swing.JTextField();
+        TipoProdutoTextField = new javax.swing.JTextField();
+        tamanhoTextField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        adicionarMarcaBotao = new javax.swing.JButton();
+        buscarMarcaBotao = new javax.swing.JButton();
+        adicionarTamanhoBotao = new javax.swing.JButton();
+        buscarTamanhoBotao = new javax.swing.JButton();
+        adicionarTipoProdutoBotao = new javax.swing.JButton();
+        buscarTipoProdutoBotao = new javax.swing.JButton();
         optionMenu = new javax.swing.JPanel();
         botaoNovo = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
         botaoGravar = new javax.swing.JButton();
         botaoBuscar = new javax.swing.JButton();
         botaoSair = new javax.swing.JButton();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -57,7 +75,7 @@ public class TelaCadastroTamanho extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Tamanho");
+        jLabel2.setText("Produto");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel2.setPreferredSize(new java.awt.Dimension(41, 80));
         head.add(jLabel2, java.awt.BorderLayout.CENTER);
@@ -72,21 +90,71 @@ public class TelaCadastroTamanho extends javax.swing.JFrame {
 
         jLabel3.setText("Descrição");
 
+        jLabel4.setText("Valor");
+
+        jLabel6.setText("Marca");
+
+        jLabel7.setText("Tamanho");
+
+        jLabel8.setText("Tipo do Produto");
+
+        adicionarMarcaBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mais.png"))); // NOI18N
+
+        buscarMarcaBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
+
+        adicionarTamanhoBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mais.png"))); // NOI18N
+
+        buscarTamanhoBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
+
+        adicionarTipoProdutoBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mais.png"))); // NOI18N
+
+        buscarTipoProdutoBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
+
         javax.swing.GroupLayout formLayout = new javax.swing.GroupLayout(form);
         form.setLayout(formLayout);
         formLayout.setHorizontalGroup(
             formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descricaoTextField)
+                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(formLayout.createSequentialGroup()
                         .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
                             .addComponent(jLabel1)
                             .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(descricaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(valorFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, formLayout.createSequentialGroup()
+                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(formLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buscarMarcaBotao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(adicionarMarcaBotao))
+                            .addComponent(marcaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(formLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buscarTamanhoBotao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(adicionarTamanhoBotao))
+                            .addComponent(tamanhoTextField))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(formLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buscarTipoProdutoBotao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(adicionarTipoProdutoBotao))
+                            .addComponent(TipoProdutoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         formLayout.setVerticalGroup(
             formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,9 +164,34 @@ public class TelaCadastroTamanho extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descricaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(formLayout.createSequentialGroup()
+                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(descricaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(valorFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(adicionarMarcaBotao, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel8)))
+                                .addComponent(adicionarTamanhoBotao)
+                                .addComponent(buscarTamanhoBotao)
+                                .addComponent(adicionarTipoProdutoBotao)
+                                .addComponent(buscarTipoProdutoBotao))
+                            .addComponent(jLabel6)))
+                    .addComponent(buscarMarcaBotao))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(marcaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TipoProdutoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tamanhoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -158,7 +251,7 @@ public class TelaCadastroTamanho extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(optionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
+            .addComponent(optionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -227,33 +320,37 @@ public class TelaCadastroTamanho extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroTamanho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroTamanho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroTamanho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroTamanho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastroTamanho().setVisible(true);
+                new TelaCadastroProduto().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TipoProdutoTextField;
+    private javax.swing.JButton adicionarMarcaBotao;
+    private javax.swing.JButton adicionarTamanhoBotao;
+    private javax.swing.JButton adicionarTipoProdutoBotao;
     private javax.swing.JButton botaoBuscar;
     private javax.swing.JButton botaoCancelar;
     private javax.swing.JButton botaoGravar;
     private javax.swing.JButton botaoNovo;
     private javax.swing.JButton botaoSair;
+    private javax.swing.JButton buscarMarcaBotao;
+    private javax.swing.JButton buscarTamanhoBotao;
+    private javax.swing.JButton buscarTipoProdutoBotao;
     private javax.swing.JTextField descricaoTextField;
     private javax.swing.JPanel form;
     private javax.swing.JPanel head;
@@ -261,10 +358,18 @@ public class TelaCadastroTamanho extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField marcaTextField;
     private javax.swing.JPanel optionMenu;
+    private javax.swing.JTextField tamanhoTextField;
+    private javax.swing.JFormattedTextField valorFormattedTextField;
     // End of variables declaration//GEN-END:variables
-
+    
     public JButton getBotaoBuscar() {
         return botaoBuscar;
     }
@@ -288,9 +393,85 @@ public class TelaCadastroTamanho extends javax.swing.JFrame {
     public JTextField getId() {
         return id;
     }
-
+    
     public JTextField getDescricaoTextField() {
         return descricaoTextField;
+    }
+    
+    public JFormattedTextField getValorFormattedTextField() {
+        return valorFormattedTextField;
+    }
+
+    public JTextField getTipoProdutoTextField() {
+        return TipoProdutoTextField;
+    }
+
+    public void setTipoProdutoTextField(JTextField TipoProdutoTextField) {
+        this.TipoProdutoTextField = TipoProdutoTextField;
+    }
+
+    public JButton getAdicionarMarcaBotao() {
+        return adicionarMarcaBotao;
+    }
+
+    public void setAdicionarMarcaBotao(JButton adicionarMarcaBotao) {
+        this.adicionarMarcaBotao = adicionarMarcaBotao;
+    }
+
+    public JButton getAdicionarTamanhoBotao() {
+        return adicionarTamanhoBotao;
+    }
+
+    public void setAdicionarTamanhoBotao(JButton adicionarTamanhoBotao) {
+        this.adicionarTamanhoBotao = adicionarTamanhoBotao;
+    }
+
+    public JButton getAdicionarTipoProdutoBotao() {
+        return adicionarTipoProdutoBotao;
+    }
+
+    public void setAdicionarTipoProdutoBotao(JButton adicionarTipoProdutoBotao) {
+        this.adicionarTipoProdutoBotao = adicionarTipoProdutoBotao;
+    }
+
+    public JButton getBuscarMarcaBotao() {
+        return buscarMarcaBotao;
+    }
+
+    public void setBuscarMarcaBotao(JButton buscarMarcaBotao) {
+        this.buscarMarcaBotao = buscarMarcaBotao;
+    }
+
+    public JButton getBuscarTamanhoBotao() {
+        return buscarTamanhoBotao;
+    }
+
+    public void setBuscarTamanhoBotao(JButton buscarTamanhoBotao) {
+        this.buscarTamanhoBotao = buscarTamanhoBotao;
+    }
+
+    public JButton getBuscarTipoProdutoBotao() {
+        return buscarTipoProdutoBotao;
+    }
+
+    public void setBuscarTipoProdutoBotao(JButton buscarTipoProdutoBotao) {
+        this.buscarTipoProdutoBotao = buscarTipoProdutoBotao;
+    }
+
+    public JTextField getMarcaTextField() {
+        return marcaTextField;
+    }
+
+    public void setMarcaTextField(JTextField marcaTextField) {
+        this.marcaTextField = marcaTextField;
+    }
+
+    public JTextField getTamanhoTextField() {
+        return tamanhoTextField;
+    }
+
+    public void setTamanhoTextField(JTextField tamanhoTextField) {
+        this.tamanhoTextField = tamanhoTextField;
     }
 
     public JPanel getForm() {

@@ -7,6 +7,7 @@ package view.cadastro;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -342,5 +343,9 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
 
     public JFormattedTextField getUfTextField() {
         return ufTextField;
+    }
+
+    public JPanel getForm() {
+        return form;
     }
 }
