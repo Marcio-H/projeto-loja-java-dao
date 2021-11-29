@@ -15,12 +15,12 @@ import javax.swing.JTextField;
  *
  * @author marcio.junior
  */
-public class TelaCadastroFornecedor extends javax.swing.JFrame {
+public class TelaCadastroVendedor extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaCadastroFornecedor
+     * Creates new form TelaCadastroVendedor
      */
-    public TelaCadastroFornecedor() {
+    public TelaCadastroVendedor() {
         initComponents();
     }
 
@@ -40,11 +40,9 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        razaoSocialTextField = new javax.swing.JTextField();
         nomeTextField = new javax.swing.JTextField();
         emailTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         buscarEnderecoBotao = new javax.swing.JButton();
@@ -61,14 +59,16 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         bairroTextField = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         complementoTextField = new javax.swing.JTextField();
+        cpfFormattedTextField = new javax.swing.JFormattedTextField();
         jLabel13 = new javax.swing.JLabel();
-        cnpjFormattedTextField = new javax.swing.JFormattedTextField();
+        jLabel5 = new javax.swing.JLabel();
+        porcentagemComissaoVendaFormattedTextField = new javax.swing.JFormattedTextField();
         jLabel14 = new javax.swing.JLabel();
-        inscricaoEstadualFormattedTextField = new javax.swing.JFormattedTextField();
-        jLabel15 = new javax.swing.JLabel();
-        adicionarTelefoneBotao = new javax.swing.JButton();
-        deletarTelefoneBotao = new javax.swing.JButton();
+        porcentagemComissaoRecebimentoFormattedTextField = new javax.swing.JFormattedTextField();
         telefoneComboBox = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        deletarTelefoneBotao = new javax.swing.JButton();
+        adicionarTelefoneBotao = new javax.swing.JButton();
         optionMenu = new javax.swing.JPanel();
         botaoNovo = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
@@ -87,7 +87,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Fornecedor");
+        jLabel2.setText("Vendedor");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel2.setPreferredSize(new java.awt.Dimension(41, 80));
         head.add(jLabel2, java.awt.BorderLayout.CENTER);
@@ -103,8 +103,6 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         jLabel3.setText("Nome");
 
         jLabel4.setText("Email");
-
-        jLabel5.setText("Razao Social");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -167,7 +165,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                             .addComponent(jTextField6)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 22, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -217,23 +215,34 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel13.setText("CNPJ");
-
         try {
-            cnpjFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/000#-##")));
+            cpfFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
-        jLabel14.setText("Inscrição Estadual");
+        jLabel13.setText("CPF");
+
+        jLabel5.setText("Porcentagem de comissão de venda");
+
+        porcentagemComissaoVendaFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00%"))));
+        porcentagemComissaoVendaFormattedTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                porcentagemComissaoVendaFormattedTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Porcetagem de comissão de recebimento");
+
+        porcentagemComissaoRecebimentoFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00%"))));
+
+        telefoneComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel15.setText("Telefone");
 
-        adicionarTelefoneBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mais.png"))); // NOI18N
-
         deletarTelefoneBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
 
-        telefoneComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        adicionarTelefoneBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mais.png"))); // NOI18N
 
         javax.swing.GroupLayout formLayout = new javax.swing.GroupLayout(form);
         form.setLayout(formLayout);
@@ -245,35 +254,38 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(formLayout.createSequentialGroup()
                         .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
                             .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(razaoSocialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)))
-                    .addGroup(formLayout.createSequentialGroup()
-                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cnpjFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inscricaoEstadualFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14))
-                        .addGap(7, 7, 7)
-                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(formLayout.createSequentialGroup()
+                                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4)))
+                            .addGroup(formLayout.createSequentialGroup()
+                                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(formLayout.createSequentialGroup()
+                                        .addComponent(jLabel13)
+                                        .addGap(129, 129, 129)
+                                        .addComponent(jLabel5))
+                                    .addGroup(formLayout.createSequentialGroup()
+                                        .addComponent(cpfFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(porcentagemComissaoVendaFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(porcentagemComissaoRecebimentoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14)))
+                            .addComponent(jLabel15)
+                            .addGroup(formLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
                                 .addComponent(telefoneComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(deletarTelefoneBotao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(adicionarTelefoneBotao))
-                            .addComponent(jLabel15))
+                                .addComponent(adicionarTelefoneBotao)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -287,32 +299,35 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(razaoSocialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cpfFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(porcentagemComissaoVendaFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(porcentagemComissaoRecebimentoFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(formLayout.createSequentialGroup()
+                            .addGap(3, 3, 3)
+                            .addComponent(telefoneComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(deletarTelefoneBotao, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(adicionarTelefoneBotao, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addGroup(formLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cnpjFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inscricaoEstadualFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(telefoneComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(deletarTelefoneBotao, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(adicionarTelefoneBotao, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                        .addComponent(jLabel15)
+                        .addGap(29, 29, 29)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         optionMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -371,7 +386,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(optionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(optionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
             .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -380,8 +395,8 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(head, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(form, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(optionMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -419,17 +434,21 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoSairActionPerformed
 
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
+    private void porcentagemComissaoVendaFormattedTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_porcentagemComissaoVendaFormattedTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_idActionPerformed
+    }//GEN-LAST:event_porcentagemComissaoVendaFormattedTextFieldActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void cepTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cepTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cepTextFieldActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_idActionPerformed
 
     /**
      * @param args the command line arguments
@@ -448,20 +467,20 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastroFornecedor().setVisible(true);
+                new TelaCadastroVendedor().setVisible(true);
             }
         });
     }
@@ -478,14 +497,13 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
     private javax.swing.JButton buscarEnderecoBotao;
     private javax.swing.JFormattedTextField cepTextField;
     private javax.swing.JTextField cidadeTextField;
-    private javax.swing.JFormattedTextField cnpjFormattedTextField;
     private javax.swing.JTextField complementoTextField;
+    private javax.swing.JFormattedTextField cpfFormattedTextField;
     private javax.swing.JButton deletarTelefoneBotao;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JPanel form;
     private javax.swing.JPanel head;
     private javax.swing.JTextField id;
-    private javax.swing.JFormattedTextField inscricaoEstadualFormattedTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -507,7 +525,8 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
     private javax.swing.JTextField logradouroTextField;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JPanel optionMenu;
-    private javax.swing.JTextField razaoSocialTextField;
+    private javax.swing.JFormattedTextField porcentagemComissaoRecebimentoFormattedTextField;
+    private javax.swing.JFormattedTextField porcentagemComissaoVendaFormattedTextField;
     private javax.swing.JComboBox<String> telefoneComboBox;
     // End of variables declaration//GEN-END:variables
     
@@ -535,8 +554,16 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         return id;
     }
 
+    public JPanel getForm() {
+        return form;
+    }
+
     public JButton getAdicionarEnderecoBotao() {
         return adicionarEnderecoBotao;
+    }
+
+    public JButton getAdicionarTelefoneBotao() {
+        return adicionarTelefoneBotao;
     }
 
     public JTextField getBairroTextField() {
@@ -555,24 +582,20 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         return cidadeTextField;
     }
 
-    public JFormattedTextField getCnpjFormattedTextField() {
-        return cnpjFormattedTextField;
-    }
-
     public JTextField getComplementoTextField() {
         return complementoTextField;
     }
 
+    public JFormattedTextField getCpfFormattedTextField() {
+        return cpfFormattedTextField;
+    }
+
+    public JButton getDeletarTelefoneBotao() {
+        return deletarTelefoneBotao;
+    }
+
     public JTextField getEmailTextField() {
         return emailTextField;
-    }
-
-    public JPanel getForm() {
-        return form;
-    }
-
-    public JFormattedTextField getInscricaoEstadualFormattedTextField() {
-        return inscricaoEstadualFormattedTextField;
     }
 
     public JTextField getLogradouroTextField() {
@@ -583,16 +606,12 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         return nomeTextField;
     }
 
-    public JTextField getRazaoSocialTextField() {
-        return razaoSocialTextField;
+    public JFormattedTextField getPorcentagemComissaoRecebimentoFormattedTextField() {
+        return porcentagemComissaoRecebimentoFormattedTextField;
     }
 
-    public JButton getAdicionarTelefoneBotao() {
-        return adicionarTelefoneBotao;
-    }
-
-    public JButton getDeletarTelefoneBotao() {
-        return deletarTelefoneBotao;
+    public JFormattedTextField getPorcentagemComissaoVendaFormattedTextField() {
+        return porcentagemComissaoVendaFormattedTextField;
     }
 
     public JComboBox<String> getTelefoneComboBox() {
