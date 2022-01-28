@@ -26,7 +26,7 @@ public class TamanhoDAO implements InterfaceDAO<Tamanho>{
     }
 
     @Override
-    public Tamanho read(int codigo) {
+    public Tamanho read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

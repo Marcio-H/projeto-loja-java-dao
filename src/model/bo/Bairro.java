@@ -1,14 +1,18 @@
 package model.bo;
 
+import annotations.Id;
+
 public class Bairro {
 
+        @Id
 	private Long id;
+        
 	private String descricao;
 	
 	public Bairro() {
 	}
 	
-	public Long get() {
+	public Long getId() {
 		return id;
 	}
 	

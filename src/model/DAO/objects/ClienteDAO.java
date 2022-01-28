@@ -17,7 +17,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
     }
 
     @Override
-    public Cliente read(int codigo) {
+    public Cliente read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

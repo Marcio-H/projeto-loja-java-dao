@@ -17,7 +17,7 @@ public class ItensVendaDAO implements InterfaceDAO<ItensVenda>{
     }
 
     @Override
-    public ItensVenda read(int codigo) {
+    public ItensVenda read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

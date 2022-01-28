@@ -26,7 +26,7 @@ public class MarcaDAO implements InterfaceDAO<Marca>{
     }
 
     @Override
-    public Marca read(int codigo) {
+    public Marca read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

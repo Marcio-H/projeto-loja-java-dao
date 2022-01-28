@@ -17,7 +17,7 @@ public class CorDAO implements InterfaceDAO<Cor>{
     }
 
     @Override
-    public Cor read(int codigo) {
+    public Cor read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

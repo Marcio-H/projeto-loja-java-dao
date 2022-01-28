@@ -1,9 +1,14 @@
 package model.bo;
 
+import annotations.Id;
+
 public class Cidade {
 
+    @Id
     private Long id;
+    
     private String descricao;
+    
     private String uf;
 
     public Cidade() {

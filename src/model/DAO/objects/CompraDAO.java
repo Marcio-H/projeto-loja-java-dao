@@ -17,7 +17,7 @@ public class CompraDAO implements InterfaceDAO<Compra> {
     }
     
     @Override
-    public Compra read(int codigo) {
+    public Compra read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

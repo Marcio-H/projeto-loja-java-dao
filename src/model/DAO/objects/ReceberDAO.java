@@ -17,7 +17,7 @@ public class ReceberDAO implements InterfaceDAO<Receber>{
     }
 
     @Override
-    public Receber read(int codigo) {
+    public Receber read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

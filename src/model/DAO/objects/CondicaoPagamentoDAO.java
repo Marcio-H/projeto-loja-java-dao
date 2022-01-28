@@ -17,7 +17,7 @@ public class CondicaoPagamentoDAO implements InterfaceDAO<CondicaoPagamento> {
     }
 
     @Override
-    public CondicaoPagamento read(int codigo) {
+    public CondicaoPagamento read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

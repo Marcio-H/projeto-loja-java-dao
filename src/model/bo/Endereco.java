@@ -1,21 +1,31 @@
 package model.bo;
 
+import annotations.Foreign;
+import annotations.Id;
+
 public class Endereco {
 
+    @Id
     private Long id;
+    
     private String cep;
+    
     private String logradouro;
+    
+    @Foreign
     private Cidade cidade;
+    
+    @Foreign
     private Bairro bairro;
 
     public Endereco() {
     }
 
-    public Long getIdCep() {
+    public Long getId() {
         return id;
     }
 
-    public void setIdCep(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

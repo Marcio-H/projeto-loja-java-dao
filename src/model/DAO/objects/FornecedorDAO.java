@@ -17,7 +17,7 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor>{
     }
 
     @Override
-    public Fornecedor read(int codigo) {
+    public Fornecedor read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -17,7 +17,7 @@ public class PagarDAO implements InterfaceDAO<Pagar>{
     }
 
     @Override
-    public Pagar read(int codigo) {
+    public Pagar read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

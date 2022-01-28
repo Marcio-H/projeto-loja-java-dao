@@ -1,54 +1,70 @@
 package model.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import config.EnvProperties;
+import java.sql.*;
+import java.util.Properties;
 
 public class ConnectionFactory {
 
-    private static final String drive = "com.mysql.jdbc.Driver";
-    private static final String banco = "jdbc:mysql://localhost:3306/bancoloja";
-    private static final String user = "root";
-    private static final String senha = "ifsc";
+    private static final String DRIVER = EnvProperties.getDriver();
+    
+    private static final String URL = EnvProperties.getBancoUrl();
+    
+    private static final String USER = EnvProperties.getUser();
+    
+    private static final String PASSWORD = EnvProperties.getPassword();
+    
+    private static final String SLL = EnvProperties.getSsl();
 
     public static Connection getConnection() {
         try {
-            return DriverManager.getConnection(String.format(
-                    "%s?verifyServerCertificate=false&useSSL=false&requireSSL=false&USER=%s&password=%s&serverTimeZone=UTC",
-                    banco, user, senha
-            ));
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            Class.forName(DRIVER);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Properties connectionProperties = new Properties();
+
+            connectionProperties.setProperty("user", USER);
+            connectionProperties.setProperty("password", PASSWORD);
+            connectionProperties.setProperty("ssl", SLL);
+            return DriverManager.getConnection(URL, connectionProperties);
+        } catch (SQLException e) {
+            e.printStackTrace();
             return null;
         }
     }
-    
+
     public static void closeConnection(Connection conexao) {
         try {
             conexao.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
-    
+
     public static void closeConnection(Connection conexao, PreparedStatement pstm) {
         try {
             pstm.close();
-            conexao.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            
         }
+
+        closeConnection(conexao);
     }
-    
+
     public static void closeConnection(Connection conexao, PreparedStatement pstm, ResultSet rst) {
         try {
-            pstm.close();
             rst.close();
-            conexao.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            
         }
+        
+        closeConnection(conexao, pstm);
     }
 }

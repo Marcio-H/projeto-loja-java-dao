@@ -17,7 +17,7 @@ public class CaracteristicaProdutoDAO implements InterfaceDAO<CaracteristicaProd
     }
 
     @Override
-    public CaracteristicaProduto read(int codigo) {
+    public CaracteristicaProduto read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

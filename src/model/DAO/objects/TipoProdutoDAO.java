@@ -17,7 +17,7 @@ public class TipoProdutoDAO implements InterfaceDAO<TipoProduto>{
     }
 
     @Override
-    public TipoProduto read(int codigo) {
+    public TipoProduto read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

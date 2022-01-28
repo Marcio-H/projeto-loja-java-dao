@@ -17,7 +17,7 @@ public class FoneFornecedorDAO implements InterfaceDAO<Telefone>{
     }
 
     @Override
-    public Telefone read(int codigo) {
+    public Telefone read(Long codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
