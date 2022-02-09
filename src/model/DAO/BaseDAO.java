@@ -32,7 +32,7 @@ public abstract class BaseDAO<T> {
 
     private static final String READ_BY_ID_SQL = "SELECT %s from %s where %s.id = ?;";
     
-    private static final String READ_ALL_SQL = "SELECT %s from %s;";
+    private static final String READ_ALL_SQL = "SELECT %s from %s ORDER BY 1;";
     
     private static final String DELETE_BY_ID_SQL = "DELETE FROM %s WHERE id = ?;";
     

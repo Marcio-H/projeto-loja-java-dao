@@ -126,66 +126,26 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
         botaoNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/file.png"))); // NOI18N
         botaoNovo.setText("Novo");
         botaoNovo.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        botaoNovo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoNovoActionPerformed(evt);
-            }
-        });
         optionMenu.add(botaoNovo);
 
         botaoCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancel.png"))); // NOI18N
         botaoCancelar.setText("Cancelar");
         botaoCancelar.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoCancelarActionPerformed(evt);
-            }
-        });
         optionMenu.add(botaoCancelar);
 
         botaoGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
         botaoGravar.setText("Gravar");
         botaoGravar.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        botaoGravar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                gravarEvent(evt);
-            }
-        });
-        botaoGravar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoGravarActionPerformed(evt);
-            }
-        });
         optionMenu.add(botaoGravar);
 
         botaoBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
         botaoBuscar.setText("Buscar");
         botaoBuscar.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        botaoBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buscarEvent(evt);
-            }
-        });
-        botaoBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoBuscarActionPerformed(evt);
-            }
-        });
         optionMenu.add(botaoBuscar);
 
         botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/exit.png"))); // NOI18N
         botaoSair.setText("Sair");
         botaoSair.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        botaoSair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sairEvent(evt);
-            }
-        });
-        botaoSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoSairActionPerformed(evt);
-            }
-        });
         optionMenu.add(botaoSair);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -220,79 +180,9 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoNovoActionPerformed
-
-    private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoCancelarActionPerformed
-
-    private void botaoGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGravarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoGravarActionPerformed
-
-    private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoBuscarActionPerformed
-
-    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoSairActionPerformed
-
-    private void sairEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairEvent
-        this.dispose();
-    }//GEN-LAST:event_sairEvent
-
-    private void gravarEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gravarEvent
-        // TODO add your handling code here:
-    }//GEN-LAST:event_gravarEvent
-
-    private void buscarEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarEvent
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarEvent
-
     private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaCadastroCidade().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoBuscar;
