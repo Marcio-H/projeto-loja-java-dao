@@ -1,4 +1,4 @@
-package model.dao;
+package model.DAO;
 
 import static utils.UStr.create;
 import static utils.UMethod.getMethod;

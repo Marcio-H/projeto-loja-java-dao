@@ -14,11 +14,20 @@ public class UStr {
         return name.substring(lastPoint + 1);
     }
     
+    public static String toLower(String str) {
+        return str.toLowerCase();
+    }
+    
     public static UStr create(String str){
         UStr create = new UStr();
         
         create.setStr(str);
         return create;
+    }
+    
+    public UStr toLower() {
+        str = toLower(str);
+        return this;
     }
     
     public UStr capitalize() {

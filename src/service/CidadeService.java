@@ -2,7 +2,7 @@ package service;
 
 import java.util.List;
 import model.bo.Cidade;
-import model.dao.objects.CidadeDAO;
+import model.DAO.objects.CidadeDAO;
 
 public class CidadeService {
 

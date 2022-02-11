@@ -1,9 +1,9 @@
-package model.dao.objects;
+package model.DAO.objects;
 
 import java.util.List;
 import model.bo.Bairro;
-import model.dao.InterfaceDAO;
-import model.dao.BaseDAO;
+import model.DAO.InterfaceDAO;
+import model.DAO.BaseDAO;
 
 public class BairroDAO extends BaseDAO<Bairro> implements InterfaceDAO<Bairro>{
 

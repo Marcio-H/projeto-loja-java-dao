@@ -1,8 +1,8 @@
-package model.dao;
+package model.DAO;
 
-import static model.dao.ConnectionFactory.closeConnection;
-import static model.dao.BasePreparedStatementSetMethod.resolvePreparedStatementSetMethods;
-import static model.dao.BaseResultSetSolver.solve;
+import static model.DAO.ConnectionFactory.closeConnection;
+import static model.DAO.BasePreparedStatementSetMethod.resolvePreparedStatementSetMethods;
+import static model.DAO.BaseResultSetSolver.solve;
 import static utils.UStr.create;
 import static utils.UField.filterForFieldsWithoutIdAnnotation;
 import static utils.UField.concatFieldsToSQL;
@@ -51,7 +51,7 @@ public abstract class BaseDAO<T> {
         String sqlValues = fieldsToInsertStringValues(fieldsToInsert);
         String sql = String.format(
                 INSERT_SQL,
-                create(objectClass.getName()).removePackageFromName().get(),
+                create(objectClass.getName()).removePackageFromName().toLower().get(),
                 sqlFields,
                 sqlValues
         );
@@ -70,7 +70,7 @@ public abstract class BaseDAO<T> {
 
     protected Object abstractReadById(Long codigo, Class<?> classe) {
         String sqlFields = concatFieldsToSQL(classe.getDeclaredFields());
-        String className = create(classe.getName()).removePackageFromName().get();
+        String className = create(classe.getName()).removePackageFromName().toLower().get();
         String sql = String.format(
                 READ_BY_ID_SQL,
                 sqlFields,
@@ -100,7 +100,7 @@ public abstract class BaseDAO<T> {
     protected List<T> abstractRead(Class<T> classe) {
         List<T> arr = new ArrayList<>();
         String sqlFields = concatFieldsToSQL(classe.getDeclaredFields());
-        String className = create(classe.getName()).removePackageFromName().get();
+        String className = create(classe.getName()).removePackageFromName().toLower().get();
         String sql = String.format(
                 READ_ALL_SQL,
                 sqlFields,
@@ -128,7 +128,7 @@ public abstract class BaseDAO<T> {
     }
     
     protected void abstractDelete(Class<T> classe, Long id) {
-        String className = create(classe.getName()).removePackageFromName().capitalize().get();
+        String className = create(classe.getName()).removePackageFromName().toLower().get();
         String sql = String.format(
                 DELETE_BY_ID_SQL,
                 className
@@ -148,7 +148,11 @@ public abstract class BaseDAO<T> {
     protected void abstractUpdate(T objeto) {
         Method getId = getMethod(objeto.getClass(), "getId");
         Object id = callsMethod(getId, objeto);
-        String table = create(objeto.getClass().getName()).removePackageFromName().get();
+        String table = create(objeto.getClass()
+                .getName())
+                .removePackageFromName()
+                .toLower()
+                .get();
         Field[] fieldsWithoutId = filterForFieldsWithoutIdAnnotation(objeto.getClass().getDeclaredFields());
         String fieldToUpdate = updateSql(fieldsWithoutId);
         String sql = String.format(

@@ -1,8 +1,8 @@
-package model.dao.objects;
+package model.DAO.objects;
 
 import java.util.List;
 import model.bo.CaracteristicaProduto;
-import model.dao.InterfaceDAO;
+import model.DAO.InterfaceDAO;
 
 public class CaracteristicaProdutoDAO implements InterfaceDAO<CaracteristicaProduto> {
 

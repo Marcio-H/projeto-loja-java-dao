@@ -1,4 +1,4 @@
-package model.dao;
+package model.DAO;
 
 import config.EnvProperties;
 import java.sql.*;
@@ -47,11 +47,7 @@ public class ConnectionFactory {
     public static void closeConnection(Connection conexao, PreparedStatement pstm) {
         try {
             pstm.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (NullPointerException e) {
-            
-        }
+        } catch (SQLException | NullPointerException e) { } 
 
         closeConnection(conexao);
     }
@@ -59,11 +55,7 @@ public class ConnectionFactory {
     public static void closeConnection(Connection conexao, PreparedStatement pstm, ResultSet rst) {
         try {
             rst.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (NullPointerException e) {
-            
-        }
+        } catch (SQLException | NullPointerException e) { }
         
         closeConnection(conexao, pstm);
     }

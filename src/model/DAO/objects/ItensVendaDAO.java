@@ -1,8 +1,8 @@
-package model.dao.objects;
+package model.DAO.objects;
 
 import java.util.List;
 import model.bo.ItensVenda;
-import model.dao.InterfaceDAO;
+import model.DAO.InterfaceDAO;
 
 public class ItensVendaDAO implements InterfaceDAO<ItensVenda>{
 

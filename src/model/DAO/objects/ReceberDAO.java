@@ -1,8 +1,8 @@
-package model.dao.objects;
+package model.DAO.objects;
 
 import java.util.List;
 import model.bo.Receber;
-import model.dao.InterfaceDAO;
+import model.DAO.InterfaceDAO;
 
 public class ReceberDAO implements InterfaceDAO<Receber>{
 

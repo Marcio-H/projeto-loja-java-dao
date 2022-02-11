@@ -1,4 +1,4 @@
-package model.dao;
+package model.DAO;
 
 import static utils.UAnnotation.hasAnnotationForeign;
 import static utils.UField.fieldWithAnnotationId;
