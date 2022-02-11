@@ -46,10 +46,11 @@ public class BairroDAO extends BaseDAO<Bairro> implements InterfaceDAO<Bairro>{
 
     @Override
     public void update(Bairro objeto) {
-
+        abstractUpdate(objeto);
     }
 
     @Override
     public void delete(Bairro objeto) {
+        abstractDelete(Bairro.class, objeto.getId());
     }
 }

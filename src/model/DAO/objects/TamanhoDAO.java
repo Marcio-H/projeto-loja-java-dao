@@ -2,32 +2,33 @@ package model.DAO.objects;
 
 import java.util.List;
 import model.bo.Tamanho;
+import model.DAO.BaseDAO;
 import model.DAO.InterfaceDAO;
 
-public class TamanhoDAO implements InterfaceDAO<Tamanho>{
+public class TamanhoDAO extends BaseDAO implements InterfaceDAO<Tamanho>{
 
     @Override
     public void create(Tamanho objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.abstractCreate(objeto);
     }
 
     @Override
     public List<Tamanho> read() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return abstractRead(Tamanho.class);
     }
 
     @Override
     public Tamanho read(Long codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (Tamanho) this.abstractReadById(codigo, Tamanho.class);
     }
 
     @Override
     public void update(Tamanho objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        abstractUpdate(objeto);
     }
 
     @Override
     public void delete(Tamanho objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        abstractDelete(Tamanho.class, objeto.getId());
     }
 }

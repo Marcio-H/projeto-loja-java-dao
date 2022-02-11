@@ -1,8 +1,12 @@
 package model.bo;
 
-public class Tamanho {
+import annotations.Id;
 
+public class Tamanho {
+    
+    @Id    
     private Long id;
+
     private String descricao;
 
     public Tamanho() {
