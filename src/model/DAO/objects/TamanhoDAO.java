@@ -1,42 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.dao.objects;
 
 import java.util.List;
 import model.bo.Tamanho;
+import model.dao.BaseDAO;
 import model.dao.InterfaceDAO;
 
-/**
- *
- * @author aluno
- */
-public class TamanhoDAO implements InterfaceDAO<Tamanho>{
+public class TamanhoDAO extends BaseDAO<Tamanho> implements InterfaceDAO<Tamanho>{
 
     @Override
     public void create(Tamanho objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.abstractCreate(objeto);
     }
 
     @Override
     public List<Tamanho> read() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return abstractRead(Tamanho.class);
     }
 
     @Override
     public Tamanho read(Long codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (Tamanho) this.abstractReadById(codigo, Tamanho.class);
     }
 
     @Override
     public void update(Tamanho objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        abstractUpdate(objeto);
     }
 
     @Override
     public void delete(Tamanho objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        abstractDelete(Tamanho.class, objeto.getId());
     }
 }
