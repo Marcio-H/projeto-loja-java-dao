@@ -1,18 +1,21 @@
 package model.bo;
 
-public class Marca {
+import annotations.Id;
 
+public class Marca {
+    @Id    
     private Long id;
+
     private String descricao;
 
     public Marca() {
     }
 
-    public Long getIdMarca() {
+    public Long getId() {
         return id;
     }
 
-    public void setIdMarca(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

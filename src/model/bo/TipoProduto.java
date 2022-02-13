@@ -1,8 +1,12 @@
 package model.bo;
 
-public class TipoProduto {
+import annotations.Id;
 
+public class TipoProduto {
+    
+    @Id
     private Long id;
+
     private String descricao;
 
     public TipoProduto() {

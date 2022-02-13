@@ -1,31 +1,31 @@
 package controller.cadastro;
 
-import controller.busca.ControllerBuscaBairro;
+import controller.busca.ControllerBuscaCor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import model.bo.Bairro;
-import service.BairroService;
-import view.cadastro.TelaCadastroBairro;
+import model.bo.TipoProduto;
+import service.TipoProdutoService;
+import view.cadastro.TelaCadastroTipoProduto;
 
-public class ControllerCadastroBairro {
+public class ControllerCadastroTipoProduto {
     
-    private TelaCadastroBairro tela;
-    private Bairro bairro;
-    private BairroService bairroService;
+    private TelaCadastroTipoProduto tela;
+    private TipoProduto tipoProduto;
+    private TipoProdutoService tipoProdutoService;
     
-    public ControllerCadastroBairro() {
-        tela = new TelaCadastroBairro();
+    public ControllerCadastroTipoProduto() {
+        tela = new TelaCadastroTipoProduto();
         init();
     }
 
-    public ControllerCadastroBairro(TelaCadastroBairro telaCadastroBairro) {
-        this.tela = telaCadastroBairro;
+    public ControllerCadastroTipoProduto(TelaCadastroTipoProduto telaCadastroTipoProduto) {
+        this.tela = telaCadastroTipoProduto;
         init();
     }
     
     private void init() {
-        bairroService = new BairroService();
-        bairro = new Bairro();
+        tipoProdutoService = new TipoProdutoService();
+        tipoProduto = new TipoProduto();
         novoEventListener();
         cancelarEventListener();
         gravarEventListener();
@@ -36,20 +36,20 @@ public class ControllerCadastroBairro {
         this.tela.setVisible(true);
     }
     
-    public Bairro getBairro() {
+    public TipoProduto getCor() {
         try {
-            bairro.setId(Long.parseLong(tela.getId().getText()));
+            tipoProduto.setId(Long.parseLong(tela.getId().getText()));
         } catch (Exception e) {}
-        bairro.setDescricao(tela.getDescricaoTextField().getText());
+        tipoProduto.setDescricao(tela.getDescricaoTextField().getText());
         
-        return bairro;
+        return tipoProduto;
     }
     
-    public void setCidade(Bairro bairro) {
-        this.bairro.setId(bairro.getId());
-        this.tela.getId().setText(String.valueOf(bairro.getId()));
-        this.bairro.setDescricao(bairro.getDescricao());
-        this.tela.getDescricaoTextField().setText(bairro.getDescricao());
+    public void setCor(TipoProduto tipoProduto) {
+        this.tipoProduto.setId(tipoProduto.getId());
+        this.tela.getId().setText(String.valueOf(tipoProduto.getId()));
+        this.tipoProduto.setDescricao(tipoProduto.getDescricao());
+        this.tela.getDescricaoTextField().setText(tipoProduto.getDescricao());
     }
     
     private void novoEventListener() {
@@ -94,7 +94,7 @@ public class ControllerCadastroBairro {
             return;
         }
         try {
-            bairroService.createOrUpdate(getBairro());
+            tipoProdutoService.createOrUpdate(getCor());
             setFormStatus(false);
             cleanForm();
         } catch (Exception e) {
@@ -112,7 +112,7 @@ public class ControllerCadastroBairro {
     }
     
     private void buscarEventAction(MouseEvent evt) {
-        ControllerBuscaBairro buscaController = new ControllerBuscaBairro(this);
+//        ControllerBuscaCor buscaController = new ControllerBuscaCor(this);
     }
     
     private void sairEventListener() {
@@ -140,8 +140,8 @@ public class ControllerCadastroBairro {
     }
     
     public static void main(String[] args) {
-        ControllerCadastroBairro controllerCadastroBairro = new ControllerCadastroBairro();
+        ControllerCadastroTipoProduto controllerCadastroTipoProduto = new ControllerCadastroTipoProduto();
         
-        controllerCadastroBairro.tela.setVisible(true);
+        controllerCadastroTipoProduto.tela.setVisible(true);
     }
 }

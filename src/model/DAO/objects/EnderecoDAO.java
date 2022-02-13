@@ -8,29 +8,6 @@ import model.DAO.BaseDAO;
 import model.DAO.InterfaceDAO;
 
 public class EnderecoDAO extends BaseDAO<Endereco> implements InterfaceDAO<Endereco>{
-
-    public static void main(String[] args) {
-        Endereco endereco = new Endereco();
-        endereco.setId(7L);
-        endereco.setLogradouro("LOGRADOURO ALTERADO");
-        endereco.setCep("CEP ALT");
-        
-        Cidade cidade = new Cidade();
-        Bairro bairro = new Bairro();
-        
-        cidade.setId(3L);
-        bairro.setId(3L);
-        
-        endereco.setBairro(bairro);
-        endereco.setCidade(cidade);
-        
-        EnderecoDAO enderecoDAO = new EnderecoDAO();
-        
-        enderecoDAO.update(endereco);
-//        Endereco e = enderecoDAO.read(5L);
-//        
-//        System.out.println(e);
-    }
     
     public EnderecoDAO() {}
 

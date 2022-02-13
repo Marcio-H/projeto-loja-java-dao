@@ -1,55 +1,65 @@
 package controller.cadastro;
 
-import controller.busca.ControllerBuscaBairro;
+//import controller.busca.ControllerBuscaMarca;
+import controller.cadastro.ControllerCadastroBairro;
+import controller.cadastro.ControllerCadastroCidade;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import model.bo.Bairro;
-import service.BairroService;
-import view.cadastro.TelaCadastroBairro;
+import model.bo.Cidade;
+import model.bo.Endereco;
+import service.EnderecoService;
+import view.cadastro.TelaCadastroEndereco;
 
-public class ControllerCadastroBairro {
+public class ControllerCadastroEndereco {
     
-    private TelaCadastroBairro tela;
-    private Bairro bairro;
-    private BairroService bairroService;
+    private TelaCadastroEndereco tela;
+    private Endereco endereco;
+    private EnderecoService enderecoService;
     
-    public ControllerCadastroBairro() {
-        tela = new TelaCadastroBairro();
+    public ControllerCadastroEndereco() {
+        tela = new TelaCadastroEndereco();
         init();
     }
 
-    public ControllerCadastroBairro(TelaCadastroBairro telaCadastroBairro) {
-        this.tela = telaCadastroBairro;
+    public ControllerCadastroEndereco(TelaCadastroEndereco telaCadastroEndereco) {
+        this.tela = telaCadastroEndereco;
         init();
     }
     
     private void init() {
-        bairroService = new BairroService();
-        bairro = new Bairro();
+        enderecoService = new EnderecoService();
+        endereco = new Endereco();
+        endereco.setCidade(new Cidade());
+        endereco.setBairro(new Bairro());
         novoEventListener();
         cancelarEventListener();
         gravarEventListener();
         buscarEventListener();
         sairEventListener();
+        cadastroBairroEventListener();
+        cadastroCidadeEventListener();
         this.tela.getId().setEnabled(false);
         setFormStatus(false);
-        this.tela.setVisible(true);
     }
     
-    public Bairro getBairro() {
+    public Endereco getEndereco() {
         try {
-            bairro.setId(Long.parseLong(tela.getId().getText()));
+            endereco.setId(Long.parseLong(tela.getId().getText()));  
         } catch (Exception e) {}
-        bairro.setDescricao(tela.getDescricaoTextField().getText());
+          endereco.setCep(tela.getCep().getText());
+          endereco.setLogradouro(tela.getLogradouro().getText());
         
-        return bairro;
+        return endereco;
     }
     
-    public void setCidade(Bairro bairro) {
-        this.bairro.setId(bairro.getId());
-        this.tela.getId().setText(String.valueOf(bairro.getId()));
-        this.bairro.setDescricao(bairro.getDescricao());
-        this.tela.getDescricaoTextField().setText(bairro.getDescricao());
+    public void setEndereco(Endereco endereco) {
+        this.endereco.setId(endereco.getId());
+        this.tela.getId().setText(String.valueOf(endereco.getId()));
+        this.endereco.setCep(endereco.getCep());
+        this.tela.getCep().setText(endereco.getCep());
+        this.endereco.setLogradouro(endereco.getLogradouro());
+        this.tela.getLogradouro().setText(endereco.getLogradouro());
     }
     
     private void novoEventListener() {
@@ -94,7 +104,7 @@ public class ControllerCadastroBairro {
             return;
         }
         try {
-            bairroService.createOrUpdate(getBairro());
+            enderecoService.createOrUpdate(getEndereco());
             setFormStatus(false);
             cleanForm();
         } catch (Exception e) {
@@ -112,7 +122,7 @@ public class ControllerCadastroBairro {
     }
     
     private void buscarEventAction(MouseEvent evt) {
-        ControllerBuscaBairro buscaController = new ControllerBuscaBairro(this);
+//        ControllerBuscaMarca buscaController = new ControllerBuscaMarca(this);
     }
     
     private void sairEventListener() {
@@ -122,13 +132,38 @@ public class ControllerCadastroBairro {
             }
         });
     }
-    
+
+    private void cadastroBairroEventListener() {
+       this.tela.getBotaoAdicionarBairro().addMouseListener(new MouseAdapter() {
+           public void mouseClicked(MouseEvent evt) {
+              cadastoBairroEventAction(evt);
+           }
+       });
+    }
+        
+    private void cadastroCidadeEventListener() {
+        this.tela.getBotaoAdicionarCidade().addMouseListener(new MouseAdapter() {
+           public void mouseClicked(MouseEvent evt) {
+              cadastoCidadeEventAction(evt);
+           }
+       });
+    }
+
+    private void cadastoCidadeEventAction(MouseEvent evt) {
+       ControllerCadastroCidade controllerCadastroCidade = new ControllerCadastroCidade();
+    }
+
+    private void cadastoBairroEventAction(MouseEvent evt) {
+       ControllerCadastroBairro controllerCadastroBairro = new ControllerCadastroBairro();
+    }
+
     private void sairEventAction(MouseEvent evt) {
         this.tela.dispose();
     }
     
     public void setFormStatus(boolean status) {
-        this.tela.getDescricaoTextField().setEnabled(status);
+        this.tela.getLogradouro().setEnabled(status);
+        this.tela.getCep().setEnabled(status);
         this.tela.getBotaoNovo().setEnabled(!status);
         this.tela.getBotaoCancelar().setEnabled(status);
         this.tela.getBotaoGravar().setEnabled(status);
@@ -136,12 +171,13 @@ public class ControllerCadastroBairro {
     
     private void cleanForm() {
         this.tela.getId().setText("");
-        this.tela.getDescricaoTextField().setText("");
+        this.tela.getCep().setText(""); 
+        this.tela.getLogradouro().setText("");
     }
     
     public static void main(String[] args) {
-        ControllerCadastroBairro controllerCadastroBairro = new ControllerCadastroBairro();
+        ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco();
         
-        controllerCadastroBairro.tela.setVisible(true);
+        controllerCadastroEndereco.tela.setVisible(true);
     }
 }

@@ -1,6 +1,7 @@
 package utils;
 
 import static utils.UAnnotation.hasAnnotationForeign;
+import static utils.UStr.convertCameoCase;
 
 import annotations.Foreign;
 import annotations.Id;

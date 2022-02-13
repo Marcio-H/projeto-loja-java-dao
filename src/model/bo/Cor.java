@@ -1,18 +1,22 @@
 package model.bo;
 
-public class Cor {
+import annotations.Id;
 
+public class Cor {
+    
+    @Id
     private Long id;
+
     private String descricao;
 
     public Cor() {
     }
 
-    public Long getIdCor() {
+    public Long getId() {
         return id;
     }
 
-    public void setIdCor(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

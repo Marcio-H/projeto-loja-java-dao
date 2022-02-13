@@ -8,6 +8,7 @@ package view.cadastro;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -19,6 +20,7 @@ public class TelaCadastroBairro extends javax.swing.JFrame {
      * Creates new form TelaCadastroBairro
      */
     public TelaCadastroBairro() {
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         initComponents();
     }
 

@@ -14,6 +14,7 @@ import static utils.UMethod.getNoArgsConstructor;
 import static utils.UMethod.callsConstructor;
 import static utils.UMethod.getMethod;
 import static utils.UField.fieldWithAnnotationId;
+import static utils.UStr.convertCameoCase;
 
 import exception.FrameworkSolutionException;
 

@@ -1,32 +1,33 @@
 package controller.busca;
 
-import controller.cadastro.ControllerCadastroBairro;
+import controller.cadastro.ControllerCadastroMarca;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
-import service.BairroService;
-import view.busca.TelaBuscaBairro;
+import service.MarcaService;
+import view.TelaBuscaMarca;
 
-public class ControllerBuscaBairro {
-    private TelaBuscaBairro tela;
-    private BairroService bairroService;
-    private ControllerCadastroBairro controllerCadastroBairro;
 
-     public ControllerBuscaBairro(ControllerCadastroBairro controllerCadastroBairro) {
-        tela = new TelaBuscaBairro();
-        this.controllerCadastroBairro = controllerCadastroBairro;
+public class ControllerBuscaMarca {
+    private TelaBuscaMarca tela;
+    private MarcaService marcaService;
+    private ControllerCadastroMarca controllerCadastroMarca;
+
+     public ControllerBuscaMarca(ControllerCadastroMarca controllerCadastroMarca) {
+        tela = new TelaBuscaMarca();
+        this.controllerCadastroMarca = controllerCadastroMarca;
         init();
     }
     
-    public ControllerBuscaBairro(TelaBuscaBairro tela, ControllerCadastroBairro controllerCadastroBairro) {
+    public ControllerBuscaMarca(TelaBuscaMarca tela, ControllerCadastroMarca controllerCadastroMarca) {
         this.tela = tela;
-        this.controllerCadastroBairro = controllerCadastroBairro;
+        this.controllerCadastroMarca = controllerCadastroMarca;
         init();
     }
     
     private void init() {
         tela.setVisible(true);
-        bairroService = new BairroService();
+        marcaService = new MarcaService();
         addRows();
         this.tela.getTable().setSelectionMode(0);
         carregarEventListener();
@@ -45,8 +46,8 @@ public class ControllerBuscaBairro {
         int index = tela.getTable().getSelectedRow();
         if (index >= 0) {
             Long id = (long) tela.getTable().getValueAt(index, 0);
-            controllerCadastroBairro.setCidade(bairroService.readById(id));
-            controllerCadastroBairro.setFormStatus(true);
+            controllerCadastroMarca.setCidade(marcaService.readById(id));
+            controllerCadastroMarca.setFormStatus(true);
             tela.dispose();
         }
     }
@@ -65,9 +66,9 @@ public class ControllerBuscaBairro {
     
     private void addRows() {
         DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
-        bairroService.read().stream().forEach(bairro -> {
-            tabela.addRow(new Object[]{ bairro.getId(), 
-                                        bairro.getDescricao()
+        marcaService.read().stream().forEach(marca -> {
+            tabela.addRow(new Object[]{ marca.getId(), 
+                                        marca.getDescricao()
             });
         });
     }

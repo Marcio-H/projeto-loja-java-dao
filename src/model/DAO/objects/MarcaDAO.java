@@ -2,32 +2,33 @@ package model.DAO.objects;
 
 import java.util.List;
 import model.bo.Marca;
+import model.DAO.BaseDAO;
 import model.DAO.InterfaceDAO;
 
-public class MarcaDAO implements InterfaceDAO<Marca>{
+public class MarcaDAO extends BaseDAO implements InterfaceDAO<Marca>{
 
     @Override
     public void create(Marca objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.abstractCreate(objeto);
     }
 
     @Override
     public List<Marca> read() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return abstractRead(Marca.class);
     }
 
     @Override
     public Marca read(Long codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (Marca) this.abstractReadById(codigo, Marca.class);
     }
 
     @Override
     public void update(Marca objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        abstractUpdate(objeto);
     }
 
     @Override
     public void delete(Marca objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        abstractDelete(Marca.class, objeto.getId());
     }
 }
