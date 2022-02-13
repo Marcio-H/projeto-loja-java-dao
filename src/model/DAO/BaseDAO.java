@@ -14,6 +14,7 @@ import static utils.UMethod.getNoArgsConstructor;
 import static utils.UMethod.callsConstructor;
 import static utils.UMethod.getMethod;
 import static utils.UField.fieldWithAnnotationId;
+import static utils.UStr.convertCameoCase;
 
 import exception.FrameworkSolutionException;
 
@@ -49,9 +50,10 @@ public abstract class BaseDAO<T> {
         Field[] fieldsToInsert = filterForFieldsWithoutIdAnnotation(objectClass.getDeclaredFields());
         String sqlFields = concatFieldsToSQL(fieldsToInsert);
         String sqlValues = fieldsToInsertStringValues(fieldsToInsert);
+        String tableName = convertCameoCase(create(objectClass.getName()).removePackageFromName().toLower().get()).toString();
         String sql = String.format(
                 INSERT_SQL,
-                create(objectClass.getName()).removePackageFromName().toLower().get(),
+                tableName,
                 sqlFields,
                 sqlValues
         );

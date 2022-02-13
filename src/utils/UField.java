@@ -1,6 +1,7 @@
 package utils;
 
 import static utils.UAnnotation.hasAnnotationForeign;
+import static utils.UStr.convertCameoCase;
 
 import annotations.Foreign;
 import annotations.Id;
@@ -76,22 +77,6 @@ public class UField {
         } else {
             resultStr.append(field.getName());
         }
-    }
-
-    private static StringBuilder convertCameoCase(String str) {
-        StringBuilder strBuilder = new StringBuilder();
-        boolean novaPalavra = false;
-
-        for (char letter : str.toCharArray()) {
-            if (Character.isUpperCase(letter) && novaPalavra) {
-                strBuilder.append("_");
-                novaPalavra = false;
-            } else {
-                novaPalavra = true;
-            }
-            strBuilder.append(Character.toLowerCase(letter));
-        }
-        return strBuilder;
     }
 
     /*

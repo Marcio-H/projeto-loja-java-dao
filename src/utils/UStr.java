@@ -44,6 +44,22 @@ public class UStr {
         return str;
     }
 
+    public static StringBuilder convertCameoCase(String str) {
+        StringBuilder strBuilder = new StringBuilder();
+        boolean novaPalavra = false;
+
+        for (char letter : str.toCharArray()) {
+            if (Character.isUpperCase(letter) && novaPalavra) {
+                strBuilder.append("_");
+                novaPalavra = false;
+            } else {
+                novaPalavra = true;
+            }
+            strBuilder.append(Character.toLowerCase(letter));
+        }
+        return strBuilder;
+    }
+
     private void setStr(String str) {
         this.str = str;
     }
