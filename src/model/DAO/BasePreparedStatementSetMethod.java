@@ -62,6 +62,10 @@ public class BasePreparedStatementSetMethod {
         String getFieldMethodName = String.format(GET_METHOD_NAME, nameField);
         Method getFieldMethod = getMethod(object.getClass(), getFieldMethodName);
         Object value = callsMethod(getFieldMethod, object);
+        
+        if (value == null) {
+            return value;
+        }
 
         if (fieldIsPrimitiveType(field) || fieldIsObjectPrimitiveType(field) || fieldIsStatementSupported(field)) {
             return value;
@@ -135,9 +139,15 @@ public class BasePreparedStatementSetMethod {
         BasePreparedStatementSetMethod[] resolvedSetMethods = new BasePreparedStatementSetMethod[fieldsLenght];
 
         for (int i = 0; i < fieldsLenght; i++) {
-            Method resolvedSetMethod = findPreparedStatementSetMethod(fields[i]);
             Object value = resolveValue(fields[i], object);
-
+            Method resolvedSetMethod;
+            
+            if (value == null) {
+                resolvedSetMethod = getMethod(PreparedStatement.class, "setNull", int.class, int.class);
+                value = java.sql.Types.NULL;
+            } else {
+                resolvedSetMethod = findPreparedStatementSetMethod(fields[i]);
+            }
             resolvedSetMethods[i] = new BasePreparedStatementSetMethod(resolvedSetMethod, value);
         }
         return resolvedSetMethods;

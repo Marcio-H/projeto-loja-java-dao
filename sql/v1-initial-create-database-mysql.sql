@@ -184,3 +184,15 @@ CREATE TABLE pagar(
     compra_id INT NOT NULL,
     FOREIGN KEY (compra_id) REFERENCES compra(id)
 );
+
+CREATE TABLE telefone(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    telefone VARCHAR(17) NOT NULL,
+	fornecedor_id INT,
+	cliente_id INT,
+	vendedor_id INT,
+	FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id),
+	FOREIGN KEY (cliente_id) REFERENCES cliente(id),
+	FOREIGN KEY (vendedor_id) REFERENCES vendedor(id)
+);
+
