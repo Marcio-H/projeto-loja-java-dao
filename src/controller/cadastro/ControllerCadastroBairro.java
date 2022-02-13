@@ -112,7 +112,9 @@ public class ControllerCadastroBairro {
     }
     
     private void buscarEventAction(MouseEvent evt) {
-        ControllerBuscaBairro buscaController = new ControllerBuscaBairro(this);
+        ControllerBuscaBairro buscaController = new ControllerBuscaBairro(bairro -> {
+            
+        });
     }
     
     private void sairEventListener() {
