@@ -385,7 +385,7 @@ public class TelaCadastroEndereco extends javax.swing.JFrame {
     private javax.swing.JPanel optionMenu;
     private javax.swing.JTextField uf;
     // End of variables declaration//GEN-END:variables
-    
+
     public JButton getBotaoBuscar() {
         return botaoBuscar;
     }
@@ -415,22 +415,34 @@ public class TelaCadastroEndereco extends javax.swing.JFrame {
     }
 
     public JButton getBotaoAdicionarBairro() {
-       return adicionarBairroBotao;
+        return adicionarBairroBotao;
     }
-    
+
+    public JButton getBotaoBuscarBairro() {
+        return buscaBairroBotao;
+    }
+
+    public JButton getBotaoBuscarCidade() {
+        return buscarCidadeBotao;
+    }
+
     public JButton getBotaoBuscaBairro() {
-       return buscaBairroBotao;
+        return buscaBairroBotao;
     }
-    
+
     public JButton getBotaoAdicionarCidade() {
-      return adicionarCidadeBotao;
+        return adicionarCidadeBotao;
     }
 
     public javax.swing.JFormattedTextField getCep() {
-       return cep;
+        return cep;
     }
 
     public javax.swing.JTextField getLogradouro() {
-      return logradouro;
-   }
+        return logradouro;
+    }
+    
+    public JTextField getDescricaoBairro() {
+        return descricaoBairro;
+    }
 }

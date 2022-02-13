@@ -1,36 +1,31 @@
 package controller.busca;
 
-import controller.cadastro.ControllerCadastroBairro;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
+import model.bo.Bairro;
 import service.BairroService;
 import view.busca.TelaBuscaBairro;
 
 public class ControllerBuscaBairro {
     private TelaBuscaBairro tela;
     private BairroService bairroService;
-    private ControllerCadastroBairro controllerCadastroBairro;
+    private Consumer<Bairro> carregarCallBack;
 
-     public ControllerBuscaBairro(ControllerCadastroBairro controllerCadastroBairro) {
+     public ControllerBuscaBairro(Consumer<Bairro> carregarCallBack) {
         tela = new TelaBuscaBairro();
-        this.controllerCadastroBairro = controllerCadastroBairro;
-        init();
-    }
-    
-    public ControllerBuscaBairro(TelaBuscaBairro tela, ControllerCadastroBairro controllerCadastroBairro) {
-        this.tela = tela;
-        this.controllerCadastroBairro = controllerCadastroBairro;
+        this.carregarCallBack = carregarCallBack;
         init();
     }
     
     private void init() {
-        tela.setVisible(true);
         bairroService = new BairroService();
         addRows();
         this.tela.getTable().setSelectionMode(0);
         carregarEventListener();
         sairEventListener();
+        tela.setVisible(true);
     }
     
     private void carregarEventListener() {
@@ -45,8 +40,7 @@ public class ControllerBuscaBairro {
         int index = tela.getTable().getSelectedRow();
         if (index >= 0) {
             Long id = (long) tela.getTable().getValueAt(index, 0);
-            controllerCadastroBairro.setCidade(bairroService.readById(id));
-            controllerCadastroBairro.setFormStatus(true);
+            carregarCallBack.accept(bairroService.readById(id));
             tela.dispose();
         }
     }
