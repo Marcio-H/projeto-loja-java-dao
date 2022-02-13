@@ -61,7 +61,9 @@ public abstract class BaseDAO<T> {
         try {
             prepareStatement(sql);
             invokeSetMethods(resolvedSetMethods);
-            preparedStatement.executeUpdate();
+            preparedStatement.execute();
+            ResultSet r = preparedStatement.getGeneratedKeys();
+            System.out.println("teste");
         } catch (SQLException e) {
             throw new FrameworkSolutionException(e.getMessage(), e);
         }

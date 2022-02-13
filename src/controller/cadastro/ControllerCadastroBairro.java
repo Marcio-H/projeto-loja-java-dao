@@ -35,7 +35,7 @@ public class ControllerCadastroBairro {
         setFormStatus(false);
     }
     
-    public Bairro getCidade() {
+    public Bairro getBairro() {
         try {
             bairro.setId(Long.parseLong(tela.getId().getText()));
         } catch (Exception e) {}
@@ -93,7 +93,7 @@ public class ControllerCadastroBairro {
             return;
         }
         try {
-            bairroService.createOrUpdate(getCidade());
+            bairroService.createOrUpdate(getBairro());
             setFormStatus(false);
             cleanForm();
         } catch (Exception e) {

@@ -7,26 +7,6 @@ import model.DAO.BaseDAO;
 
 public class BairroDAO extends BaseDAO<Bairro> implements InterfaceDAO<Bairro>{
 
-    public static void main(String[] args) {
-//        Bairro bairro = new Bairro();
-//        
-//        bairro.setId(2L);
-       
-//        bairro.setDescricao("BAIRRO TESTE AGORA");
-        
-        BairroDAO bairroDAO = new BairroDAO();
-        
-        List<Bairro> bairros = bairroDAO.read();
-        
-        System.out.println(bairros);
-        
-//        bairroDAO.create(bairro);;
-        
-//        Bairro b = bairroDAO.read(2L);
-//        
-//        System.out.println(b);
-    }
-
     public BairroDAO() {}
     
     @Override
@@ -41,7 +21,7 @@ public class BairroDAO extends BaseDAO<Bairro> implements InterfaceDAO<Bairro>{
 
     @Override
     public Bairro read(Long codigo) {
-        return (Bairro) this.abstractReadById(codigo, Bairro.class);
+        return (Bairro) abstractReadById(codigo, Bairro.class);
     }
 
     @Override
