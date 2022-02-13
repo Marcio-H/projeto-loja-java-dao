@@ -19,6 +19,8 @@ public class Endereco {
     private Bairro bairro;
 
     public Endereco() {
+        cidade = new Cidade();
+        bairro = new Bairro();
     }
 
     public Long getId() {

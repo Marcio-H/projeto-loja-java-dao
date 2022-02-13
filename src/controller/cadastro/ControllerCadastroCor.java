@@ -112,7 +112,10 @@ public class ControllerCadastroCor {
     }
     
     private void buscarEventAction(MouseEvent evt) {
-        ControllerBuscaCor buscaController = new ControllerBuscaCor(this);
+        ControllerBuscaCor buscaController = new ControllerBuscaCor(cor -> {
+            setCor(cor);
+            setFormStatus(true);
+        });
     }
     
     private void sairEventListener() {

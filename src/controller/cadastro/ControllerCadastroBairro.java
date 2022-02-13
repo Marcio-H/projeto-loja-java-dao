@@ -45,7 +45,7 @@ public class ControllerCadastroBairro {
         return bairro;
     }
     
-    public void setCidade(Bairro bairro) {
+    public void setBairro(Bairro bairro) {
         this.bairro.setId(bairro.getId());
         this.tela.getId().setText(String.valueOf(bairro.getId()));
         this.bairro.setDescricao(bairro.getDescricao());
@@ -113,7 +113,8 @@ public class ControllerCadastroBairro {
     
     private void buscarEventAction(MouseEvent evt) {
         ControllerBuscaBairro buscaController = new ControllerBuscaBairro(bairro -> {
-            
+            setBairro(bairro);
+            setFormStatus(true);
         });
     }
     

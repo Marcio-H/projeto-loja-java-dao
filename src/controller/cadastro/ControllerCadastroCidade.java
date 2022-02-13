@@ -115,7 +115,10 @@ public class ControllerCadastroCidade {
     }
     
     private void buscarEventAction(MouseEvent evt) {
-        ControllerBuscaCidade buscaController = new ControllerBuscaCidade(this);
+        ControllerBuscaCidade buscaController = new ControllerBuscaCidade(cidade -> {
+            setCidade(cidade);
+            setFormStatus(true);
+        });
     }
     
     private void sairEventListener() {

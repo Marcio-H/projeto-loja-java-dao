@@ -3,7 +3,9 @@ package controller.busca;
 import controller.cadastro.ControllerCadastroEndereco;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
+import model.bo.Endereco;
 import service.EnderecoService;
 import view.busca.TelaBuscaEndereco;
 
@@ -11,20 +13,14 @@ import view.busca.TelaBuscaEndereco;
 public class ControllerBuscaEndereco {
     private TelaBuscaEndereco tela;
     private EnderecoService enderecoService;
-    private ControllerCadastroEndereco controllerCadastroEndereco;
+    private Consumer<Endereco> carregarCallBack;
 
-     public ControllerBuscaEndereco(ControllerCadastroEndereco controllerCadastroEndereco) {
+     public ControllerBuscaEndereco(Consumer<Endereco> carregarCallBack) {
         tela = new TelaBuscaEndereco();
-        this.controllerCadastroEndereco = controllerCadastroEndereco;
+        this.carregarCallBack = carregarCallBack;
         init();
     }
-    
-    public ControllerBuscaEndereco(TelaBuscaEndereco tela, ControllerCadastroEndereco controllerCadastroEndereco) {
-        this.tela = tela;
-        this.controllerCadastroEndereco = controllerCadastroEndereco;
-        init();
-    }
-    
+
     private void init() {
         tela.setVisible(true);
         enderecoService = new EnderecoService();
@@ -46,8 +42,7 @@ public class ControllerBuscaEndereco {
         int index = tela.getTable().getSelectedRow();
         if (index >= 0) {
             Long id = (long) tela.getTable().getValueAt(index, 0);
-            controllerCadastroEndereco.setEndereco(enderecoService.readById(id));
-            controllerCadastroEndereco.setFormStatus(true);
+            carregarCallBack.accept(enderecoService.readById(id));
             tela.dispose();
         }
     }
