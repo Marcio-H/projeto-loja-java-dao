@@ -1,13 +1,11 @@
 package utils;
 
 import static utils.UAnnotation.hasAnnotationForeign;
-import static utils.UStr.convertCameoCase;
+import static utils.UStr.convertCameoCaseToSnakeCase;
 
 import annotations.Foreign;
 import annotations.Id;
 import java.lang.reflect.Field;
-import static utils.UStr.convertCameoCaseToSnakeCase;
-import static utils.UStr.convertCameoCaseToSnakeCase;
 
 public class UField {
 
