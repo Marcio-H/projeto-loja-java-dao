@@ -5,6 +5,8 @@ import static utils.UAnnotation.hasAnnotationForeign;
 import annotations.Foreign;
 import annotations.Id;
 import java.lang.reflect.Field;
+import static utils.UStr.convertCameoCaseToSnakeCase;
+import static utils.UStr.convertCameoCaseToSnakeCase;
 
 public class UField {
 
@@ -22,7 +24,7 @@ public class UField {
      * @return StringBuilder, nome do campo 
      */
     public static StringBuilder getFieldNameFormmated(Field field) {
-        StringBuilder str = convertCameoCase(field.getName());
+        StringBuilder str = convertCameoCaseToSnakeCase(field.getName());
         if (field.isAnnotationPresent(Foreign.class)) {
             str.append(FOREIGN_PATTERN);
         }
@@ -76,22 +78,6 @@ public class UField {
         } else {
             resultStr.append(field.getName());
         }
-    }
-
-    private static StringBuilder convertCameoCase(String str) {
-        StringBuilder strBuilder = new StringBuilder();
-        boolean novaPalavra = false;
-
-        for (char letter : str.toCharArray()) {
-            if (Character.isUpperCase(letter) && novaPalavra) {
-                strBuilder.append("_");
-                novaPalavra = false;
-            } else {
-                novaPalavra = true;
-            }
-            strBuilder.append(Character.toLowerCase(letter));
-        }
-        return strBuilder;
     }
 
     /*

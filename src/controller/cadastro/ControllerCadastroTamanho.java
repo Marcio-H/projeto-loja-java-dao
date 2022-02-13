@@ -1,6 +1,5 @@
 package controller.cadastro;
 
-import controller.busca.ControllerBuscaBairro;
 import controller.busca.ControllerBuscaTamanho;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
