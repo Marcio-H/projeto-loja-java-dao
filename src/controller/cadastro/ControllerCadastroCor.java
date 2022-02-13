@@ -1,31 +1,31 @@
 package controller.cadastro;
 
-import controller.busca.ControllerBuscaBairro;
+import controller.busca.ControllerBuscaCor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import model.bo.Bairro;
-import service.BairroService;
-import view.cadastro.TelaCadastroBairro;
+import model.bo.Cor;
+import service.CorService;
+import view.cadastro.TelaCadastroCor;
 
-public class ControllerCadastroBairro {
+public class ControllerCadastroCor {
     
-    private TelaCadastroBairro tela;
-    private Bairro bairro;
-    private BairroService bairroService;
+    private TelaCadastroCor tela;
+    private Cor cor;
+    private CorService corService;
     
-    public ControllerCadastroBairro() {
-        tela = new TelaCadastroBairro();
+    public ControllerCadastroCor() {
+        tela = new TelaCadastroCor();
         init();
     }
 
-    public ControllerCadastroBairro(TelaCadastroBairro telaCadastroBairro) {
-        this.tela = telaCadastroBairro;
+    public ControllerCadastroCor(TelaCadastroCor telaCadastroCor) {
+        this.tela = telaCadastroCor;
         init();
     }
     
     private void init() {
-        bairroService = new BairroService();
-        bairro = new Bairro();
+        corService = new CorService();
+        cor = new Cor();
         novoEventListener();
         cancelarEventListener();
         gravarEventListener();
@@ -36,20 +36,20 @@ public class ControllerCadastroBairro {
         this.tela.setVisible(true);
     }
     
-    public Bairro getCidade() {
+    public Cor getCor() {
         try {
-            bairro.setId(Long.parseLong(tela.getId().getText()));
+            cor.setId(Long.parseLong(tela.getId().getText()));
         } catch (Exception e) {}
-        bairro.setDescricao(tela.getDescricaoTextField().getText());
+        cor.setDescricao(tela.getDescricaoTextField().getText());
         
-        return bairro;
+        return cor;
     }
     
-    public void setCidade(Bairro bairro) {
-        this.bairro.setId(bairro.getId());
-        this.tela.getId().setText(String.valueOf(bairro.getId()));
-        this.bairro.setDescricao(bairro.getDescricao());
-        this.tela.getDescricaoTextField().setText(bairro.getDescricao());
+    public void setCor(Cor cor) {
+        this.cor.setId(cor.getId());
+        this.tela.getId().setText(String.valueOf(cor.getId()));
+        this.cor.setDescricao(cor.getDescricao());
+        this.tela.getDescricaoTextField().setText(cor.getDescricao());
     }
     
     private void novoEventListener() {
@@ -94,7 +94,7 @@ public class ControllerCadastroBairro {
             return;
         }
         try {
-            bairroService.createOrUpdate(getCidade());
+            corService.createOrUpdate(getCor());
             setFormStatus(false);
             cleanForm();
         } catch (Exception e) {
@@ -112,7 +112,7 @@ public class ControllerCadastroBairro {
     }
     
     private void buscarEventAction(MouseEvent evt) {
-        ControllerBuscaBairro buscaController = new ControllerBuscaBairro(this);
+        ControllerBuscaCor buscaController = new ControllerBuscaCor(this);
     }
     
     private void sairEventListener() {
@@ -140,8 +140,8 @@ public class ControllerCadastroBairro {
     }
     
     public static void main(String[] args) {
-        ControllerCadastroBairro controllerCadastroBairro = new ControllerCadastroBairro();
+        ControllerCadastroCor controllerCadastroCor = new ControllerCadastroCor();
         
-        controllerCadastroBairro.tela.setVisible(true);
+        controllerCadastroCor.tela.setVisible(true);
     }
 }

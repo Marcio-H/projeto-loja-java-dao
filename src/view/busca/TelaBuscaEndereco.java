@@ -1,11 +1,10 @@
 package view.busca;
 
-public class TelaBuscaCor extends javax.swing.JFrame {
+public class TelaBuscaEndereco extends javax.swing.JFrame {
 
-    public TelaBuscaCor() {
+    public TelaBuscaEndereco() {
         initComponents();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -31,7 +30,7 @@ public class TelaBuscaCor extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Cor");
+        jLabel2.setText("Título");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel2.setPreferredSize(new java.awt.Dimension(41, 80));
         head.add(jLabel2, java.awt.BorderLayout.CENTER);
@@ -41,14 +40,14 @@ public class TelaBuscaCor extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Descrição"
+                "Id", "CEP", "Logradouro", "Cidade", "Bairro"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Long.class, java.lang.String.class
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -65,7 +64,6 @@ public class TelaBuscaCor extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(0).setMinWidth(75);
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(10);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(75);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
         }
 
         javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
@@ -146,13 +144,14 @@ public class TelaBuscaCor extends javax.swing.JFrame {
     private javax.swing.JPanel optionMenu;
     private javax.swing.JButton sair;
     // End of variables declaration//GEN-END:variables
+
     public javax.swing.JTable getTable() {
-       return jTable1;
+      return jTable1;
     }
     public javax.swing.JButton getBotaoCarregar() {
       return carregar;
     }
     public javax.swing.JButton getBotaoSair() {
-       return sair;
+      return sair;
     }
 }

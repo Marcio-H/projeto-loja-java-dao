@@ -1,32 +1,33 @@
 package controller.busca;
 
-import controller.cadastro.ControllerCadastroBairro;
+import controller.cadastro.ControllerCadastroCor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
-import service.BairroService;
-import view.busca.TelaBuscaBairro;
+import service.CorService;
+import view.busca.TelaBuscaCor;
 
-public class ControllerBuscaBairro {
-    private TelaBuscaBairro tela;
-    private BairroService bairroService;
-    private ControllerCadastroBairro controllerCadastroBairro;
 
-     public ControllerBuscaBairro(ControllerCadastroBairro controllerCadastroBairro) {
-        tela = new TelaBuscaBairro();
-        this.controllerCadastroBairro = controllerCadastroBairro;
+public class ControllerBuscaCor {
+    private TelaBuscaCor tela;
+    private CorService corService;
+    private ControllerCadastroCor controllerCadastroCor;
+
+     public ControllerBuscaCor(ControllerCadastroCor controllerCadastroCor) {
+        tela = new TelaBuscaCor();
+        this.controllerCadastroCor = controllerCadastroCor;
         init();
     }
     
-    public ControllerBuscaBairro(TelaBuscaBairro tela, ControllerCadastroBairro controllerCadastroBairro) {
+    public ControllerBuscaCor(TelaBuscaCor tela, ControllerCadastroCor controllerCadastroCor) {
         this.tela = tela;
-        this.controllerCadastroBairro = controllerCadastroBairro;
+        this.controllerCadastroCor = controllerCadastroCor;
         init();
     }
     
     private void init() {
         tela.setVisible(true);
-        bairroService = new BairroService();
+        corService = new CorService();
         addRows();
         this.tela.getTable().setSelectionMode(0);
         carregarEventListener();
@@ -45,8 +46,8 @@ public class ControllerBuscaBairro {
         int index = tela.getTable().getSelectedRow();
         if (index >= 0) {
             Long id = (long) tela.getTable().getValueAt(index, 0);
-            controllerCadastroBairro.setCidade(bairroService.readById(id));
-            controllerCadastroBairro.setFormStatus(true);
+            controllerCadastroCor.setCor(corService.readById(id));
+            controllerCadastroCor.setFormStatus(true);
             tela.dispose();
         }
     }
@@ -65,9 +66,9 @@ public class ControllerBuscaBairro {
     
     private void addRows() {
         DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
-        bairroService.read().stream().forEach(bairro -> {
-            tabela.addRow(new Object[]{ bairro.getId(), 
-                                        bairro.getDescricao()
+        corService.read().stream().forEach(cor -> {
+            tabela.addRow(new Object[]{ cor.getId(), 
+                                        cor.getDescricao()
             });
         });
     }
