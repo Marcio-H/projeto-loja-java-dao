@@ -1,10 +1,14 @@
 package model.bo;
 
+import annotations.Foreign;
+
 public abstract class Pessoa {
     
     private String nome;
     private String email;
     private String complementoEndereco;
+    
+    @Foreign
     private Endereco endereco;
 
     public Pessoa() {}

@@ -1,7 +1,10 @@
 package model.bo;
 
+import annotations.Id;
+
 public class Vendedor extends Pessoa {
 
+    @Id
     private Long id;
     private String cpf;
     private float percentagemComissaoVenda;

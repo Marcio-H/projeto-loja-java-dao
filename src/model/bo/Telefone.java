@@ -1,13 +1,33 @@
 package model.bo;
 
+import annotations.Foreign;
+import annotations.Id;
+
 public class Telefone {
 
+    @Id
+    private Long id;
+    
     private String telefone;
+    
+    @Foreign
     private Fornecedor fornecedor;
+    
+    @Foreign
     private Cliente cliente;
+    
+    @Foreign
     private Vendedor vendedor;
 
     public Telefone() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTelefone() {

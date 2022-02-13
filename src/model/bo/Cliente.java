@@ -1,9 +1,11 @@
 package model.bo;
 
+import annotations.Id;
 import java.time.LocalDate;
 
 public class Cliente extends Pessoa {
 
+    @Id
     private Long id;
     private LocalDate dataNascimento;
     private String cpf;
@@ -33,6 +35,14 @@ public class Cliente extends Pessoa {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public LocalDate getDatatNascimento() {

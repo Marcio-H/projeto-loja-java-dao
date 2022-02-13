@@ -1,8 +1,12 @@
 package model.bo;
 
+import annotations.Id;
+
 public class Fornecedor extends Pessoa {
 
+    @Id
     private Long id;
+
     private String razaoSocial;
     private String cnpj;
     private String inscricaoEstadual;

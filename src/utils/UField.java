@@ -1,7 +1,7 @@
 package utils;
 
 import static utils.UAnnotation.hasAnnotationForeign;
-import static utils.UStr.convertCameoCase;
+import static utils.UStr.convertCameoCaseToSnakeCase;
 
 import annotations.Foreign;
 import annotations.Id;
@@ -23,7 +23,7 @@ public class UField {
      * @return StringBuilder, nome do campo 
      */
     public static StringBuilder getFieldNameFormmated(Field field) {
-        StringBuilder str = convertCameoCase(field.getName());
+        StringBuilder str = convertCameoCaseToSnakeCase(field.getName());
         if (field.isAnnotationPresent(Foreign.class)) {
             str.append(FOREIGN_PATTERN);
         }

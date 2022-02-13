@@ -14,7 +14,6 @@ import static utils.UMethod.getNoArgsConstructor;
 import static utils.UMethod.callsConstructor;
 import static utils.UMethod.getMethod;
 import static utils.UField.fieldWithAnnotationId;
-import static utils.UStr.convertCameoCase;
 
 import exception.FrameworkSolutionException;
 
@@ -25,7 +24,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import model.bo.Cidade;
 
 public abstract class BaseDAO<T> {
 
@@ -38,6 +36,8 @@ public abstract class BaseDAO<T> {
     private static final String DELETE_BY_ID_SQL = "DELETE FROM %s WHERE id = ?;";
     
     private static final String UPDATE_BY_ID_SQL = "UPDATE %s set %s where id = ?;";
+    
+    private static final String SET_ID_METHOD = "setId";
 
     protected Connection connection;
 
@@ -45,39 +45,40 @@ public abstract class BaseDAO<T> {
 
     protected ResultSet resultSet;
 
-    protected void abstractCreate(T object) {
-        Class<?> objectClass = object.getClass();
-        Field[] fieldsToInsert = filterForFieldsWithoutIdAnnotation(objectClass.getDeclaredFields());
-        String sqlFields = concatFieldsToSQL(fieldsToInsert);
-        String sqlValues = fieldsToInsertStringValues(fieldsToInsert);
-        String tableName = convertCameoCase(create(objectClass.getName()).removePackageFromName().toLower().get()).toString();
-        String sql = String.format(
-                INSERT_SQL,
-                tableName,
-                sqlFields,
-                sqlValues
-        );
+    protected T abstractCreate(T object) {
+        Field[] fieldsToInsert = filterForFieldsWithoutIdAnnotation(object.getClass().getDeclaredFields());
+        String sql = insertSQL(object.getClass(), fieldsToInsert);
         BasePreparedStatementSetMethod[] resolvedSetMethods = resolvePreparedStatementSetMethods(object, fieldsToInsert);
+        Method setId = getMethod(object.getClass(), SET_ID_METHOD, Long.class);
 
         openConnection();
         try {
             prepareStatement(sql);
             invokeSetMethods(resolvedSetMethods);
             preparedStatement.executeUpdate();
+
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                callsMethod(setId, object, generatedKeys.getLong(1));
+            }
         } catch (SQLException e) {
             throw new FrameworkSolutionException(e.getMessage(), e);
         }
         close();
+        return object;
     }
 
     protected Object abstractReadById(Long codigo, Class<?> classe) {
         String sqlFields = concatFieldsToSQL(classe.getDeclaredFields());
-        String className = create(classe.getName()).removePackageFromName().toLower().get();
+        String tableName = create(classe.getName())
+                .removePackageFromName()
+                .convertCameoCaseToSnakeCase()
+                .get();
         String sql = String.format(
                 READ_BY_ID_SQL,
                 sqlFields,
-                className,
-                className
+                tableName,
+                tableName
         );
 
         Object instaciedObject = getInstance(classe);
@@ -102,11 +103,11 @@ public abstract class BaseDAO<T> {
     protected List<T> abstractRead(Class<T> classe) {
         List<T> arr = new ArrayList<>();
         String sqlFields = concatFieldsToSQL(classe.getDeclaredFields());
-        String className = create(classe.getName()).removePackageFromName().toLower().get();
+        String tableName = create(classe.getName()).removePackageFromName().convertCameoCaseToSnakeCase().get();
         String sql = String.format(
                 READ_ALL_SQL,
                 sqlFields,
-                className
+                tableName
         );
         Field[] fields = classe.getDeclaredFields();
         BaseResultSetSolver[] resultSetSolvers = solve(fields);
@@ -130,7 +131,7 @@ public abstract class BaseDAO<T> {
     }
     
     protected void abstractDelete(Class<T> classe, Long id) {
-        String className = create(classe.getName()).removePackageFromName().toLower().get();
+        String className = create(classe.getName()).removePackageFromName().convertCameoCaseToSnakeCase().get();
         String sql = String.format(
                 DELETE_BY_ID_SQL,
                 className
@@ -153,7 +154,7 @@ public abstract class BaseDAO<T> {
         String table = create(objeto.getClass()
                 .getName())
                 .removePackageFromName()
-                .toLower()
+                .convertCameoCaseToSnakeCase()
                 .get();
         Field[] fieldsWithoutId = filterForFieldsWithoutIdAnnotation(objeto.getClass().getDeclaredFields());
         String fieldToUpdate = updateSql(fieldsWithoutId);
@@ -183,7 +184,7 @@ public abstract class BaseDAO<T> {
     }
 
     protected void prepareStatement(String query) throws SQLException {
-        preparedStatement = this.connection.prepareStatement(query);
+        preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
     }
 
     protected void resultSet() throws SQLException {
@@ -201,6 +202,18 @@ public abstract class BaseDAO<T> {
             callsMethod(setMethod.getSetMethod(), preparedStatement, parameterIndex, setMethod.getValue());
             parameterIndex++;
         }
+    }
+    
+    private String insertSQL(Class<?> objectClass, Field[] fields) {
+        String tableName = create(objectClass.getName()).removePackageFromName().convertCameoCaseToSnakeCase().get();
+        String sqlFields = concatFieldsToSQL(fields);
+        String sqlValues = fieldsToInsertStringValues(fields);
+        return String.format(
+                INSERT_SQL,
+                tableName,
+                sqlFields,
+                sqlValues
+        );
     }
 
     private Object getInstance(Class<?> classe) {
@@ -228,10 +241,6 @@ public abstract class BaseDAO<T> {
                 callsMethod(solver.getEntitySetMethod(), obj, value);
             }
         }
-    }
-    
-    public static void main(String[] args) {
-        System.out.println(updateSql(Cidade.class.getDeclaredFields()));
     }
     
     private static String updateSql(Field[] fields) {

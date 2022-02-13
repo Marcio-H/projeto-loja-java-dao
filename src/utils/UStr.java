@@ -18,6 +18,22 @@ public class UStr {
         return str.toLowerCase();
     }
     
+    public static StringBuilder convertCameoCaseToSnakeCase(String str) {
+        StringBuilder strBuilder = new StringBuilder();
+        boolean novaPalavra = false;
+
+        for (char letter : str.toCharArray()) {
+            if (Character.isUpperCase(letter) && novaPalavra) {
+                strBuilder.append("_");
+                novaPalavra = false;
+            } else {
+                novaPalavra = true;
+            }
+            strBuilder.append(Character.toLowerCase(letter));
+        }
+        return strBuilder;
+    }
+    
     public static UStr create(String str){
         UStr create = new UStr();
         
@@ -39,28 +55,17 @@ public class UStr {
         str = removePackageFromName(str);
         return this;
     }
+    
+    public UStr convertCameoCaseToSnakeCase() {
+        str = convertCameoCaseToSnakeCase(str).toString();
+        return this;
+    }
 
     public String get() {
         return str;
     }
-
-    public static StringBuilder convertCameoCase(String str) {
-        StringBuilder strBuilder = new StringBuilder();
-        boolean novaPalavra = false;
-
-        for (char letter : str.toCharArray()) {
-            if (Character.isUpperCase(letter) && novaPalavra) {
-                strBuilder.append("_");
-                novaPalavra = false;
-            } else {
-                novaPalavra = true;
-            }
-            strBuilder.append(Character.toLowerCase(letter));
-        }
-        return strBuilder;
-    }
-
-    private void setStr(String str) {
+    
+    public void setStr(String str) {
         this.str = str;
     }
 }
