@@ -7,7 +7,7 @@ import model.DAO.InterfaceDAO;
 public class ClienteDAO implements InterfaceDAO<Cliente> {
 
     @Override
-    public void create(Cliente objeto) {
+    public Cliente create(Cliente objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -22,7 +22,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
     }
 
     @Override
-    public void update(Cliente objeto) {
+    public Cliente update(Cliente objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

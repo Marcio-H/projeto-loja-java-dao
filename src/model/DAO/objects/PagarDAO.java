@@ -7,7 +7,7 @@ import model.DAO.InterfaceDAO;
 public class PagarDAO implements InterfaceDAO<Pagar>{
 
     @Override
-    public void create(Pagar objeto) {
+    public Pagar create(Pagar objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -22,7 +22,7 @@ public class PagarDAO implements InterfaceDAO<Pagar>{
     }
 
     @Override
-    public void update(Pagar objeto) {
+    public Pagar update(Pagar objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

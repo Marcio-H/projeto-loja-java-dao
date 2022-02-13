@@ -1,12 +1,23 @@
 package model.bo;
 
+import annotations.Foreign;
+import annotations.Id;
+
 public class CaracteristicaProduto {
 
+    @Id
     private Long id;
+    
+    @Foreign
     private Produto produto;
+    
+    @Foreign
     private Cor cor;
+    
     private String tamanho;
+    
     private String barra;
+    
     private int quantidade;
 
     public CaracteristicaProduto() {

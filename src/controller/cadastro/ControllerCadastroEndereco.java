@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import model.bo.Bairro;
 import model.bo.Cidade;
 import model.bo.Endereco;
+import model.bo.Fornecedor;
 import service.EnderecoService;
 import view.cadastro.TelaCadastroEndereco;
 
@@ -246,11 +247,10 @@ public class ControllerCadastroEndereco {
         adicionarCidadeEventListener();
         setDisabledForms();
         setFormStatus(false);
+        tela.setVisible(true);
     }
 
     public static void main(String[] args) {
         ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco();
-
-        controllerCadastroEndereco.tela.setVisible(true);
     }
 }

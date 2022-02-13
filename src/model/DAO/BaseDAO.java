@@ -148,7 +148,7 @@ public abstract class BaseDAO<T> {
         close();
     }
     
-    protected void abstractUpdate(T objeto) {
+    protected T abstractUpdate(final T objeto) {
         Method getId = getMethod(objeto.getClass(), "getId");
         Object id = callsMethod(getId, objeto);
         String table = create(objeto.getClass()
@@ -177,6 +177,7 @@ public abstract class BaseDAO<T> {
             throw new FrameworkSolutionException(e.getMessage(), e);
         }
         close();
+        return objeto;
     }
 
     protected void openConnection() {

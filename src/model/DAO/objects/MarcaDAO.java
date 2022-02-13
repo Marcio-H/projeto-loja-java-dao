@@ -5,11 +5,11 @@ import model.bo.Marca;
 import model.DAO.BaseDAO;
 import model.DAO.InterfaceDAO;
 
-public class MarcaDAO extends BaseDAO implements InterfaceDAO<Marca>{
+public class MarcaDAO extends BaseDAO<Marca> implements InterfaceDAO<Marca>{
 
     @Override
-    public void create(Marca objeto) {
-        this.abstractCreate(objeto);
+    public Marca create(Marca objeto) {
+        return this.abstractCreate(objeto);
     }
 
     @Override
@@ -23,8 +23,8 @@ public class MarcaDAO extends BaseDAO implements InterfaceDAO<Marca>{
     }
 
     @Override
-    public void update(Marca objeto) {
-        abstractUpdate(objeto);
+    public Marca update(Marca objeto) {
+        return abstractUpdate(objeto);
     }
 
     @Override

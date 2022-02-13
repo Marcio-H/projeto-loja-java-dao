@@ -7,7 +7,7 @@ import model.DAO.InterfaceDAO;
 public class CaracteristicaProdutoDAO implements InterfaceDAO<CaracteristicaProduto> {
 
     @Override
-    public void create(CaracteristicaProduto objeto) {
+    public CaracteristicaProduto create(CaracteristicaProduto objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -22,7 +22,7 @@ public class CaracteristicaProdutoDAO implements InterfaceDAO<CaracteristicaProd
     }
 
     @Override
-    public void update(CaracteristicaProduto objeto) {
+    public CaracteristicaProduto update(CaracteristicaProduto objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

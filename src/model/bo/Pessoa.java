@@ -11,7 +11,9 @@ public abstract class Pessoa {
     @Foreign
     private Endereco endereco;
 
-    public Pessoa() {}
+    public Pessoa() {
+        endereco = new Endereco();
+    }
     
     public Pessoa(String nome, String email, String complementoEndereco, Endereco endereco) {
         this.nome = nome;

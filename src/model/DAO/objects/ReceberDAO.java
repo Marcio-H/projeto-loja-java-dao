@@ -7,7 +7,7 @@ import model.DAO.InterfaceDAO;
 public class ReceberDAO implements InterfaceDAO<Receber>{
 
     @Override
-    public void create(Receber objeto) {
+    public Receber create(Receber objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -22,7 +22,7 @@ public class ReceberDAO implements InterfaceDAO<Receber>{
     }
 
     @Override
-    public void update(Receber objeto) {
+    public Receber update(Receber objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

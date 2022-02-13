@@ -20,6 +20,9 @@ public class Telefone {
     private Vendedor vendedor;
 
     public Telefone() {
+        fornecedor = new Fornecedor();
+        cliente = new Cliente();
+        vendedor = new Vendedor();
     }
 
     public Long getId() {

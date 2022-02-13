@@ -7,7 +7,7 @@ import model.DAO.InterfaceDAO;
 public class CondicaoPagamentoDAO implements InterfaceDAO<CondicaoPagamento> {
 
     @Override
-    public void create(CondicaoPagamento objeto) {
+    public CondicaoPagamento create(CondicaoPagamento objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -22,7 +22,7 @@ public class CondicaoPagamentoDAO implements InterfaceDAO<CondicaoPagamento> {
     }
 
     @Override
-    public void update(CondicaoPagamento objeto) {
+    public CondicaoPagamento update(CondicaoPagamento objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

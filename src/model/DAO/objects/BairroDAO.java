@@ -10,8 +10,8 @@ public class BairroDAO extends BaseDAO<Bairro> implements InterfaceDAO<Bairro>{
     public BairroDAO() {}
     
     @Override
-    public void create(Bairro objeto) {
-        this.abstractCreate(objeto);
+    public Bairro create(Bairro objeto) {
+        return this.abstractCreate(objeto);
     }
 
     @Override
@@ -25,8 +25,8 @@ public class BairroDAO extends BaseDAO<Bairro> implements InterfaceDAO<Bairro>{
     }
 
     @Override
-    public void update(Bairro objeto) {
-        abstractUpdate(objeto);
+    public Bairro update(Bairro objeto) {
+        return abstractUpdate(objeto);
     }
 
     @Override

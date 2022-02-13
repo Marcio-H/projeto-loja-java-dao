@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import model.DAO.objects.TelefoneDAO;
+import model.bo.Fornecedor;
 import model.bo.Telefone;
 
 public class TelefoneService {
@@ -26,5 +27,15 @@ public class TelefoneService {
     
     public Telefone readById(Long id) {
         return telefoneDAO.read(id);
+    }
+    
+    public List<Telefone> findByFornecedor(Fornecedor fornecedor) {
+        return telefoneDAO.findByFornecedor(fornecedor);
+    }
+
+    public void delete(Telefone deletedTelefone) {
+        if (deletedTelefone.getId() !=  null) {
+            telefoneDAO.delete(deletedTelefone);
+        }
     }
 }
