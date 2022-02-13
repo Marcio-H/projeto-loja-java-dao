@@ -19,13 +19,14 @@ public class UField {
      * para os nomes dos entidade e propriedades.
      * se campo é foreign key o nome do campo deve ser "nomeCampo" + FOREIGN_PATTERN
      * @param Field field, campo do objeto que será criado
-     * @return String, nome do campo 
+     * @return StringBuilder, nome do campo 
      */
-    public static String getFieldNameFormmated(Field field) {
+    public static StringBuilder getFieldNameFormmated(Field field) {
+        StringBuilder str = convertCameoCase(field.getName());
         if (field.isAnnotationPresent(Foreign.class)) {
-            return field.getName() + FOREIGN_PATTERN;
+            str.append(FOREIGN_PATTERN);
         }
-        return field.getName();
+        return str;
     }
 
     /*
@@ -75,6 +76,22 @@ public class UField {
         } else {
             resultStr.append(field.getName());
         }
+    }
+
+    private static StringBuilder convertCameoCase(String str) {
+        StringBuilder strBuilder = new StringBuilder();
+        boolean novaPalavra = false;
+
+        for (char letter : str.toCharArray()) {
+            if (Character.isUpperCase(letter) && novaPalavra) {
+                strBuilder.append("_");
+                novaPalavra = false;
+            } else {
+                novaPalavra = true;
+            }
+            strBuilder.append(Character.toLowerCase(letter));
+        }
+        return strBuilder;
     }
 
     /*

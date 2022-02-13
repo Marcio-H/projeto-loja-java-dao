@@ -208,7 +208,7 @@ public abstract class BaseDAO<T> {
 
     private void invokeResultSetSolve(BaseResultSetSolver[] resultSetSolvers, Object obj) {
         for (BaseResultSetSolver solver : resultSetSolvers) {
-            String formattedFieldName = getFieldNameFormmated(solver.getField());
+            String formattedFieldName = getFieldNameFormmated(solver.getField()).toString();
             Object result = callsMethod(solver.getResultSetGetterMethod(), this.resultSet, formattedFieldName);
 
             if (hasAnnotationForeign(solver.getField())) {
@@ -221,7 +221,7 @@ public abstract class BaseDAO<T> {
 
     private void resolveDependecies(BaseResultSetSolver[] resultSetSolvers, Object obj) {
         for (BaseResultSetSolver solver : resultSetSolvers) {
-            if (hasAnnotationForeign(solver.getField())) {
+            if (hasAnnotationForeign(solver.getField()) && !solver.getForeignValue().equals(0L)) {
                 Object value = abstractReadById(solver.getForeignValue(), solver.getField().getType());
                 callsMethod(solver.getEntitySetMethod(), obj, value);
             }
@@ -236,7 +236,7 @@ public abstract class BaseDAO<T> {
         StringBuilder resultStr = new StringBuilder();
         
         for (Field field : fields) {
-            String fieldName = getFieldNameFormmated(field);
+            String fieldName = getFieldNameFormmated(field).toString();
             resultStr.append(fieldName);
             resultStr.append(" = ?, ");
         }
