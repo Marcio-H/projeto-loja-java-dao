@@ -24,4 +24,5 @@ TELAS PRONTAS:
 	- Cor
 	- Marca
 	- Tamanho
+	- Produto
     - Condição de pagamento
