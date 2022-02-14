@@ -4,33 +4,33 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
-import model.bo.Cor;
-import service.CorService;
-import view.busca.TelaBuscaCor;
+import model.bo.CondicaoPagamento;
+import service.CondicaoPagamentoService;
+import view.busca.TelaBuscaCondicaoPagamento;
 
-public class ControllerBuscaCor {
-
-    private TelaBuscaCor tela;
-    private CorService corService;
-    private Consumer<Cor> carregarCallBack;
-
-    public ControllerBuscaCor(Consumer<Cor> carregarCallBack) {
-        tela = new TelaBuscaCor();
+public class ControllerBuscaCondicaoPagamento {
+    
+    private TelaBuscaCondicaoPagamento tela;
+    private CondicaoPagamentoService condicaoPagamentoService;
+    private Consumer<CondicaoPagamento> carregarCallBack;
+    
+    public ControllerBuscaCondicaoPagamento(Consumer<CondicaoPagamento> carregarCallBack) {
+        tela = new TelaBuscaCondicaoPagamento();
         this.carregarCallBack = carregarCallBack;
         init();
     }
-
+    
     private void init() {
         tela.setVisible(true);
-        corService = new CorService();
+        condicaoPagamentoService = new CondicaoPagamentoService();
         addRows();
         this.tela.getTable().setSelectionMode(0);
         carregarEventListener();
         sairEventListener();
     }
-
+    
     private void carregarEventListener() {
-        tela.getBotaoCarregar().addMouseListener(new MouseAdapter() {
+        tela.getCarregar().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 carregarEventAction(evt);
             }
@@ -41,13 +41,13 @@ public class ControllerBuscaCor {
         int index = tela.getTable().getSelectedRow();
         if (index >= 0) {
             Long id = (long) tela.getTable().getValueAt(index, 0);
-            carregarCallBack.accept(corService.readById(id));
+            carregarCallBack.accept(condicaoPagamentoService.readById(id));
             tela.dispose();
         }
     }
 
     private void sairEventListener() {
-        tela.getBotaoSair().addMouseListener(new MouseAdapter() {
+        tela.getSair().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 sairEventAction(evt);
             }
@@ -57,12 +57,14 @@ public class ControllerBuscaCor {
     private void sairEventAction(MouseEvent evt) {
         tela.dispose();
     }
-
+    
     private void addRows() {
         DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
-        corService.read().stream().forEach(cor -> {
-            tabela.addRow(new Object[]{cor.getId(),
-                cor.getDescricao()
+        condicaoPagamentoService.read().stream().forEach(condicaoPagamento -> {
+            tabela.addRow(new Object[]{condicaoPagamento.getId(),
+                condicaoPagamento.getDescricao(),
+                condicaoPagamento.getNumeroDiasAtePrimeiraParcela(),
+                condicaoPagamento.getNumeroDiasEntreParcelas()
             });
         });
     }

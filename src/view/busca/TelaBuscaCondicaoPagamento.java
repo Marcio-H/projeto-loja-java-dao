@@ -1,8 +1,8 @@
-package view;
+package view.busca;
 
-public class FormModeloBuscas extends javax.swing.JFrame {
+public class TelaBuscaCondicaoPagamento extends javax.swing.JFrame {
 
-    public FormModeloBuscas() {
+    public TelaBuscaCondicaoPagamento() {
         initComponents();
     }
 
@@ -31,7 +31,7 @@ public class FormModeloBuscas extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Título");
+        jLabel2.setText("Condição de pagamento");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel2.setPreferredSize(new java.awt.Dimension(41, 80));
         head.add(jLabel2, java.awt.BorderLayout.CENTER);
@@ -41,14 +41,14 @@ public class FormModeloBuscas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id"
+                "Id", "Descrição", "Número de dias até primeira parcela", "Número de dias entre parcelas"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Long.class
+                java.lang.Long.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -65,6 +65,12 @@ public class FormModeloBuscas extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(0).setMinWidth(75);
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(10);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(75);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(10);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(75);
+            jTable1.getColumnModel().getColumn(3).setMinWidth(75);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(10);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(75);
         }
 
         javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
@@ -106,7 +112,7 @@ public class FormModeloBuscas extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+            .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
             .addComponent(optionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
