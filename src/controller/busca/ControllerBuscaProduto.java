@@ -4,25 +4,25 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
-import model.bo.Endereco;
-import service.EnderecoService;
-import view.busca.TelaBuscaEndereco;
+import model.bo.Produto;
+import service.ProdutoService;
+import view.busca.TelaBuscaProduto;
 
 
-public class ControllerBuscaEndereco {
-    private TelaBuscaEndereco tela;
-    private EnderecoService enderecoService;
-    private Consumer<Endereco> carregarCallBack;
+public class ControllerBuscaProduto {
+    private TelaBuscaProduto tela;
+    private ProdutoService produtoService;
+    private Consumer<Produto> carregarCallBack;
 
-     public ControllerBuscaEndereco(Consumer<Endereco> carregarCallBack) {
-        tela = new TelaBuscaEndereco();
+     public ControllerBuscaProduto(Consumer<Produto> carregarCallBack) {
+        tela = new TelaBuscaProduto();
         this.carregarCallBack = carregarCallBack;
         init();
     }
 
     private void init() {
         tela.setVisible(true);
-        enderecoService = new EnderecoService();
+        produtoService = new ProdutoService();
         addRows();
         this.tela.getTable().setSelectionMode(0);
         carregarEventListener();
@@ -41,7 +41,7 @@ public class ControllerBuscaEndereco {
         int index = tela.getTable().getSelectedRow();
         if (index >= 0) {
             Long id = (long) tela.getTable().getValueAt(index, 0);
-            carregarCallBack.accept(enderecoService.readById(id));
+            carregarCallBack.accept(produtoService.readById(id));
             tela.dispose();
         }
     }
@@ -60,12 +60,13 @@ public class ControllerBuscaEndereco {
     
     private void addRows() {
         DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
-        enderecoService.read().stream().forEach(endereco -> {
-            tabela.addRow(new Object[]{ endereco.getId(), 
-                                        endereco.getCep(),
-                                        endereco.getLogradouro(),
-                                        endereco.getCidade().getDescricao(),
-                                        endereco.getBairro().getDescricao()
+        produtoService.read().stream().forEach(produto -> {
+            tabela.addRow(new Object[]{ produto.getId(), 
+                                        produto.getDescricao(),
+                                        produto.getValor(),
+                                        produto.getMarca().getDescricao(),
+                                        produto.getTamanho().getDescricao(),
+                                        produto.getTipoProduto().getDescricao()
             });
         });
     }

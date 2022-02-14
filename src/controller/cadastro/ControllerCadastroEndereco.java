@@ -60,7 +60,7 @@ public class ControllerCadastroEndereco {
 
     private void setCidade(Cidade cidade) {
         Cidade enderecoCidade = endereco.getCidade();
-
+ 
         enderecoCidade.setId(cidade.getId());
         enderecoCidade.setDescricao(cidade.getDescricao());
         tela.getDescricaoCidade().setText(cidade.getDescricao());

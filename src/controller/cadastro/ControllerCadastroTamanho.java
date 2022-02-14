@@ -33,6 +33,7 @@ public class ControllerCadastroTamanho {
         sairEventListener();
         this.tela.getId().setEnabled(false);
         setFormStatus(false);
+        this.tela.setVisible(true);
     }
     
     public Tamanho getCidade() {

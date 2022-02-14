@@ -22,6 +22,9 @@ public class Produto {
     private TipoProduto tipoProduto;
 
     public Produto() {
+       this.marca = new Marca();
+       this.tamanho = new Tamanho();
+       this.tipoProduto = new TipoProduto();
     }
 
     public Long getId() {

@@ -33,6 +33,7 @@ public class ControllerCadastroMarca {
         sairEventListener();
         this.tela.getId().setEnabled(false);
         setFormStatus(false);
+        this.tela.setVisible(true);
     }
     
     public Marca getCidade() {

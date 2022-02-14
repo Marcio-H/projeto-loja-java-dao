@@ -1,14 +1,15 @@
 package controller.cadastro;
 
-//import controller.busca.ControllerBuscaMarca;
 import controller.cadastro.ControllerCadastroTamanho;
 import controller.cadastro.ControllerCadastroMarca;
 import controller.cadastro.ControllerCadastroTipoProduto;
 import controller.busca.ControllerBuscaTamanho;
 import controller.busca.ControllerBuscaMarca;
 import controller.busca.ControllerBuscaTipoProduto;
+import controller.busca.ControllerBuscaProduto;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import model.bo.Marca;
 import model.bo.Tamanho;
 import model.bo.TipoProduto;
@@ -49,10 +50,7 @@ public class ControllerCadastroProduto {
         buscarTamanhoEventListener();
         buscarMarcaEventListener();
         buscarTipoProdutoEventListener();
-        this.tela.getId().setEnabled(false);
-        this.tela.getTamanhoTextField().setEnabled(false);
-        this.tela.getMarcaTextField().setEnabled(false);
-        this.tela.getTipoProdutoTextField().setEnabled(false);
+        setDisabledForms();
         setFormStatus(false);
         tela.setVisible(true);
     }
@@ -62,8 +60,14 @@ public class ControllerCadastroProduto {
             produto.setId(Long.parseLong(tela.getId().getText()));  
         } catch (Exception e) {}
           produto.setDescricao(tela.getDescricaoTextField().getText());
-          produto.setValor( (float) tela.getValorFormattedTextField().getValue());
-        
+         try {
+            produto.setValor(
+              Float.valueOf(tela.getValorFormattedTextField().getText())
+            );
+        } catch(NumberFormatException e) {
+            JOptionPane.showMessageDialog(tela, String.format("O valor \"%s\" é invalido para o campo \"Valor\"", e.getMessage()));
+            throw new Error();
+        }
         return produto;
     }
     
@@ -74,6 +78,18 @@ public class ControllerCadastroProduto {
         this.tela.getDescricaoTextField().setText(produto.getDescricao());
         this.produto.setValor(produto.getValor());
         this.tela.getValorFormattedTextField().setText(String.valueOf(produto.getValor()));
+
+        if(produto.getMarca() != null) {
+            setMarca(produto.getMarca());
+        }
+
+        if(produto.getTamanho()!= null) {
+            setTamanho(produto.getTamanho());
+        }
+
+        if(produto.getTipoProduto()!= null) {
+            setTipoProduto(produto.getTipoProduto());
+        }
     }
     
     private void novoEventListener() {
@@ -114,16 +130,16 @@ public class ControllerCadastroProduto {
     }
     
     private void gravarEventAction(MouseEvent evt) {
-        if (!tela.getBotaoGravar().isEnabled()) {
+         if (!tela.getBotaoGravar().isEnabled()) {
             return;
         }
         try {
             produtoService.createOrUpdate(getProduto());
             setFormStatus(false);
+            produto = new Produto();
             cleanForm();
         } catch (Exception e) {
-            //implementar mensagem de erro
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(tela, e.getMessage());
         }
     }
     
@@ -136,7 +152,10 @@ public class ControllerCadastroProduto {
     }
     
     private void buscarEventAction(MouseEvent evt) {
-//        ControllerBuscaMarca buscaController = new ControllerBuscaMarca(this);
+        ControllerBuscaProduto buscaController = new ControllerBuscaProduto(produto-> {
+            setProduto(produto);
+            setFormStatus(true);
+        });
     }
     
     private void sairEventListener() {
@@ -209,29 +228,59 @@ public class ControllerCadastroProduto {
     
     private void buscarTamanhoEventAction(MouseEvent evt) {
        ControllerBuscaTamanho con = new ControllerBuscaTamanho(tamanho -> {
-          this.tela.getTamanhoTextField().setText(tamanho.getDescricao());
-          this.produto.setTamanho(tamanho);
+          setTamanho(tamanho);
+          setFormStatus(true);
        });
     }
     
     private void buscarMarcaEventAction(MouseEvent evt) {
         ControllerBuscaMarca con = new  ControllerBuscaMarca(marca -> {
-            this.tela.getMarcaTextField().setText(marca.getDescricao());
-            this.produto.setMarca(marca);
+            setMarca(marca);
+            setFormStatus(true);
         });
     }
 
    private void buscarTipoProdutoEventAction(MouseEvent evt) {
         ControllerBuscaTipoProduto con = new  ControllerBuscaTipoProduto(tipoProduto -> {
-            this.tela.getTipoProdutoTextField().setText(tipoProduto.getDescricao());
-            this.produto.setTipoProduto(tipoProduto);
+            setTipoProduto(tipoProduto);
+            setFormStatus(true);
         });
     }
 
     private void sairEventAction(MouseEvent evt) {
         this.tela.dispose();
     }
-    
+    private void setMarca(Marca marca) {
+        Marca produtoMarca = produto.getMarca();
+     
+        produtoMarca.setId(marca.getId());
+        produtoMarca.setDescricao(marca.getDescricao());
+        tela.getMarcaTextField().setText(marca.getDescricao());
+    }
+
+    private void setTamanho(Tamanho tamanho) {
+        Tamanho produtoTamanho = produto.getTamanho();
+     
+        produtoTamanho.setId(tamanho.getId());
+        produtoTamanho.setDescricao(tamanho.getDescricao());
+        tela.getTamanhoTextField().setText(tamanho.getDescricao());
+    }     
+
+    private void setTipoProduto(TipoProduto tipoProduto) {
+        TipoProduto produtoTipoProduto = produto.getTipoProduto();
+
+        produtoTipoProduto.setId(tipoProduto.getId());
+        produtoTipoProduto.setDescricao(tipoProduto.getDescricao());
+        tela.getTipoProdutoTextField().setText(tipoProduto.getDescricao());
+    }
+
+    private void setDisabledForms() {
+        this.tela.getId().setEnabled(false);
+        this.tela.getTamanhoTextField().setEditable(false);
+        this.tela.getMarcaTextField().setEditable(false);
+        this.tela.getTipoProdutoTextField().setEditable(false);
+    }
+
     public void setFormStatus(boolean status) {
         this.tela.getTamanhoTextField().setEnabled(status);
         this.tela.getTipoProdutoTextField().setEnabled(status);
