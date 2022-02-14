@@ -1,10 +1,16 @@
 package model.bo;
 
+import annotations.Id;
+
 public class CondicaoPagamento {
 
+    @Id
     private Long id;
+    
     private String descricao;
+    
     private int numeroDiasAtePrimeiraParcela;
+    
     private int numeroDiasEntreParcelas;
 
     public CondicaoPagamento() {

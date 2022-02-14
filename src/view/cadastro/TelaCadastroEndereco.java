@@ -7,9 +7,6 @@ import javax.swing.WindowConstants;
 
 public class TelaCadastroEndereco extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormModeloCadastros
-     */
     public TelaCadastroEndereco() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         initComponents();
@@ -67,12 +64,6 @@ public class TelaCadastroEndereco extends javax.swing.JFrame {
         head.add(jLabel2, java.awt.BorderLayout.CENTER);
 
         jLabel1.setText("Id");
-
-        id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("CEP");
 
@@ -159,11 +150,6 @@ public class TelaCadastroEndereco extends javax.swing.JFrame {
         jLabel9.setText("Descrição");
 
         buscaBairroBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
-        buscaBairroBotao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscaBairroBotaoActionPerformed(evt);
-            }
-        });
 
         adicionarBairroBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mais.png"))); // NOI18N
 
@@ -308,14 +294,6 @@ public class TelaCadastroEndereco extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idActionPerformed
-
-    private void buscaBairroBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaBairroBotaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscaBairroBotaoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionarBairroBotao;

@@ -71,33 +71,16 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         jLabel1.setText("Id");
 
-        id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Descrição");
 
         jLabel4.setText("Valor");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        marcaTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                marcaTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel6.setText("Marca");
 
         buscarMarcaBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
-        buscarMarcaBotao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarMarcaBotaoActionPerformed(evt);
-            }
-        });
 
         adicionarMarcaBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mais.png"))); // NOI18N
 
@@ -145,21 +128,10 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        tipoProdutoTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoProdutoTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel9.setText("Tipo de Produto");
 
         buscarTipoProdutoBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
-        buscarTipoProdutoBotao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarTipoProdutoBotaoActionPerformed(evt);
-            }
-        });
 
         adicionarTipoProdutoBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mais.png"))); // NOI18N
 
@@ -207,21 +179,10 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        tamanhoTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tamanhoTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel11.setText("Tamanho");
 
         buscarTamanhoBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
-        buscarTamanhoBotao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarTamanhoBotaoActionPerformed(evt);
-            }
-        });
 
         adicionarTamanhoBotao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mais.png"))); // NOI18N
 
@@ -319,51 +280,26 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         botaoNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/file.png"))); // NOI18N
         botaoNovo.setText("Novo");
         botaoNovo.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        botaoNovo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoNovoActionPerformed(evt);
-            }
-        });
         optionMenu.add(botaoNovo);
 
         botaoCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancel.png"))); // NOI18N
         botaoCancelar.setText("Cancelar");
         botaoCancelar.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoCancelarActionPerformed(evt);
-            }
-        });
         optionMenu.add(botaoCancelar);
 
         botaoGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
         botaoGravar.setText("Gravar");
         botaoGravar.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        botaoGravar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoGravarActionPerformed(evt);
-            }
-        });
         optionMenu.add(botaoGravar);
 
         botaoBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
         botaoBuscar.setText("Buscar");
         botaoBuscar.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        botaoBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoBuscarActionPerformed(evt);
-            }
-        });
         optionMenu.add(botaoBuscar);
 
         botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/exit.png"))); // NOI18N
         botaoSair.setText("Sair");
         botaoSair.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        botaoSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoSairActionPerformed(evt);
-            }
-        });
         optionMenu.add(botaoSair);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -397,54 +333,6 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoNovoActionPerformed
-
-    private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoCancelarActionPerformed
-
-    private void botaoGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGravarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoGravarActionPerformed
-
-    private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoBuscarActionPerformed
-
-    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoSairActionPerformed
-
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idActionPerformed
-
-    private void buscarMarcaBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMarcaBotaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarMarcaBotaoActionPerformed
-
-    private void marcaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcaTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_marcaTextFieldActionPerformed
-
-    private void tipoProdutoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoProdutoTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tipoProdutoTextFieldActionPerformed
-
-    private void buscarTipoProdutoBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarTipoProdutoBotaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarTipoProdutoBotaoActionPerformed
-
-    private void tamanhoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tamanhoTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tamanhoTextFieldActionPerformed
-
-    private void buscarTamanhoBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarTamanhoBotaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarTamanhoBotaoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

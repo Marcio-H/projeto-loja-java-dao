@@ -1,4 +1,4 @@
-package view;
+package view.busca;
 
 public class TelaBuscaMarca extends javax.swing.JFrame {
 
