@@ -141,6 +141,7 @@ public class ControllerCadastroFornecedor {
     
     private void cancelarEventAction(MouseEvent evt) {
         if (tela.getBotaoCancelar().isEnabled()) {
+            fornecedor = new Fornecedor();
             setFormStatus(false);
             telefones.clear();
             cleanForm();

@@ -76,6 +76,7 @@ public class ControllerCadastroTamanho {
     private void cancelarEventAction(MouseEvent evt) {
         if (tela.getBotaoCancelar().isEnabled()) {
             setFormStatus(false);
+            tamanho = new Tamanho();
             cleanForm();
         }
     }
@@ -95,6 +96,7 @@ public class ControllerCadastroTamanho {
         try {
             bairroService.createOrUpdate(getCidade());
             setFormStatus(false);
+            tamanho = new Tamanho();
             cleanForm();
         } catch (Exception e) {
             //implementar mensagem de erro

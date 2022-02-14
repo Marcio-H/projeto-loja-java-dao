@@ -77,6 +77,7 @@ public class ControllerCadastroCor {
     private void cancelarEventAction(MouseEvent evt) {
         if (tela.getBotaoCancelar().isEnabled()) {
             setFormStatus(false);
+            cor = new Cor();
             cleanForm();
         }
     }
@@ -96,6 +97,7 @@ public class ControllerCadastroCor {
         try {
             corService.createOrUpdate(getCor());
             setFormStatus(false);
+            cor = new Cor();
             cleanForm();
         } catch (Exception e) {
             //implementar mensagem de erro

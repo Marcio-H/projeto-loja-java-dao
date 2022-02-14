@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 import model.bo.Bairro;
 import model.bo.Cidade;
 import model.bo.Endereco;
-import model.bo.Fornecedor;
 import service.EnderecoService;
 import view.cadastro.TelaCadastroEndereco;
 
@@ -162,13 +161,13 @@ public class ControllerCadastroEndereco {
     private void novoEventAction(MouseEvent evt) {
         if (tela.getBotaoNovo().isEnabled()) {
             setFormStatus(true);
-            endereco = new Endereco();
         }
     }
 
     private void cancelarEventAction(MouseEvent evt) {
         if (tela.getBotaoCancelar().isEnabled()) {
             setFormStatus(false);
+            endereco = new Endereco();
             cleanForm();
         }
     }
@@ -180,6 +179,7 @@ public class ControllerCadastroEndereco {
         try {
             enderecoService.createOrUpdate(getEndereco());
             setFormStatus(false);
+            endereco = new Endereco();
             cleanForm();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(tela, e.getMessage());

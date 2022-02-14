@@ -77,6 +77,7 @@ public class ControllerCadastroBairro {
     private void cancelarEventAction(MouseEvent evt) {
         if (tela.getBotaoCancelar().isEnabled()) {
             setFormStatus(false);
+            bairro = new Bairro();
             cleanForm();
         }
     }
@@ -96,6 +97,7 @@ public class ControllerCadastroBairro {
         try {
             bairroService.createOrUpdate(getBairro());
             setFormStatus(false);
+            bairro = new Bairro();
             cleanForm();
         } catch (Exception e) {
             //implementar mensagem de erro
