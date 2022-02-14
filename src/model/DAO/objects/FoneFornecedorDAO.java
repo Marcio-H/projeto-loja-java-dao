@@ -7,7 +7,7 @@ import model.DAO.InterfaceDAO;
 public class FoneFornecedorDAO implements InterfaceDAO<Telefone>{
 
     @Override
-    public void create(Telefone objeto) {
+    public Telefone create(Telefone objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -22,7 +22,7 @@ public class FoneFornecedorDAO implements InterfaceDAO<Telefone>{
     }
 
     @Override
-    public void update(Telefone objeto) {
+    public Telefone update(Telefone objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

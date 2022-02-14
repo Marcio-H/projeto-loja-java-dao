@@ -5,11 +5,11 @@ import model.bo.TipoProduto;
 import model.DAO.BaseDAO;
 import model.DAO.InterfaceDAO;
 
-public class TipoProdutoDAO extends BaseDAO implements InterfaceDAO<TipoProduto>{
+public class TipoProdutoDAO extends BaseDAO<TipoProduto> implements InterfaceDAO<TipoProduto>{
 
     @Override
-    public void create(TipoProduto objeto) {
-        this.abstractCreate(objeto);
+    public TipoProduto create(TipoProduto objeto) {
+        return this.abstractCreate(objeto);
     }
 
     @Override
@@ -23,8 +23,8 @@ public class TipoProdutoDAO extends BaseDAO implements InterfaceDAO<TipoProduto>
     }
 
     @Override
-    public void update(TipoProduto objeto) {
-        abstractUpdate(objeto);
+    public TipoProduto update(TipoProduto objeto) {
+        return abstractUpdate(objeto);
     }
 
     @Override

@@ -23,7 +23,7 @@ public class UType {
     }
 
     public static boolean fieldIsPrimitiveType(Field field) {
-        return field.getClass().isPrimitive();
+        return field.getType().isPrimitive();
     }
 
     /*

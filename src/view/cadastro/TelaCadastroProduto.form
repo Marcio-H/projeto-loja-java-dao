@@ -170,9 +170,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="id">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -251,9 +248,6 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="marcaTextField">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="marcaTextFieldActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
                   <Properties>
@@ -269,9 +263,6 @@
                       <Image iconType="3" name="/imagens/search.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarMarcaBotaoActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="adicionarMarcaBotao">
                   <Properties>
@@ -350,9 +341,6 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="tipoProdutoTextField">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipoProdutoTextFieldActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel9">
                   <Properties>
@@ -368,9 +356,6 @@
                       <Image iconType="3" name="/imagens/search.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarTipoProdutoBotaoActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="adicionarTipoProdutoBotao">
                   <Properties>
@@ -449,9 +434,6 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="tamanhoTextField">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tamanhoTextFieldActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
                   <Properties>
@@ -467,9 +449,6 @@
                       <Image iconType="3" name="/imagens/search.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarTamanhoBotaoActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="adicionarTamanhoBotao">
                   <Properties>
@@ -508,9 +487,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoNovoActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoCancelar">
               <Properties>
@@ -522,9 +498,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCancelarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoGravar">
               <Properties>
@@ -536,9 +509,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoGravarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoBuscar">
               <Properties>
@@ -550,9 +520,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoBuscarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoSair">
               <Properties>
@@ -564,9 +531,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoSairActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

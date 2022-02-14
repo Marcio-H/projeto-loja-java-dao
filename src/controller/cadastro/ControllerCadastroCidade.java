@@ -80,6 +80,7 @@ public class ControllerCadastroCidade {
     private void cancelarEventAction(MouseEvent evt) {
         if (tela.getBotaoCancelar().isEnabled()) {
             setFormStatus(false);
+            cidade = new Cidade();
             cleanForm();
         }
     }
@@ -99,6 +100,7 @@ public class ControllerCadastroCidade {
         try {
             cidadeService.createOrUpdate(getCidade());
             setFormStatus(false);
+            cidade = new Cidade();
             cleanForm();
         } catch (Exception e) {
             //implementar mensagem de erro
@@ -115,7 +117,10 @@ public class ControllerCadastroCidade {
     }
     
     private void buscarEventAction(MouseEvent evt) {
-        ControllerBuscaCidade buscaController = new ControllerBuscaCidade(this);
+        ControllerBuscaCidade buscaController = new ControllerBuscaCidade(cidade -> {
+            setCidade(cidade);
+            setFormStatus(true);
+        });
     }
     
     private void sairEventListener() {

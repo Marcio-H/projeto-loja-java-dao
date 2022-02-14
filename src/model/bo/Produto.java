@@ -1,12 +1,24 @@
 package model.bo;
 
+import annotations.Foreign;
+import annotations.Id;
+
 public class Produto {
 
+    @Id
     private Long id;
+    
     private String descricao;
+    
     private float valor;
+    
+    @Foreign
     private Marca marca;
+    
+    @Foreign
     private Tamanho tamanho;
+    
+    @Foreign
     private TipoProduto tipoProduto;
 
     public Produto() {

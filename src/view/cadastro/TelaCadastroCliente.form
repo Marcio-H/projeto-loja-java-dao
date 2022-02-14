@@ -197,9 +197,9 @@
                                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cpfFormattedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="dataNascimentolFormattedTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cpfFormattedTextField" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -215,9 +215,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="id">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -372,9 +369,6 @@
                       <Format format="#####-###" subtype="-1" type="5"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cepTextFieldActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel7">
                   <Properties>
@@ -386,9 +380,6 @@
                 <Component class="javax.swing.JTextField" name="cidadeTextField">
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField6">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField6ActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel9">
                   <Properties>
@@ -422,9 +413,6 @@
                   <Format format="##.###.###-#" subtype="-1" type="5"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rgFormattedTextFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="cpfFormattedTextField">
               <Properties>
@@ -507,9 +495,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoNovoActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoCancelar">
               <Properties>
@@ -521,9 +506,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCancelarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoGravar">
               <Properties>
@@ -535,9 +517,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoGravarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoBuscar">
               <Properties>
@@ -549,9 +528,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoBuscarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoSair">
               <Properties>
@@ -563,9 +539,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoSairActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

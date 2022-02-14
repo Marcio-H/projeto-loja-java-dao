@@ -8,10 +8,10 @@ import model.DAO.InterfaceDAO;
 public class FornecedorDAO extends BaseDAO<Fornecedor> implements InterfaceDAO<Fornecedor>{
 
     @Override
-    public void create(Fornecedor objeto) {
-        this.abstractCreate(objeto);
+    public Fornecedor create(Fornecedor objeto) {
+        return this.abstractCreate(objeto);
     }
-
+    
     @Override
     public List<Fornecedor> read() {
         return abstractRead(Fornecedor.class);
@@ -23,8 +23,8 @@ public class FornecedorDAO extends BaseDAO<Fornecedor> implements InterfaceDAO<F
     }
 
     @Override
-    public void update(Fornecedor objeto) {
-        abstractUpdate(objeto);
+    public Fornecedor update(Fornecedor objeto) {
+        return abstractUpdate(objeto);
     }
 
     @Override

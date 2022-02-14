@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
 import service.MarcaService;
-import view.TelaBuscaMarca;
+import view.busca.TelaBuscaMarca;
 
 
 public class ControllerBuscaMarca {

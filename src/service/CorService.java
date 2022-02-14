@@ -5,11 +5,12 @@ import model.bo.Cor;
 import model.DAO.objects.CorDAO;
 
 public class CorService {
-    private CorDAO corDAO; 
+
+    private CorDAO corDAO;
 
     public CorService() {
-     this.corDAO = new CorDAO();
-   }
+        this.corDAO = new CorDAO();
+    }
 
     public void createOrUpdate(Cor objeto) {
         if (objeto.getId() == null) {
@@ -18,11 +19,11 @@ public class CorService {
             corDAO.update(objeto);
         }
     }
-    
+
     public List<Cor> read() {
         return corDAO.read();
     }
-    
+
     public Cor readById(Long id) {
         return corDAO.read(id);
     }

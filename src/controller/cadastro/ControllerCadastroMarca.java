@@ -76,6 +76,7 @@ public class ControllerCadastroMarca {
     private void cancelarEventAction(MouseEvent evt) {
         if (tela.getBotaoCancelar().isEnabled()) {
             setFormStatus(false);
+            marca = new Marca();
             cleanForm();
         }
     }
@@ -95,6 +96,7 @@ public class ControllerCadastroMarca {
         try {
             marcaService.createOrUpdate(getCidade());
             setFormStatus(false);
+            marca = new Marca();
             cleanForm();
         } catch (Exception e) {
             //implementar mensagem de erro

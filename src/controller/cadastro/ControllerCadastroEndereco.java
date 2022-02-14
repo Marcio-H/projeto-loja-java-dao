@@ -1,8 +1,11 @@
 package controller.cadastro;
 
 import controller.busca.ControllerBuscaBairro;
+import controller.busca.ControllerBuscaCidade;
+import controller.busca.ControllerBuscaEndereco;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import model.bo.Bairro;
 import model.bo.Cidade;
 import model.bo.Endereco;
@@ -18,28 +21,6 @@ public class ControllerCadastroEndereco {
     public ControllerCadastroEndereco() {
         tela = new TelaCadastroEndereco();
         init();
-    }
-
-    public ControllerCadastroEndereco(TelaCadastroEndereco telaCadastroEndereco) {
-        this.tela = telaCadastroEndereco;
-        init();
-    }
-
-    private void init() {
-        enderecoService = new EnderecoService();
-        endereco = new Endereco();
-        endereco.setCidade(new Cidade());
-        endereco.setBairro(new Bairro());
-        novoEventListener();
-        cancelarEventListener();
-        gravarEventListener();
-        buscarEventListener();
-        sairEventListener();
-        cadastroBairroEventListener();
-        buscarBairroEventListener();
-        cadastroCidadeEventListener();
-        this.tela.getId().setEnabled(false);
-        setFormStatus(false);
     }
 
     public Endereco getEndereco() {
@@ -60,6 +41,31 @@ public class ControllerCadastroEndereco {
         this.tela.getCep().setText(endereco.getCep());
         this.endereco.setLogradouro(endereco.getLogradouro());
         this.tela.getLogradouro().setText(endereco.getLogradouro());
+
+        if (endereco.getBairro() != null) {
+            setBairro(endereco.getBairro());
+        }
+        if (endereco.getCidade() != null) {
+            setCidade(endereco.getCidade());
+        }
+    }
+
+    private void setBairro(Bairro bairro) {
+        Bairro enderecoBairro = endereco.getBairro();
+
+        enderecoBairro.setId(bairro.getId());
+        enderecoBairro.setDescricao(bairro.getDescricao());
+        tela.getDescricaoBairro().setText(bairro.getDescricao());
+    }
+
+    private void setCidade(Cidade cidade) {
+        Cidade enderecoCidade = endereco.getCidade();
+
+        enderecoCidade.setId(cidade.getId());
+        enderecoCidade.setDescricao(cidade.getDescricao());
+        tela.getDescricaoCidade().setText(cidade.getDescricao());
+        enderecoCidade.setUf(cidade.getUf());
+        tela.getUfCidade().setText(cidade.getUf());
     }
 
     private void novoEventListener() {
@@ -70,25 +76,12 @@ public class ControllerCadastroEndereco {
         });
     }
 
-    private void novoEventAction(MouseEvent evt) {
-        if (tela.getBotaoNovo().isEnabled()) {
-            setFormStatus(true);
-        }
-    }
-
     private void cancelarEventListener() {
         this.tela.getBotaoCancelar().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 cancelarEventAction(evt);
             }
         });
-    }
-
-    private void cancelarEventAction(MouseEvent evt) {
-        if (tela.getBotaoCancelar().isEnabled()) {
-            setFormStatus(false);
-            cleanForm();
-        }
     }
 
     private void gravarEventListener() {
@@ -99,30 +92,12 @@ public class ControllerCadastroEndereco {
         });
     }
 
-    private void gravarEventAction(MouseEvent evt) {
-        if (!tela.getBotaoGravar().isEnabled()) {
-            return;
-        }
-        try {
-            enderecoService.createOrUpdate(getEndereco());
-            setFormStatus(false);
-            cleanForm();
-        } catch (Exception e) {
-            //implementar mensagem de erro
-            e.printStackTrace();
-        }
-    }
-
     private void buscarEventListener() {
         this.tela.getBotaoBuscar().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 buscarEventAction(evt);
             }
         });
-    }
-
-    private void buscarEventAction(MouseEvent evt) {
-//        ControllerBuscaMarca buscaController = new ControllerBuscaMarca(this);
     }
 
     private void sairEventListener() {
@@ -133,7 +108,7 @@ public class ControllerCadastroEndereco {
         });
     }
 
-    private void cadastroBairroEventListener() {
+    private void adicionarBairroEventListener() {
         this.tela.getBotaoAdicionarBairro().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 cadastoBairroEventAction(evt);
@@ -141,32 +116,84 @@ public class ControllerCadastroEndereco {
         });
     }
 
-    private void cadastroCidadeEventListener() {
+    private void adicionarCidadeEventListener() {
         this.tela.getBotaoAdicionarCidade().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                cadastoCidadeEventAction(evt);
+                adicionarCidadeEventAction(evt);
             }
         });
     }
 
     private void buscarBairroEventListener() {
-        this.tela.getBotaoBuscaBairro().addMouseListener(new MouseAdapter() {
+        tela.getBotaoBuscaBairro().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 buscarBairroEventAction(evt);
             }
         });
     }
     
-    private void buscarBairroEventAction(MouseEvent evt) {
-        if (tela.getBotaoBuscaBairro().isEnabled()) {
-            ControllerBuscaBairro con = new ControllerBuscaBairro(bairro -> {
-                tela.getDescricaoBairro().setText(bairro.getDescricao());
-                endereco.setBairro(bairro);
+    private void buscarCidadeEventListener() {
+        tela.getBotaoBuscarCidade().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                buscarCidadeEventAction(evt);
+            }
+        });
+    }
+    
+    private void buscarCidadeEventAction(MouseEvent evt) {
+        if (tela.getBotaoBuscarCidade().isEnabled()) {
+            ControllerBuscaCidade con = new ControllerBuscaCidade(cidade -> {
+                setCidade(cidade);
+                setFormStatus(true);
             });
         }
     }
 
-    private void cadastoCidadeEventAction(MouseEvent evt) {
+    private void buscarBairroEventAction(MouseEvent evt) {
+        if (tela.getBotaoBuscaBairro().isEnabled()) {
+            ControllerBuscaBairro con = new ControllerBuscaBairro(bairro -> {
+                setBairro(bairro);
+                setFormStatus(true);
+            });
+        }
+    }
+
+    private void novoEventAction(MouseEvent evt) {
+        if (tela.getBotaoNovo().isEnabled()) {
+            setFormStatus(true);
+        }
+    }
+
+    private void cancelarEventAction(MouseEvent evt) {
+        if (tela.getBotaoCancelar().isEnabled()) {
+            setFormStatus(false);
+            endereco = new Endereco();
+            cleanForm();
+        }
+    }
+
+    private void gravarEventAction(MouseEvent evt) {
+        if (!tela.getBotaoGravar().isEnabled()) {
+            return;
+        }
+        try {
+            enderecoService.createOrUpdate(getEndereco());
+            setFormStatus(false);
+            endereco = new Endereco();
+            cleanForm();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(tela, e.getMessage());
+        }
+    }
+
+    private void buscarEventAction(MouseEvent evt) {
+        ControllerBuscaEndereco buscaController = new ControllerBuscaEndereco(endereco -> {
+            setEndereco(endereco);
+            setFormStatus(true);
+        });
+    }
+
+    private void adicionarCidadeEventAction(MouseEvent evt) {
         ControllerCadastroCidade controllerCadastroCidade = new ControllerCadastroCidade();
     }
 
@@ -179,22 +206,51 @@ public class ControllerCadastroEndereco {
     }
 
     public void setFormStatus(boolean status) {
-        this.tela.getLogradouro().setEnabled(status);
-        this.tela.getCep().setEnabled(status);
-        this.tela.getBotaoNovo().setEnabled(!status);
-        this.tela.getBotaoCancelar().setEnabled(status);
-        this.tela.getBotaoGravar().setEnabled(status);
+        tela.getLogradouro().setEnabled(status);
+        tela.getCep().setEnabled(status);
+        tela.getBotaoNovo().setEnabled(!status);
+        tela.getBotaoCancelar().setEnabled(status);
+        tela.getBotaoGravar().setEnabled(status);
+        tela.getBotaoAdicionarBairro().setEnabled(status);
+        tela.getBotaoBuscarBairro().setEnabled(status);
+        tela.getBotaoAdicionarCidade().setEnabled(status);
+        tela.getBotaoBuscarCidade().setEnabled(status);
     }
 
     private void cleanForm() {
-        this.tela.getId().setText("");
-        this.tela.getCep().setText("");
-        this.tela.getLogradouro().setText("");
+        tela.getId().setText("");
+        tela.getCep().setText("");
+        tela.getLogradouro().setText("");
+        tela.getDescricaoBairro().setText("");
+        tela.getDescricaoCidade().setText("");
+        tela.getUfCidade().setText("");
+    }
+
+    private void setDisabledForms() {
+        tela.getId().setEnabled(false);
+        tela.getDescricaoBairro().setEditable(false);
+        tela.getDescricaoCidade().setEditable(false);
+        tela.getUfCidade().setEditable(false);
+    }
+    
+     private void init() {
+        enderecoService = new EnderecoService();
+        endereco = new Endereco();
+        novoEventListener();
+        cancelarEventListener();
+        gravarEventListener();
+        buscarEventListener();
+        sairEventListener();
+        adicionarBairroEventListener();
+        buscarBairroEventListener();
+        buscarCidadeEventListener();
+        adicionarCidadeEventListener();
+        setDisabledForms();
+        setFormStatus(false);
+        tela.setVisible(true);
     }
 
     public static void main(String[] args) {
         ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco();
-
-        controllerCadastroEndereco.tela.setVisible(true);
     }
 }

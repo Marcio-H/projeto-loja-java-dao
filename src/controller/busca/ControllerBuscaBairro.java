@@ -9,16 +9,17 @@ import service.BairroService;
 import view.busca.TelaBuscaBairro;
 
 public class ControllerBuscaBairro {
+
     private TelaBuscaBairro tela;
     private BairroService bairroService;
     private Consumer<Bairro> carregarCallBack;
 
-     public ControllerBuscaBairro(Consumer<Bairro> carregarCallBack) {
+    public ControllerBuscaBairro(Consumer<Bairro> carregarCallBack) {
         tela = new TelaBuscaBairro();
         this.carregarCallBack = carregarCallBack;
         init();
     }
-    
+
     private void init() {
         bairroService = new BairroService();
         addRows();
@@ -27,7 +28,7 @@ public class ControllerBuscaBairro {
         sairEventListener();
         tela.setVisible(true);
     }
-    
+
     private void carregarEventListener() {
         tela.getBotaoCarregar().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
@@ -35,7 +36,7 @@ public class ControllerBuscaBairro {
             }
         });
     }
-    
+
     private void carregarEventAction(MouseEvent evt) {
         int index = tela.getTable().getSelectedRow();
         if (index >= 0) {
@@ -44,7 +45,7 @@ public class ControllerBuscaBairro {
             tela.dispose();
         }
     }
-    
+
     private void sairEventListener() {
         tela.getBotaoSair().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
@@ -52,16 +53,16 @@ public class ControllerBuscaBairro {
             }
         });
     }
-    
+
     private void sairEventAction(MouseEvent evt) {
         tela.dispose();
     }
-    
+
     private void addRows() {
         DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
         bairroService.read().stream().forEach(bairro -> {
-            tabela.addRow(new Object[]{ bairro.getId(), 
-                                        bairro.getDescricao()
+            tabela.addRow(new Object[]{bairro.getId(),
+                bairro.getDescricao()
             });
         });
     }

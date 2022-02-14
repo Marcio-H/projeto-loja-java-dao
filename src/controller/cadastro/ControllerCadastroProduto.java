@@ -54,6 +54,7 @@ public class ControllerCadastroProduto {
         this.tela.getMarcaTextField().setEnabled(false);
         this.tela.getTipoProdutoTextField().setEnabled(false);
         setFormStatus(false);
+        tela.setVisible(true);
     }
     
     public Produto getProduto() {

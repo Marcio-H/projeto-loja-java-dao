@@ -3,7 +3,9 @@ package controller.busca;
 import controller.cadastro.ControllerCadastroCidade;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
+import model.bo.Cidade;
 import service.CidadeService;
 import view.busca.TelaBuscaCidade;
 
@@ -11,17 +13,11 @@ public class ControllerBuscaCidade {
     
     private TelaBuscaCidade tela;
     private CidadeService cidadeService;
-    private ControllerCadastroCidade controllerCadastroCidade;
+    private Consumer<Cidade> carregarCallBack;
     
-    public ControllerBuscaCidade(ControllerCadastroCidade controllerCadastroCidade) {
+    public ControllerBuscaCidade(Consumer<Cidade> carregarCallBack) {
         tela = new TelaBuscaCidade();
-        this.controllerCadastroCidade = controllerCadastroCidade;
-        init();
-    }
-    
-    public ControllerBuscaCidade(TelaBuscaCidade tela, ControllerCadastroCidade controllerCadastroCidade) {
-        this.tela = tela;
-        this.controllerCadastroCidade = controllerCadastroCidade;
+        this.carregarCallBack = carregarCallBack;
         init();
     }
     
@@ -46,8 +42,7 @@ public class ControllerBuscaCidade {
         int index = tela.getTable().getSelectedRow();
         if (index >= 0) {
             Long id = (long) tela.getTable().getValueAt(index, 0);
-            controllerCadastroCidade.setCidade(cidadeService.readById(id));
-            controllerCadastroCidade.setFormStatus(true);
+            carregarCallBack.accept(cidadeService.readById(id));
             tela.dispose();
         }
     }

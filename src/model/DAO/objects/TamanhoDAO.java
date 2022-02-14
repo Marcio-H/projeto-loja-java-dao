@@ -5,11 +5,11 @@ import model.bo.Tamanho;
 import model.DAO.BaseDAO;
 import model.DAO.InterfaceDAO;
 
-public class TamanhoDAO extends BaseDAO implements InterfaceDAO<Tamanho>{
+public class TamanhoDAO extends BaseDAO<Tamanho> implements InterfaceDAO<Tamanho>{
 
     @Override
-    public void create(Tamanho objeto) {
-        this.abstractCreate(objeto);
+    public Tamanho create(Tamanho objeto) {
+        return this.abstractCreate(objeto);
     }
 
     @Override
@@ -23,8 +23,8 @@ public class TamanhoDAO extends BaseDAO implements InterfaceDAO<Tamanho>{
     }
 
     @Override
-    public void update(Tamanho objeto) {
-        abstractUpdate(objeto);
+    public Tamanho update(Tamanho objeto) {
+        return abstractUpdate(objeto);
     }
 
     @Override

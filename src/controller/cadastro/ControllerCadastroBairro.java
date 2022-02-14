@@ -45,7 +45,7 @@ public class ControllerCadastroBairro {
         return bairro;
     }
     
-    public void setCidade(Bairro bairro) {
+    public void setBairro(Bairro bairro) {
         this.bairro.setId(bairro.getId());
         this.tela.getId().setText(String.valueOf(bairro.getId()));
         this.bairro.setDescricao(bairro.getDescricao());
@@ -77,6 +77,7 @@ public class ControllerCadastroBairro {
     private void cancelarEventAction(MouseEvent evt) {
         if (tela.getBotaoCancelar().isEnabled()) {
             setFormStatus(false);
+            bairro = new Bairro();
             cleanForm();
         }
     }
@@ -96,6 +97,7 @@ public class ControllerCadastroBairro {
         try {
             bairroService.createOrUpdate(getBairro());
             setFormStatus(false);
+            bairro = new Bairro();
             cleanForm();
         } catch (Exception e) {
             //implementar mensagem de erro
@@ -113,7 +115,8 @@ public class ControllerCadastroBairro {
     
     private void buscarEventAction(MouseEvent evt) {
         ControllerBuscaBairro buscaController = new ControllerBuscaBairro(bairro -> {
-            
+            setBairro(bairro);
+            setFormStatus(true);
         });
     }
     

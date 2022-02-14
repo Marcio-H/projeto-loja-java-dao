@@ -10,8 +10,8 @@ public class ProdutoDAO extends BaseDAO<Produto> implements InterfaceDAO<Produto
     public ProdutoDAO() {}
 
     @Override
-    public void create(Produto objeto) {
-        abstractCreate(objeto);
+    public Produto create(Produto objeto) {
+        return abstractCreate(objeto);
     }
 
     @Override
@@ -25,8 +25,8 @@ public class ProdutoDAO extends BaseDAO<Produto> implements InterfaceDAO<Produto
     }
 
     @Override
-    public void update(Produto objeto) {
-        abstractUpdate(objeto);
+    public Produto update(Produto objeto) {
+        return abstractUpdate(objeto);
     }
 
     @Override

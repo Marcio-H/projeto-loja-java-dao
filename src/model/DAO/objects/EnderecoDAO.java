@@ -10,8 +10,8 @@ public class EnderecoDAO extends BaseDAO<Endereco> implements InterfaceDAO<Ender
     public EnderecoDAO() {}
 
     @Override
-    public void create(Endereco objeto) {
-        abstractCreate(objeto);
+    public Endereco create(Endereco objeto) {
+        return abstractCreate(objeto);
     }
 
     @Override
@@ -25,8 +25,8 @@ public class EnderecoDAO extends BaseDAO<Endereco> implements InterfaceDAO<Ender
     }
 
     @Override
-    public void update(Endereco objeto) {
-        abstractUpdate(objeto);
+    public Endereco update(Endereco objeto) {
+        return abstractUpdate(objeto);
     }
 
     @Override

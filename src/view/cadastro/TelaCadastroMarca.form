@@ -46,7 +46,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="optionMenu" pref="742" max="32767" attributes="0"/>
+              <Component id="optionMenu" pref="796" max="32767" attributes="0"/>
               <Component id="head" alignment="0" max="32767" attributes="0"/>
               <Component id="form" alignment="0" max="32767" attributes="0"/>
           </Group>
@@ -143,9 +143,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="id">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -177,9 +174,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoNovoActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoCancelar">
               <Properties>
@@ -191,9 +185,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCancelarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoGravar">
               <Properties>
@@ -205,9 +196,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoGravarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoBuscar">
               <Properties>
@@ -219,9 +207,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoBuscarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoSair">
               <Properties>
@@ -233,9 +218,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoSairActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

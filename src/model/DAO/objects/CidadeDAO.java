@@ -8,8 +8,8 @@ import model.DAO.InterfaceDAO;
 public class CidadeDAO extends BaseDAO<Cidade> implements InterfaceDAO<Cidade>{
 
     @Override
-    public void create(Cidade objeto) {
-        this.abstractCreate(objeto);
+    public Cidade create(Cidade objeto) {
+        return this.abstractCreate(objeto);
     }
 
     @Override
@@ -23,8 +23,8 @@ public class CidadeDAO extends BaseDAO<Cidade> implements InterfaceDAO<Cidade>{
     }
 
     @Override
-    public void update(Cidade objeto) {
-        abstractUpdate(objeto);
+    public Cidade update(Cidade objeto) {
+        return abstractUpdate(objeto);
     }
 
     @Override

@@ -2,7 +2,6 @@ package view.cadastro;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class TelaCadastroTelefone extends javax.swing.JFrame {
 

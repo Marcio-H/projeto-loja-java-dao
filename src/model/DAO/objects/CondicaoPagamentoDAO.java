@@ -1,33 +1,34 @@
 package model.DAO.objects;
 
 import java.util.List;
+import model.DAO.BaseDAO;
 import model.bo.CondicaoPagamento;
 import model.DAO.InterfaceDAO;
 
-public class CondicaoPagamentoDAO implements InterfaceDAO<CondicaoPagamento> {
+public class CondicaoPagamentoDAO extends BaseDAO<CondicaoPagamento> implements InterfaceDAO<CondicaoPagamento> {
 
     @Override
-    public void create(CondicaoPagamento objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public CondicaoPagamento create(CondicaoPagamento objeto) {
+        return abstractCreate(objeto);
     }
 
     @Override
     public List<CondicaoPagamento> read() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return abstractRead(CondicaoPagamento.class);
     }
 
     @Override
     public CondicaoPagamento read(Long codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (CondicaoPagamento) abstractReadById(codigo, CondicaoPagamento.class);
     }
 
     @Override
-    public void update(CondicaoPagamento objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public CondicaoPagamento update(CondicaoPagamento objeto) {
+        return abstractUpdate(objeto);
     }
 
     @Override
     public void delete(CondicaoPagamento objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        abstractDelete(CondicaoPagamento.class, objeto.getId());
     }
 }

@@ -7,7 +7,7 @@ import model.DAO.InterfaceDAO;
 public class VendaDAO implements InterfaceDAO<Venda>{
 
     @Override
-    public void create(Venda objeto) {
+    public Venda create(Venda objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -22,7 +22,7 @@ public class VendaDAO implements InterfaceDAO<Venda>{
     }
 
     @Override
-    public void update(Venda objeto) {
+    public Venda update(Venda objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

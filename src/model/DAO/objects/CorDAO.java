@@ -5,11 +5,11 @@ import model.bo.Cor;
 import model.DAO.BaseDAO;
 import model.DAO.InterfaceDAO;
 
-public class CorDAO extends BaseDAO implements InterfaceDAO<Cor>{
+public class CorDAO extends BaseDAO<Cor> implements InterfaceDAO<Cor>{
 
     @Override
-    public void create(Cor objeto) {
-        this.abstractCreate(objeto);
+    public Cor create(Cor objeto) {
+        return this.abstractCreate(objeto);
     }
 
     @Override
@@ -23,8 +23,8 @@ public class CorDAO extends BaseDAO implements InterfaceDAO<Cor>{
     }
 
     @Override
-    public void update(Cor objeto) {
-        abstractUpdate(objeto);
+    public Cor update(Cor objeto) {
+        return abstractUpdate(objeto);
     }
 
     @Override

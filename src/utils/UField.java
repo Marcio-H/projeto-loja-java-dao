@@ -75,7 +75,7 @@ public class UField {
         if (hasAnnotationForeign(field)) {
             resultStr.append(getFieldNameFormmated(field));
         } else {
-            resultStr.append(field.getName());
+            resultStr.append(convertCameoCaseToSnakeCase(field.getName()));
         }
     }
 
