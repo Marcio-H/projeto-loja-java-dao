@@ -1,6 +1,6 @@
 package controller.cadastro;
 
-import controller.busca.ControllerBuscaCor;
+import controller.busca.ControllerBuscaTipoProduto;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import model.bo.TipoProduto;
@@ -36,7 +36,7 @@ public class ControllerCadastroTipoProduto {
         this.tela.setVisible(true);
     }
     
-    public TipoProduto getCor() {
+    public TipoProduto getTipoProduto() {
         try {
             tipoProduto.setId(Long.parseLong(tela.getId().getText()));
         } catch (Exception e) {}
@@ -45,7 +45,7 @@ public class ControllerCadastroTipoProduto {
         return tipoProduto;
     }
     
-    public void setCor(TipoProduto tipoProduto) {
+    public void setTipoProduto(TipoProduto tipoProduto) {
         this.tipoProduto.setId(tipoProduto.getId());
         this.tela.getId().setText(String.valueOf(tipoProduto.getId()));
         this.tipoProduto.setDescricao(tipoProduto.getDescricao());
@@ -94,7 +94,7 @@ public class ControllerCadastroTipoProduto {
             return;
         }
         try {
-            tipoProdutoService.createOrUpdate(getCor());
+            tipoProdutoService.createOrUpdate(getTipoProduto());
             setFormStatus(false);
             cleanForm();
         } catch (Exception e) {
@@ -112,7 +112,12 @@ public class ControllerCadastroTipoProduto {
     }
     
     private void buscarEventAction(MouseEvent evt) {
-//        ControllerBuscaCor buscaController = new ControllerBuscaCor(this);
+        ControllerBuscaTipoProduto busca = new ControllerBuscaTipoProduto(tipoProduto-> {
+           this.tela.getId().setText(String.valueOf(tipoProduto.getId()));
+           this.tela.getDescricaoTextField().setText(tipoProduto.getDescricao());
+           this.tipoProduto.setId(tipoProduto.getId());
+           this.tipoProduto.setDescricao(tipoProduto.getDescricao());
+        });
     }
     
     private void sairEventListener() {

@@ -3,20 +3,24 @@ package controller.cadastro;
 //import controller.busca.ControllerBuscaMarca;
 import controller.cadastro.ControllerCadastroTamanho;
 import controller.cadastro.ControllerCadastroMarca;
+import controller.cadastro.ControllerCadastroTipoProduto;
+import controller.busca.ControllerBuscaTamanho;
+import controller.busca.ControllerBuscaMarca;
+import controller.busca.ControllerBuscaTipoProduto;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import model.bo.Marca;
 import model.bo.Tamanho;
 import model.bo.TipoProduto;
 import model.bo.Produto;
-import service.EnderecoService;
+import service.ProdutoService;
 import view.cadastro.TelaCadastroProduto;
 
 public class ControllerCadastroProduto {
     
     private TelaCadastroProduto tela;
     private Produto produto;
-    private EnderecoService enderecoService;
+    private ProdutoService produtoService;
     
     public ControllerCadastroProduto() {
         tela = new TelaCadastroProduto();
@@ -29,7 +33,7 @@ public class ControllerCadastroProduto {
     }
     
     private void init() {
-        enderecoService = new EnderecoService();
+        produtoService = new ProdutoService();
         produto = new Produto();
         produto.setMarca(new Marca());
         produto.setTipoProduto(new TipoProduto());
@@ -39,13 +43,20 @@ public class ControllerCadastroProduto {
         gravarEventListener();
         buscarEventListener();
         sairEventListener();
-        cadastroBairroEventListener();
-        cadastroCidadeEventListener();
+        cadastroTamanhoEventListener();
+        cadastroMarcaEventListener();
+        cadastroTipoProdutoEventListener();
+        buscarTamanhoEventListener();
+        buscarMarcaEventListener();
+        buscarTipoProdutoEventListener();
         this.tela.getId().setEnabled(false);
+        this.tela.getTamanhoTextField().setEnabled(false);
+        this.tela.getMarcaTextField().setEnabled(false);
+        this.tela.getTipoProdutoTextField().setEnabled(false);
         setFormStatus(false);
     }
     
-    public Produto getEndereco() {
+    public Produto getProduto() {
         try {
             produto.setId(Long.parseLong(tela.getId().getText()));  
         } catch (Exception e) {}
@@ -55,13 +66,13 @@ public class ControllerCadastroProduto {
         return produto;
     }
     
-    public void setEndereco(Produto produto) {
+    public void setProduto(Produto produto) {
         this.produto.setId(produto.getId());
         this.tela.getId().setText(String.valueOf(produto.getId()));
         this.produto.setDescricao(produto.getDescricao());
         this.tela.getDescricaoTextField().setText(produto.getDescricao());
         this.produto.setValor(produto.getValor());
-        this.tela.getValorFormattedTextField().setText((String) produto.getValor());
+        this.tela.getValorFormattedTextField().setText(String.valueOf(produto.getValor()));
     }
     
     private void novoEventListener() {
@@ -106,7 +117,7 @@ public class ControllerCadastroProduto {
             return;
         }
         try {
-            enderecoService.createOrUpdate(getEndereco());
+            produtoService.createOrUpdate(getProduto());
             setFormStatus(false);
             cleanForm();
         } catch (Exception e) {
@@ -135,28 +146,85 @@ public class ControllerCadastroProduto {
         });
     }
 
-    private void cadastroBairroEventListener() {
-       this.tela.getBotaoAdicionarBairro().addMouseListener(new MouseAdapter() {
+    private void cadastroTamanhoEventListener() {
+       this.tela.getAdicionarTamanhoBotao().addMouseListener(new MouseAdapter() {
            public void mouseClicked(MouseEvent evt) {
-              cadastoBairroEventAction(evt);
+              cadastroTamanhoEventAction(evt);
            }
        });
     }
         
-    private void cadastroCidadeEventListener() {
-        this.tela.getBotaoAdicionarCidade().addMouseListener(new MouseAdapter() {
+    private void cadastroMarcaEventListener() {
+        this.tela.getAdicionarMarcaBotao().addMouseListener(new MouseAdapter() {
            public void mouseClicked(MouseEvent evt) {
-              cadastoCidadeEventAction(evt);
+              cadastroMarcaEventAction(evt);
+           }
+       });
+    }
+    
+    private void cadastroTipoProdutoEventListener() {
+        this.tela.getAdicionarTipoProdutoBotao().addMouseListener(new MouseAdapter() {
+           public void mouseClicked(MouseEvent evt) {
+              cadastroTipoProdutoEventAction(evt);
            }
        });
     }
 
-    private void cadastoCidadeEventAction(MouseEvent evt) {
-       ControllerCadastroCidade controllerCadastroCidade = new ControllerCadastroCidade();
+    private void buscarTamanhoEventListener() {
+       this.tela.getBuscarTamanhoBotao().addMouseListener(new MouseAdapter() {
+           public void mouseClicked(MouseEvent evt) {
+              buscarTamanhoEventAction(evt);
+           }
+       });
     }
 
-    private void cadastoBairroEventAction(MouseEvent evt) {
-       ControllerCadastroBairro controllerCadastroBairro = new ControllerCadastroBairro();
+    private void buscarMarcaEventListener() {
+        this.tela.getBuscarMarcaBotao().addMouseListener(new MouseAdapter() {
+           public void mouseClicked(MouseEvent evt) {
+              buscarMarcaEventAction(evt);
+           }
+       });
+    }
+
+    private void buscarTipoProdutoEventListener() {
+        this.tela.getBuscarTipoProdutoBotao().addMouseListener(new MouseAdapter() {
+           public void mouseClicked(MouseEvent evt) {
+              buscarTipoProdutoEventAction(evt);
+           }
+       });
+    }
+
+    private void cadastroMarcaEventAction(MouseEvent evt) {
+       ControllerCadastroMarca controllerCadastroMarca = new ControllerCadastroMarca();
+    }
+
+    private void cadastroTamanhoEventAction(MouseEvent evt) {
+       ControllerCadastroTamanho controllerCadastroTamanho = new ControllerCadastroTamanho();
+    }
+
+    private void cadastroTipoProdutoEventAction(MouseEvent evt) {
+       ControllerCadastroTipoProduto controllerCadastroTipoProduto = new ControllerCadastroTipoProduto();
+    }    
+    
+    private void buscarTamanhoEventAction(MouseEvent evt) {
+       ControllerBuscaTamanho con = new ControllerBuscaTamanho(tamanho -> {
+          this.tela.getTamanhoTextField().setText(tamanho.getDescricao());
+          this.produto.setTamanho(tamanho);
+       });
+    }
+    
+    private void buscarMarcaEventAction(MouseEvent evt) {
+        ControllerBuscaMarca con = new  ControllerBuscaMarca(marca -> {
+            this.tela.getMarcaTextField().setText(marca.getDescricao());
+            this.produto.setMarca(marca);
+        });
+    }
+
+   private void buscarTipoProdutoEventAction(MouseEvent evt) {
+        ControllerBuscaTipoProduto con = new  ControllerBuscaTipoProduto(tipoProduto -> {
+            this.tela.getTipoProdutoTextField().setText(tipoProduto.getDescricao());
+            this.produto.setTipoProduto(tipoProduto);
+        });
     }
 
     private void sairEventAction(MouseEvent evt) {
@@ -164,22 +232,35 @@ public class ControllerCadastroProduto {
     }
     
     public void setFormStatus(boolean status) {
-        this.tela.getLogradouro().setEnabled(status);
-        this.tela.getCep().setEnabled(status);
+        this.tela.getTamanhoTextField().setEnabled(status);
+        this.tela.getTipoProdutoTextField().setEnabled(status);
+        this.tela.getMarcaTextField().setEnabled(status);
+        this.tela.getValorFormattedTextField().setEnabled(status);
+        this.tela.getDescricaoTextField().setEnabled(status);
         this.tela.getBotaoNovo().setEnabled(!status);
         this.tela.getBotaoCancelar().setEnabled(status);
         this.tela.getBotaoGravar().setEnabled(status);
+        this.tela.getBuscarMarcaBotao().setEnabled(status);
+        this.tela.getBuscarTamanhoBotao().setEnabled(status);
+        this.tela.getBuscarTipoProdutoBotao().setEnabled(status);
+        this.tela.getAdicionarMarcaBotao().setEnabled(status);
+        this.tela.getAdicionarTamanhoBotao().setEnabled(status);
+        this.tela.getAdicionarTipoProdutoBotao().setEnabled(status);
     }
     
     private void cleanForm() {
         this.tela.getId().setText("");
-        this.tela.getCep().setText(""); 
-        this.tela.getLogradouro().setText("");
+        this.tela.getDescricaoTextField().setText(""); 
+        this.tela.getTamanhoTextField().setText("");
+        this.tela.getValorFormattedTextField().setText("");
+        this.tela.getMarcaTextField().setText("");
+        this.tela.getTipoProdutoTextField().setText("");
+        this.tela.getTamanhoTextField().setText("");
     }
     
     public static void main(String[] args) {
-        ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco();
+        ControllerCadastroProduto controllerCadastroProduto = new ControllerCadastroProduto();
         
-        controllerCadastroEndereco.tela.setVisible(true);
+        controllerCadastroProduto.tela.setVisible(true);
     }
 }

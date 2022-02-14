@@ -1,8 +1,9 @@
 package controller.busca;
 
-import controller.cadastro.ControllerCadastroMarca;
+import model.bo.Marca;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
 import service.MarcaService;
 import view.TelaBuscaMarca;
@@ -11,17 +12,11 @@ import view.TelaBuscaMarca;
 public class ControllerBuscaMarca {
     private TelaBuscaMarca tela;
     private MarcaService marcaService;
-    private ControllerCadastroMarca controllerCadastroMarca;
+    private Consumer<Marca> carregarCallBack;
 
-     public ControllerBuscaMarca(ControllerCadastroMarca controllerCadastroMarca) {
+     public ControllerBuscaMarca(Consumer<Marca> carregarCallBack) {
         tela = new TelaBuscaMarca();
-        this.controllerCadastroMarca = controllerCadastroMarca;
-        init();
-    }
-    
-    public ControllerBuscaMarca(TelaBuscaMarca tela, ControllerCadastroMarca controllerCadastroMarca) {
-        this.tela = tela;
-        this.controllerCadastroMarca = controllerCadastroMarca;
+        this.carregarCallBack = carregarCallBack;
         init();
     }
     
@@ -46,8 +41,7 @@ public class ControllerBuscaMarca {
         int index = tela.getTable().getSelectedRow();
         if (index >= 0) {
             Long id = (long) tela.getTable().getValueAt(index, 0);
-            controllerCadastroMarca.setCidade(marcaService.readById(id));
-            controllerCadastroMarca.setFormStatus(true);
+            carregarCallBack.accept(marcaService.readById(id));
             tela.dispose();
         }
     }
