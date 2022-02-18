@@ -1,33 +1,34 @@
 package model.DAO.objects;
 
 import java.util.List;
+import model.DAO.BaseDAO;
 import model.bo.Vendedor;
 import model.DAO.InterfaceDAO;
 
-public class VendedorDAO implements InterfaceDAO<Vendedor> {
+public class VendedorDAO extends BaseDAO<Vendedor> implements InterfaceDAO<Vendedor>{
 
     @Override
     public Vendedor create(Vendedor objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.abstractCreate(objeto);
     }
-
+    
     @Override
     public List<Vendedor> read() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return abstractRead(Vendedor.class);
     }
 
     @Override
     public Vendedor read(Long codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (Vendedor) abstractReadById(codigo, Vendedor.class);
     }
 
     @Override
     public Vendedor update(Vendedor objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return abstractUpdate(objeto);
     }
 
     @Override
     public void delete(Vendedor objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        abstractDelete(Vendedor.class, objeto.getId());
     }
 }

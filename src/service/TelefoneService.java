@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 import model.DAO.objects.TelefoneDAO;
 import model.bo.Fornecedor;
+import model.bo.Vendedor;
 import model.bo.Telefone;
 
 public class TelefoneService {
@@ -32,7 +33,10 @@ public class TelefoneService {
     public List<Telefone> findByFornecedor(Fornecedor fornecedor) {
         return telefoneDAO.findByFornecedor(fornecedor);
     }
-
+    
+    public List<Telefone> findByVendedor(Vendedor vendedor) {
+        return telefoneDAO.findByVendedor(vendedor);
+    }
     public void delete(Telefone deletedTelefone) {
         if (deletedTelefone.getId() !=  null) {
             telefoneDAO.delete(deletedTelefone);
