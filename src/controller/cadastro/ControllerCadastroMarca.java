@@ -33,6 +33,7 @@ public class ControllerCadastroMarca {
         sairEventListener();
         this.tela.getId().setEnabled(false);
         setFormStatus(false);
+        this.tela.setVisible(true);
     }
     
     public Marca getCidade() {
@@ -113,7 +114,12 @@ public class ControllerCadastroMarca {
     }
     
     private void buscarEventAction(MouseEvent evt) {
-        ControllerBuscaMarca buscaController = new ControllerBuscaMarca(this);
+        ControllerBuscaMarca buscaController = new ControllerBuscaMarca(marca -> {
+            this.marca.setId(marca.getId());
+            this.tela.getId().setText(String.valueOf(marca.getId()));
+            this.marca.setDescricao(marca.getDescricao());
+            this.tela.getDescricaoTextField().setText(marca.getDescricao());
+        });
     }
     
     private void sairEventListener() {

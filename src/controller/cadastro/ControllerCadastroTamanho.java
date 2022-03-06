@@ -33,6 +33,7 @@ public class ControllerCadastroTamanho {
         sairEventListener();
         this.tela.getId().setEnabled(false);
         setFormStatus(false);
+        this.tela.setVisible(true);
     }
     
     public Tamanho getCidade() {
@@ -113,7 +114,12 @@ public class ControllerCadastroTamanho {
     }
     
     private void buscarEventAction(MouseEvent evt) {
-        ControllerBuscaTamanho buscaController = new ControllerBuscaTamanho(this);
+        ControllerBuscaTamanho buscaController = new ControllerBuscaTamanho(tamanho -> {
+            this.tamanho.setId(tamanho.getId());
+            this.tela.getId().setText(String.valueOf(tamanho.getId()));
+            this.tamanho.setDescricao(tamanho.getDescricao());
+            this.tela.getDescricaoTextField().setText(tamanho.getDescricao());
+        });
     }
     
     private void sairEventListener() {

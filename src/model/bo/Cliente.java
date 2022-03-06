@@ -1,32 +1,36 @@
 package model.bo;
 
+import annotations.Foreign;
 import annotations.Id;
-import java.time.LocalDate;
+import java.util.Date;
+import model.bo.Endereco;
 
-public class Cliente extends Pessoa {
+public class Cliente {
 
     @Id
     private Long id;
-    private LocalDate dataNascimento;
+    private Date dataNascimento;
     private String cpf;
     private String rg;
+    private String nome;
+    private String email;
+    private String complementoEndereco;
+    
+    @Foreign
+    private Endereco endereco;
 
     public Cliente() {
+      this.endereco = new Endereco();
     }
 
-    public Cliente(LocalDate dataNascimento, String cpf, String rg, String nome, String email, String complementoEndereco, Endereco endereco) {
-        super(nome, email, complementoEndereco, endereco);
+    public Cliente(Date dataNascimento, String cpf, String rg, String nome, String email, String complementoEndereco, Endereco endereco) {
+        this.nome = nome;
+        this.email = email;
+        this.complementoEndereco = complementoEndereco;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
         this.rg = rg;
-    }
-
-    public Cliente(Long id, LocalDate dataNascimento, String cpf, String rg, String nome, String email, String complementoEndereco, Endereco endereco) {
-        super(nome, email, complementoEndereco, endereco);
-        this.id = id;
-        this.dataNascimento = dataNascimento;
-        this.cpf = cpf;
-        this.rg = rg;
+        this.endereco = endereco;
     }
 
     public Long getId() {
@@ -37,19 +41,43 @@ public class Cliente extends Pessoa {
         this.id = id;
     }
 
-    public LocalDate getDataNascimento() {
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getComplementoEndereco() {
+        return complementoEndereco;
+    }
+
+    public void setComplementoEndereco(String complementoEndereco) {
+        this.complementoEndereco = complementoEndereco;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public LocalDate getDatatNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDatatNascimento(LocalDate dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

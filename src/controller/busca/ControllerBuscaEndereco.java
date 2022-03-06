@@ -1,6 +1,5 @@
 package controller.busca;
 
-import controller.cadastro.ControllerCadastroEndereco;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;

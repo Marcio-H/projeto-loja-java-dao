@@ -1,6 +1,7 @@
 package utils;
 
 import java.lang.reflect.Field;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,9 +70,10 @@ public class UType {
      * para Statement sql
      */
     private static Class<?>[] getStatementSupportedTypes() {
-        Class<?>[] statementsSupported = new Class<?>[1];
+        Class<?>[] statementsSupported = new Class<?>[2];
 
         statementsSupported[0] = String.class;
+        statementsSupported[1] = Date.class;
         return statementsSupported;
     }
 }

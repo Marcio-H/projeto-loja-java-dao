@@ -421,7 +421,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         this.adicionarMarcaBotao = adicionarMarcaBotao;
     }
 
-    public JButton getAdicionarTamanhoBotao() {
+    public javax.swing.JButton getAdicionarTamanhoBotao() {
         return adicionarTamanhoBotao;
     }
 

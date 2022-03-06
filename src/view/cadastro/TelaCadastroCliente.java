@@ -36,7 +36,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         logradouroTextField = new javax.swing.JTextField();
         cidadeTextField = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        ufTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -130,7 +130,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                             .addComponent(cidadeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6)
+                            .addComponent(ufTextField)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addGap(0, 0, Short.MAX_VALUE))))
@@ -171,7 +171,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                     .addComponent(cepTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(logradouroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cidadeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ufTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -197,7 +197,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         jLabel13.setText("CPF");
 
-        dataNascimentolFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
+        try {
+            dataNascimentolFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         jLabel14.setText("Data de nascimento");
 
@@ -389,12 +393,12 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField logradouroTextField;
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JPanel optionMenu;
     private javax.swing.JFormattedTextField rgFormattedTextField;
     private javax.swing.JComboBox<String> telefoneComboBox;
+    private javax.swing.JTextField ufTextField;
     // End of variables declaration//GEN-END:variables
     
     public JButton getBotaoBuscar() {
@@ -457,6 +461,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         return dataNascimentolFormattedTextField;
     }
 
+    public JFormattedTextField getRgFormattedTextField() {
+       return rgFormattedTextField;
+    }
+
     public JButton getDeletarTelefoneBotao() {
         return deletarTelefoneBotao;
     }
@@ -471,6 +479,14 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     public JTextField getNomeTextField() {
         return nomeTextField;
+    }
+
+    public JTextField getUfTextFIeld() {
+       return ufTextField;
+    }
+    
+    public javax.swing.JTextField getCidadeTextField() {
+        return cidadeTextField;
     }
 
     public JComboBox<String> getTelefoneComboBox() {

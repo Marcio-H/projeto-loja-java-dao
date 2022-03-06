@@ -1,28 +1,28 @@
 package controller.busca;
 
-import model.bo.Tamanho;
+import model.bo.TipoProduto;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
-import service.TamanhoService;
-import view.busca.TelaBuscaTamanho;
+import service.TipoProdutoService;
+import view.busca.TelaBuscaCor;
 
-public class ControllerBuscaTamanho {
-    
-    private TelaBuscaTamanho tela;
-    private TamanhoService tamanhoService;
-    private Consumer<Tamanho> carregarCallBack;
-    
-    public ControllerBuscaTamanho(Consumer<Tamanho> carregarCallBack) {
-        tela = new TelaBuscaTamanho();
+
+public class ControllerBuscaTipoProduto {
+    private TelaBuscaCor tela;
+    private TipoProdutoService tipoProdutoService;
+    private Consumer<TipoProduto> carregarCallBack;
+
+     public ControllerBuscaTipoProduto(Consumer<TipoProduto> carregarCallBack) {
+        tela = new TelaBuscaCor();
         this.carregarCallBack = carregarCallBack;
         init();
     }
     
     private void init() {
         tela.setVisible(true);
-        tamanhoService = new TamanhoService();
+        tipoProdutoService = new TipoProdutoService();
         addRows();
         this.tela.getTable().setSelectionMode(0);
         carregarEventListener();
@@ -41,7 +41,7 @@ public class ControllerBuscaTamanho {
         int index = tela.getTable().getSelectedRow();
         if (index >= 0) {
             Long id = (long) tela.getTable().getValueAt(index, 0);
-            carregarCallBack.accept(tamanhoService.readById(id));
+            carregarCallBack.accept(tipoProdutoService.readById(id));
             tela.dispose();
         }
     }
@@ -60,9 +60,9 @@ public class ControllerBuscaTamanho {
     
     private void addRows() {
         DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
-        tamanhoService.read().stream().forEach(tamanho -> {
-            tabela.addRow(new Object[]{ tamanho.getId(), 
-                                        tamanho.getDescricao()
+        tipoProdutoService.read().stream().forEach(tipoProduto -> {
+            tabela.addRow(new Object[]{ tipoProduto.getId(), 
+                                        tipoProduto.getDescricao()
             });
         });
     }
