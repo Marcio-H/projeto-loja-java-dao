@@ -15,10 +15,10 @@ public class TelaBuscaCliente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         body = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         optionMenu = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        carregar = new javax.swing.JButton();
+        sair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -36,7 +36,7 @@ public class TelaBuscaCliente extends javax.swing.JFrame {
         jLabel2.setPreferredSize(new java.awt.Dimension(41, 80));
         head.add(jLabel2, java.awt.BorderLayout.CENTER);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -59,16 +59,16 @@ public class TelaBuscaCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(75);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(10);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(75);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(30);
+        table.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(table);
+        if (table.getColumnModel().getColumnCount() > 0) {
+            table.getColumnModel().getColumn(0).setMinWidth(75);
+            table.getColumnModel().getColumn(0).setPreferredWidth(10);
+            table.getColumnModel().getColumn(0).setMaxWidth(75);
+            table.getColumnModel().getColumn(1).setResizable(false);
+            table.getColumnModel().getColumn(2).setResizable(false);
+            table.getColumnModel().getColumn(3).setResizable(false);
+            table.getColumnModel().getColumn(3).setPreferredWidth(30);
         }
 
         javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
@@ -84,26 +84,26 @@ public class TelaBuscaCliente extends javax.swing.JFrame {
 
         optionMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/load.png"))); // NOI18N
-        jButton1.setText("Carregar");
+        carregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/load.png"))); // NOI18N
+        carregar.setText("Carregar");
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/exit.png"))); // NOI18N
-        jButton2.setText("Sair");
+        sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/exit.png"))); // NOI18N
+        sair.setText("Sair");
 
         javax.swing.GroupLayout optionMenuLayout = new javax.swing.GroupLayout(optionMenu);
         optionMenu.setLayout(optionMenuLayout);
         optionMenuLayout.setHorizontalGroup(
             optionMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(optionMenuLayout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(carregar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(sair, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         optionMenuLayout.setVerticalGroup(
             optionMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(optionMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(carregar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sair, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -140,13 +140,25 @@ public class TelaBuscaCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
+    private javax.swing.JButton carregar;
     private javax.swing.JPanel head;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel optionMenu;
+    private javax.swing.JButton sair;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JTable getTable() {
+        return table;
+    }
+    
+    public javax.swing.JButton getCarregar() {
+        return carregar;
+    }
+    
+    public javax.swing.JButton getSair() {
+        return sair;
+    }
 }

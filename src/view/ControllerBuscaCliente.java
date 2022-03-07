@@ -1,8 +1,8 @@
 package view;
 
-public class FormModeloBuscas extends javax.swing.JFrame {
+public class ControllerBuscaCliente extends javax.swing.JFrame {
 
-    public FormModeloBuscas() {
+    public ControllerBuscaCliente() {
         initComponents();
     }
 

@@ -1,11 +1,10 @@
 package controller.cadastro;
 
+import controller.busca.ControllerBuscaCliente;
 import controller.busca.ControllerBuscaEndereco;
-import controller.busca.ControllerBuscaFornecedor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -25,6 +24,8 @@ public class ControllerCadastroCliente {
     private ClienteService clienteService;
     private TelefoneService telefoneService;
     private List<Telefone> telefones;
+    
+    private static final SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 
     public ControllerCadastroCliente() {
         tela = new TelaCadastroCliente();
@@ -32,7 +33,7 @@ public class ControllerCadastroCliente {
     }
 
     public Cliente getCliente() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        
         try {
             cliente.setId(Long.parseLong(tela.getId().getText()));
         } catch (Exception e) {
@@ -41,19 +42,28 @@ public class ControllerCadastroCliente {
         cliente.setEmail(tela.getEmailTextField().getText());
         cliente.setComplementoEndereco(tela.getComplementoTextField().getText());
         cliente.setCpf(tela.getCpfFormattedTextField().getText());
+        cliente.setRg(tela.getRgFormattedTextField().getText());
+        
         try {
-            cliente.setDataNascimento(
-                formatter.parse(tela.getDataNascimentolFormattedTextField().getText())
-            );
+            java.util.Date dataNascimento = formatter.parse(tela.getDataNascimentolFormattedTextField().getText());
+            cliente.setDataNascimento(new java.sql.Date(dataNascimento.getTime()));
         } catch(Exception e) {
             e.printStackTrace();
         }
+        
         return cliente;
     }
     
     public void setCliente(Cliente cliente) {
         this.cliente.setId(cliente.getId());
         tela.getId().setText(cliente.getId().toString());
+        
+        this.cliente.setDataNascimento(cliente.getDataNascimento());
+        java.util.Date date = new java.util.Date(cliente.getDataNascimento().getTime());
+        tela.getDataNascimentolFormattedTextField().setText(formatter.format(date));
+        
+        this.cliente.setCpf(cliente.getCpf());
+        tela.getCpfFormattedTextField().setText(cliente.getCpf());
         this.cliente.setNome(cliente.getNome());
         tela.getNomeTextField().setText(cliente.getNome());
         this.cliente.setEmail(cliente.getEmail());
@@ -172,14 +182,14 @@ public class ControllerCadastroCliente {
     }
 
     private void buscarEventAction(MouseEvent evt) {
-//        ControllerBuscaFornecedor buscaController = new ControllerBuscaFornecedor(cliente -> {
-//            setCliente(cliente);
-//            telefones.addAll(telefoneService.findByFornecedor(cliente));
-//            telefones.forEach(telefone -> {
-//                tela.getTelefoneComboBox().addItem(telefone.getTelefone());
-//            });
-//            setFormStatus(true);
-//        });
+        ControllerBuscaCliente buscaController = new ControllerBuscaCliente(cliente -> {
+            setCliente(cliente);
+            telefones.addAll(telefoneService.findByCliente(cliente));
+            telefones.forEach(telefone -> {
+                tela.getTelefoneComboBox().addItem(telefone.getTelefone());
+            });
+            setFormStatus(true);
+        });
     }
 
     private void sairEventAction(MouseEvent evt) {
@@ -262,6 +272,8 @@ public class ControllerCadastroCliente {
         tela.getBuscarEnderecoBotao().setEnabled(status);
         tela.getAdicionarEnderecoBotao().setEnabled(status);
         tela.getAdicionarTelefoneBotao().setEnabled(status);
+        tela.getCpfFormattedTextField().setEnabled(status);
+        tela.getDataNascimentolFormattedTextField().setEnabled(status);
     }
 
     private void setFieldsUnable() {

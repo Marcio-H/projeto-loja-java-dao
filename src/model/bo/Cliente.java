@@ -2,18 +2,23 @@ package model.bo;
 
 import annotations.Foreign;
 import annotations.Id;
-import java.util.Date;
-import model.bo.Endereco;
+import java.sql.Date;
 
 public class Cliente {
 
     @Id
     private Long id;
+    
     private Date dataNascimento;
+    
     private String cpf;
+    
     private String rg;
+    
     private String nome;
+    
     private String email;
+    
     private String complementoEndereco;
     
     @Foreign
@@ -39,6 +44,30 @@ public class Cliente {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
     }
 
     public String getNome() {
@@ -72,28 +101,6 @@ public class Cliente {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getRg() {
-        return rg;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
+    
+    
 }
