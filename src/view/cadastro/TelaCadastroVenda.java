@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.cadastro;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -13,12 +13,12 @@ import javax.swing.JTextField;
  *
  * @author marcio.junior
  */
-public class FormModeloCadastros extends javax.swing.JFrame {
+public class TelaCadastroVenda extends javax.swing.JFrame {
 
     /**
      * Creates new form FormModeloCadastros
      */
-    public FormModeloCadastros() {
+    public TelaCadastroVenda() {
         initComponents();
     }
 
@@ -545,20 +545,20 @@ public class FormModeloCadastros extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormModeloCadastros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormModeloCadastros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormModeloCadastros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormModeloCadastros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormModeloCadastros().setVisible(true);
+                new TelaCadastroVenda().setVisible(true);
             }
         });
     }
@@ -614,30 +614,6 @@ public class FormModeloCadastros extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
     
-    public JButton getBotaoBuscar() {
-        return botaoBuscar;
-    }
-
-    public JButton getBotaoCancelar() {
-        return botaoCancelar;
-    }
-
-    public JButton getBotaoGravar() {
-        return botaoGravar;
-    }
-
-    public JButton getBotaoNovo() {
-        return botaoNovo;
-    }
-
-    public JButton getBotaoSair() {
-        return botaoSair;
-    }
-
-    public JTextField getId() {
-        return id;
-    }
-
     public JPanel getForm() {
         return form;
     }
