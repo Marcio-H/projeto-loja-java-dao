@@ -1,20 +1,31 @@
 package model.bo;
 
+import annotations.Foreign;
+import annotations.Id;
 import java.time.LocalDateTime;
 
 public class Venda {
-
+    
+    @Id
     private Long id;
     private String serie;
     private LocalDateTime criadoNo;
     private float desconto;
     private float total;
+
+    @Foreign
     private Cliente cliente;
+    @Foreign
     private CondicaoPagamento condicaoPagamento;
     private int diaVencimentoParcela;
+
+    @Foreign
     private Vendedor vendedor;
 
     public Venda() {
+      this.cliente = new Cliente();
+      this.condicaoPagamento = new CondicaoPagamento();
+      this.vendedor = new Vendedor();
     }
 
     public Long getId() {
