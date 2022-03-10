@@ -1,13 +1,10 @@
 package controller.cadastro;
 
-import controller.busca.ControllerBuscaBairro;
-import controller.busca.ControllerBuscaCidade;
-import controller.busca.ControllerBuscaVenda;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
-import model.bo.Bairro;
-import model.bo.Cidade;
+import javax.swing.table.DefaultTableModel;
+import model.bo.CondicaoPagamento;
+import model.bo.Cliente;
+import model.bo.Vendedor;
 import model.bo.Venda;
 import service.VendaService;
 import view.cadastro.TelaCadastroVenda;
@@ -36,36 +33,68 @@ public class ControllerCadastroVenda {
 
     public void setVenda(Venda venda) {
         this.venda.setId(venda.getId());
-        this.tela.getId().setText(String.valueOf(venda.getId()));
-        this.venda.setCep(venda.getCep());
-        this.tela.getCep().setText(venda.getCep());
-        this.venda.setLogradouro(venda.getLogradouro());
-        this.tela.getLogradouro().setText(venda.getLogradouro());
+        this.venda.setTotal(venda.getTotal());
+        this.venda.setDesconto(venda.getDesconto());
+//        this.tela.getId().setText(String.valueOf(venda.getId()));
+//        this.venda.setCep(venda.getCep());
+//        this.tela.getCep().setText(venda.getCep());
+//        this.venda.setLogradouro(venda.getLogradouro());
+//        this.tela.getLogradouro().setText(venda.getLogradouro());
 
-        if (venda.getBairro() != null) {
-            setBairro(venda.getBairro());
+        if (venda.getCliente()!= null) {
+            setCLiente(venda.getCliente());
         }
-        if (venda.getCidade() != null) {
-            setCidade(venda.getCidade());
+        if (venda.getCondicaoPagamento() != null) {
+            setCondicaoPagamento(venda.getCondicaoPagamento());
+        }
+
+        if(venda.getVendedor() != null) {
+            setVendedor(venda.getVendedor());
         }
     }
 
-    private void setBairro(Bairro bairro) {
-        Bairro vendaBairro = venda.getBairro();
+    private void setCLiente(Cliente cliente) {
+        Cliente vendaCliente = venda.getCliente();
 
-        vendaBairro.setId(bairro.getId());
-        vendaBairro.setDescricao(bairro.getDescricao());
-        tela.getDescricaoBairro().setText(bairro.getDescricao());
+         vendaCliente.setId(cliente.getId());
+         vendaCliente.setCpf(cliente.getCpf());
+         vendaCliente.setDataNascimento(cliente.getDataNascimento());
+         vendaCliente.setEmail(cliente.getEmail());
+         vendaCliente.setCpf(cliente.getCpf());
+         vendaCliente.setRg(cliente.getEmail());
+         vendaCliente.setComplementoEndereco(cliente.getComplementoEndereco());
+         vendaCliente.setEndereco(cliente.getEndereco());
+         vendaCliente.setNome(cliente.getNome());
+
+         tela.getIdClienteTextField().setText(String.valueOf(cliente.getId()));
+         tela.getNomeClienteTextField().setText(cliente.getNome());
     }
 
-    private void setCidade(Cidade cidade) {
-        Cidade vendaCidade = venda.getCidade();
+    private void setCondicaoPagamento(CondicaoPagamento condicaoPagamento) {
+        CondicaoPagamento vendaCondicaoPagamento = venda.getCondicaoPagamento();
  
-        vendaCidade.setId(cidade.getId());
-        vendaCidade.setDescricao(cidade.getDescricao());
-        tela.getDescricaoCidade().setText(cidade.getDescricao());
-        vendaCidade.setUf(cidade.getUf());
-        tela.getUfCidade().setText(cidade.getUf());
+        vendaCondicaoPagamento.setId(condicaoPagamento.getId());
+        vendaCondicaoPagamento.setDescricao(condicaoPagamento.getDescricao());
+        vendaCondicaoPagamento.setNumeroDiasAtePrimeiraParcela(condicaoPagamento.getNumeroDiasAtePrimeiraParcela());
+        vendaCondicaoPagamento.setNumeroDiasEntreParcelas(condicaoPagamento.getNumeroDiasEntreParcelas());
+
+        tela.getIdCondicaoPagamentoTextField().setText(String.valueOf(condicaoPagamento.getId()));
+        tela.getDescricaoCondicaoPagamentoTextField().setText(condicaoPagamento.getDescricao());
+    }
+
+    private void setVendedor(Vendedor vendedor) {
+        Vendedor vendaVendedor = venda.getVendedor();
+ 
+        vendaVendedor.setId(vendedor.getId());
+        vendaVendedor.setEmail(vendedor.getEmail());
+        vendaVendedor.setComplementoEndereco(vendedor.getComplementoEndereco());
+        vendaVendedor.setEndereco(vendedor.getEndereco());
+        vendaVendedor.setNome(vendedor.getNome());
+        vendaVendedor.setPercentagemComissaoRecebimento(vendedor.getPercentagemComissaoRecebimento());
+        vendaVendedor.setPercentagemComissaoVenda(vendedor.getPercentagemComissaoVenda());
+
+        tela.getIdVendedorTextField().setText(String.valueOf(vendedor.getId()));
+        tela.getNomeVendedorTextField().setText(vendedor.getNome());
     }
 
     private void novoEventListener() {
@@ -116,10 +145,10 @@ public class ControllerCadastroVenda {
         });
     }
 
-    private void adicionarCidadeEventListener() {
-        this.tela.getBotaoAdicionarCidade().addMouseListener(new MouseAdapter() {
+    private void adicionarCondicaoPagamentoEventListener() {
+        this.tela.getBotaoAdicionarCondicaoPagamento().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                adicionarCidadeEventAction(evt);
+                adicionarCondicaoPagamentoEventAction(evt);
             }
         });
     }
@@ -132,18 +161,18 @@ public class ControllerCadastroVenda {
         });
     }
     
-    private void buscarCidadeEventListener() {
-        tela.getBotaoBuscarCidade().addMouseListener(new MouseAdapter() {
+    private void buscarCondicaoPagamentoEventListener() {
+        tela.getBotaoBuscarCondicaoPagamento().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                buscarCidadeEventAction(evt);
+                buscarCondicaoPagamentoEventAction(evt);
             }
         });
     }
     
-    private void buscarCidadeEventAction(MouseEvent evt) {
-        if (tela.getBotaoBuscarCidade().isEnabled()) {
-            ControllerBuscaCidade con = new ControllerBuscaCidade(cidade -> {
-                setCidade(cidade);
+    private void buscarCondicaoPagamentoEventAction(MouseEvent evt) {
+        if (tela.getBotaoBuscarCondicaoPagamento().isEnabled()) {
+            ControllerBuscaCondicaoPagamento con = new ControllerBuscaCondicaoPagamento(cidade -> {
+                setCondicaoPagamento(cidade);
                 setFormStatus(true);
             });
         }
@@ -193,8 +222,8 @@ public class ControllerCadastroVenda {
         });
     }
 
-    private void adicionarCidadeEventAction(MouseEvent evt) {
-        ControllerCadastroCidade controllerCadastroCidade = new ControllerCadastroCidade();
+    private void adicionarCondicaoPagamentoEventAction(MouseEvent evt) {
+        ControllerCadastroCondicaoPagamento controllerCadastroCondicaoPagamento = new ControllerCadastroCondicaoPagamento();
     }
 
     private void cadastoBairroEventAction(MouseEvent evt) {
@@ -205,32 +234,25 @@ public class ControllerCadastroVenda {
         this.tela.dispose();
     }
 
-    public void setFormStatus(boolean status) {
-        tela.getLogradouro().setEnabled(status);
-        tela.getCep().setEnabled(status);
-        tela.getBotaoNovo().setEnabled(!status);
-        tela.getBotaoCancelar().setEnabled(status);
-        tela.getBotaoGravar().setEnabled(status);
-        tela.getBotaoAdicionarBairro().setEnabled(status);
-        tela.getBotaoBuscarBairro().setEnabled(status);
-        tela.getBotaoAdicionarCidade().setEnabled(status);
-        tela.getBotaoBuscarCidade().setEnabled(status);
-    }
-
     private void cleanForm() {
-        tela.getId().setText("");
-        tela.getCep().setText("");
-        tela.getLogradouro().setText("");
-        tela.getDescricaoBairro().setText("");
-        tela.getDescricaoCidade().setText("");
-        tela.getUfCidade().setText("");
+        tela.getIdClienteTextField().setText("");
+        tela.getIdCondicaoPagamentoTextField().setText("");
+        tela.getIdVendedorTextField().setText("");
+        tela.getNomeClienteTextField().setText("");
+        tela.getNomeVendedorTextField().setText("");
+        tela.getDescricaoCondicaoPagamentoTextField().setText("");
+        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTableProdutos().getModel();
+        tabela.setNumRows(0);
+        tela.getValotTotal().setText("R$ 00,00");   
     }
 
     private void setDisabledForms() {
-        tela.getId().setEnabled(false);
-        tela.getDescricaoBairro().setEditable(false);
-        tela.getDescricaoCidade().setEditable(false);
-        tela.getUfCidade().setEditable(false);
+        tela.getIdClienteTextField().setEnabled(false);
+        tela.getIdCondicaoPagamentoTextField().setEditable(false);
+        tela.getIdVendedorTextField().setEditable(false);
+        tela.getNomeClienteTextField().setEditable(false);
+        tela.getNomeVendedorTextField().setEditable(false);
+        tela.getDescricaoCondicaoPagamentoTextField().setEditable(false);
     }
     
      private void init() {
@@ -243,10 +265,9 @@ public class ControllerCadastroVenda {
         sairEventListener();
         adicionarBairroEventListener();
         buscarBairroEventListener();
-        buscarCidadeEventListener();
-        adicionarCidadeEventListener();
+        buscarCondicaoPagamentoEventListener();
+        adicionarCondicaoPagamentoEventListener();
         setDisabledForms();
-        setFormStatus(false);
         tela.setVisible(true);
     }
 

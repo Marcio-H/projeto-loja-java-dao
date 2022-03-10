@@ -45,7 +45,7 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaProdutos = new javax.swing.JTable();
         jLabel19 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -137,7 +137,7 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botaoBuscaProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(botaoBuscaProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(quantidadeTextField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(codigoBarraProdutoTextField, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
@@ -145,7 +145,7 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -161,20 +161,20 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(45);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(45);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(45);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(45);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(45);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(45);
-            jTable1.getColumnModel().getColumn(3).setMinWidth(70);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(70);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(70);
-            jTable1.getColumnModel().getColumn(4).setMinWidth(70);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(70);
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(70);
+        jScrollPane1.setViewportView(tabelaProdutos);
+        if (tabelaProdutos.getColumnModel().getColumnCount() > 0) {
+            tabelaProdutos.getColumnModel().getColumn(0).setMinWidth(45);
+            tabelaProdutos.getColumnModel().getColumn(0).setPreferredWidth(45);
+            tabelaProdutos.getColumnModel().getColumn(0).setMaxWidth(45);
+            tabelaProdutos.getColumnModel().getColumn(2).setMinWidth(45);
+            tabelaProdutos.getColumnModel().getColumn(2).setPreferredWidth(45);
+            tabelaProdutos.getColumnModel().getColumn(2).setMaxWidth(45);
+            tabelaProdutos.getColumnModel().getColumn(3).setMinWidth(70);
+            tabelaProdutos.getColumnModel().getColumn(3).setPreferredWidth(70);
+            tabelaProdutos.getColumnModel().getColumn(3).setMaxWidth(70);
+            tabelaProdutos.getColumnModel().getColumn(4).setMinWidth(70);
+            tabelaProdutos.getColumnModel().getColumn(4).setPreferredWidth(70);
+            tabelaProdutos.getColumnModel().getColumn(4).setMaxWidth(70);
         }
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -377,7 +377,7 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
 
         valorTotalLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         valorTotalLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        valorTotalLabel.setText("R$:00,00");
+        valorTotalLabel.setText("R$ 00,00");
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel17.setText("[F2] Cancelar Venda");
@@ -540,13 +540,67 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField nomeClienteTextField;
     private javax.swing.JTextField nomeVendedorTextField;
     private javax.swing.JTextField quantidadeTextField;
+    private javax.swing.JTable tabelaProdutos;
     private javax.swing.JLabel valorTotalLabel;
     // End of variables declaration//GEN-END:variables
-    
+
+    public JButton getBotaoBuscaCliente() {
+        return botaoBuscaCliente;
+    }
+
+    public JButton getBotaoBuscaCondicaoPagamento() {
+        return botaoBuscaCondicaoPagamento;
+    }
+
+    public JButton getBotaoBuscaProduto() {
+        return botaoBuscaProduto;
+    }
+
+    public JButton getBotaoBuscaVendedor() {
+        return botaoBuscaVendedor;
+    }
+
+    public JTextField getCodigoBarraProdutoTextField() {
+        return codigoBarraProdutoTextField;
+    }
+
+    public JTextField getDescricaoCondicaoPagamentoTextField() {
+        return descricaoCondicaoPagamentoTextField;
+    }
+
+    public JTextField getIdClienteTextField() {
+        return idClienteTextField;
+    }
+
+    public JTextField getIdCondicaoPagamentoTextField() {
+        return idCondicaoPagamentoTextField;
+    }
+
+    public JTextField getIdVendedorTextField() {
+        return idVendedorTextField;
+    }
+
+    public JTextField getNomeClienteTextField() {
+        return nomeClienteTextField;
+    }
+
+    public JTextField getNomeVendedorTextField() {
+        return nomeVendedorTextField;
+    }
+
+    public JTextField getQuantidadeTextField() {
+        return quantidadeTextField;
+    }
+        
+   public javax.swing.JTable getTableProdutos() {
+       return tabelaProdutos;
+   }
+   public javax.swing.JLabel getValotTotal() {
+       return valorTotalLabel;
+   }
     public JPanel getForm() {
         return form;
     }
