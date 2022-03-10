@@ -2,14 +2,14 @@ package model.bo;
 
 import annotations.Foreign;
 import annotations.Id;
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 public class Venda {
     
     @Id
     private Long id;
     private String serie;
-    private LocalDateTime criadoNo;
+    private Date criadoNo;
     private float desconto;
     private float total;
 
@@ -44,11 +44,11 @@ public class Venda {
         this.serie = serie;
     }
 
-    public LocalDateTime getCriadoNo() {
+    public Date getCriadoNo() {
         return criadoNo;
     }
 
-    public void setCriadoNo(LocalDateTime criadoNo) {
+    public void setCriadoNo(Date criadoNo) {
         this.criadoNo = criadoNo;
     }
 

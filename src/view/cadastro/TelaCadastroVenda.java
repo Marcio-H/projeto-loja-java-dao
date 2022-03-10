@@ -5,9 +5,15 @@
  */
 package view.cadastro;
 
+import static java.awt.event.KeyEvent.VK_ENTER;
+import static java.awt.event.KeyEvent.VK_F1;
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import static javax.swing.JComponent.WHEN_FOCUSED;
+import static javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import static javax.swing.KeyStroke.getKeyStroke;
 
 /**
  *
@@ -47,12 +53,13 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaProdutos = new javax.swing.JTable();
         jLabel19 = new javax.swing.JLabel();
+        botaoCancelaItem = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        idClienteTextField = new javax.swing.JTextField();
+        nomeClienteTextField = new javax.swing.JTextField();
         botaoBuscaCliente = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        nomeClienteTextField = new javax.swing.JTextField();
+        idClienteTextField = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         botaoBuscaVendedor = new javax.swing.JButton();
@@ -70,8 +77,8 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         valorTotalLabel = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        botaoCancelarVenda = new javax.swing.JButton();
+        botaoFinalizarVenda = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -178,7 +185,16 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
         }
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel19.setText("[F4] Cancelar Item Faturado");
+
+        botaoCancelaItem.setBackground(new java.awt.Color(204, 204, 204));
+        botaoCancelaItem.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        botaoCancelaItem.setText("[F4] Cancelar Item Faturado");
+        botaoCancelaItem.setBorder(null);
+        botaoCancelaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCancelaItemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -190,6 +206,8 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botaoCancelaItem)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -199,7 +217,9 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel19)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(botaoCancelaItem))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -252,7 +272,7 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(idClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botaoBuscaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -263,7 +283,7 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(idClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +309,7 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(idClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(botaoBuscaCliente)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
@@ -299,7 +319,7 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(idClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nomeClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -379,37 +399,52 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
         valorTotalLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         valorTotalLabel.setText("R$ 00,00");
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel17.setText("[F2] Cancelar Venda");
+        botaoCancelarVenda.setBackground(new java.awt.Color(204, 204, 204));
+        botaoCancelarVenda.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        botaoCancelarVenda.setText("[F2] Cancelar Venda");
+        botaoCancelarVenda.setBorder(null);
+        botaoCancelarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCancelarVendaActionPerformed(evt);
+            }
+        });
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel18.setText("[F3] Finaliza Venda");
+        botaoFinalizarVenda.setBackground(new java.awt.Color(204, 204, 204));
+        botaoFinalizarVenda.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        botaoFinalizarVenda.setText("[F3] Finaliza Venda");
+        botaoFinalizarVenda.setBorder(null);
+        botaoFinalizarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoFinalizarVendaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(321, 321, 321)
-                        .addComponent(valorTotalLabel))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18)))
+                .addContainerGap()
+                .addComponent(botaoCancelarVenda)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoFinalizarVenda)
+                .addGap(101, 101, 101)
+                .addComponent(valorTotalLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(valorTotalLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botaoCancelarVenda)
+                            .addComponent(botaoFinalizarVenda)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(valorTotalLabel)
+                        .addGap(0, 13, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -437,7 +472,7 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
                     .addGroup(formLayout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, formLayout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -503,11 +538,26 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idVendedorTextFieldActionPerformed
 
+    private void botaoCancelaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoCancelaItemActionPerformed
+
+    private void botaoCancelarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarVendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoCancelarVendaActionPerformed
+
+    private void botaoFinalizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFinalizarVendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoFinalizarVendaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoBuscaCliente;
     private javax.swing.JButton botaoBuscaCondicaoPagamento;
     private javax.swing.JButton botaoBuscaProduto;
     private javax.swing.JButton botaoBuscaVendedor;
+    private javax.swing.JButton botaoCancelaItem;
+    private javax.swing.JButton botaoCancelarVenda;
+    private javax.swing.JButton botaoFinalizarVenda;
     private javax.swing.JTextField codigoBarraProdutoTextField;
     private javax.swing.JTextField descricaoCondicaoPagamentoTextField;
     private javax.swing.JPanel form;
@@ -518,8 +568,6 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -562,7 +610,15 @@ public class TelaCadastroVenda extends javax.swing.JFrame {
     public JButton getBotaoBuscaVendedor() {
         return botaoBuscaVendedor;
     }
-
+    public JButton getBotaoFinalizarVenda() {
+        return botaoFinalizarVenda;
+    }
+    public JButton getBotaoCancelarVenda() {
+        return botaoCancelarVenda;
+    }
+    public JButton getBotaoCancelaItemFaturado() {
+        return botaoCancelaItem;
+    }
     public JTextField getCodigoBarraProdutoTextField() {
         return codigoBarraProdutoTextField;
     }

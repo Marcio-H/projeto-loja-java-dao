@@ -1,6 +1,22 @@
 package controller.cadastro;
 
-import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import static java.awt.event.KeyEvent.VK_ENTER;
+import static java.awt.event.KeyEvent.VK_F1;
+import static java.awt.event.KeyEvent.VK_F2;
+import static java.awt.event.KeyEvent.VK_F3;
+import static java.awt.event.KeyEvent.VK_F4;
+import static java.awt.event.KeyEvent.VK_F5;
+import static java.awt.event.KeyEvent.VK_F6;
+import static java.awt.event.KeyEvent.VK_F7;
+import javax.swing.AbstractAction;
+import static javax.swing.JComponent.WHEN_FOCUSED;
+import static javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW;
+import controller.busca.ControllerBuscaCliente;
+import controller.busca.ControllerBuscaVendedor;
+import controller.busca.ControllerBuscaCondicaoPagamento;
+import static javax.swing.KeyStroke.getKeyStroke;
 import javax.swing.table.DefaultTableModel;
 import model.bo.CondicaoPagamento;
 import model.bo.Cliente;
@@ -9,7 +25,7 @@ import model.bo.Venda;
 import service.VendaService;
 import view.cadastro.TelaCadastroVenda;
 
-public class ControllerCadastroVenda {
+public class ControllerCadastroVenda implements ActionListener{
 
     private TelaCadastroVenda tela;
     private Venda venda;
@@ -19,17 +35,19 @@ public class ControllerCadastroVenda {
         tela = new TelaCadastroVenda();
         init();
     }
-
-    public Venda getVenda() {
-        try {
-            venda.setId(Long.parseLong(tela.getId().getText()));
-        } catch (Exception e) {
-        }
-        venda.setCep(tela.getCep().getText());
-        venda.setLogradouro(tela.getLogradouro().getText());
-
-        return venda;
+    public void actionPerformed(ActionEvent e) {
+       
     }
+//    public Venda getVenda() {
+//        try {
+//            venda.setId(Long.parseLong(tela.getId().getText()));
+//        } catch (Exception e) {
+//        }
+//        venda.setCep(tela.getCep().getText());
+//        venda.setLogradouro(tela.getLogradouro().getText());
+//
+//        return venda;
+//    }
 
     public void setVenda(Venda venda) {
         this.venda.setId(venda.getId());
@@ -66,8 +84,8 @@ public class ControllerCadastroVenda {
          vendaCliente.setEndereco(cliente.getEndereco());
          vendaCliente.setNome(cliente.getNome());
 
-         tela.getIdClienteTextField().setText(String.valueOf(cliente.getId()));
-         tela.getNomeClienteTextField().setText(cliente.getNome());
+        tela.getIdClienteTextField().setText(String.valueOf(cliente.getId()));
+        tela.getNomeClienteTextField().setText(cliente.getNome());
     }
 
     private void setCondicaoPagamento(CondicaoPagamento condicaoPagamento) {
@@ -97,143 +115,100 @@ public class ControllerCadastroVenda {
         tela.getNomeVendedorTextField().setText(vendedor.getNome());
     }
 
-    private void novoEventListener() {
-        this.tela.getBotaoNovo().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                novoEventAction(evt);
+    private void buscaProdutoEventListener() {
+        tela.getBotaoBuscaProduto().addActionListener(a ->  System.out.println("testeeeeeeee1"));
+        tela.getBotaoBuscaProduto().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F1, 0), "EVENTO");
+        tela.getBotaoBuscaProduto().getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_ENTER, 0), "EVENTO");
+        tela.getBotaoBuscaProduto().getActionMap().put("EVENTO", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("testeeeeeeee1");
+            }
+         });
+    }
+    private void buscaClienteEventListener() {
+        tela.getBotaoBuscaCliente().addActionListener(a ->  System.out.println("testeeeeeeee2"));
+        tela.getBotaoBuscaCliente().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F5, 0), "EVENTO");
+        tela.getBotaoBuscaCliente().getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_ENTER, 0), "EVENTO");
+        tela.getBotaoBuscaCliente().getActionMap().put("EVENTO", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buscaClienteEventAction();
+            }
+        });
+    }
+    private void buscaCondicaoPagamentoEventListener() {
+        tela.getBotaoBuscaCondicaoPagamento().addActionListener(a ->  System.out.println("testeeeeeeee3"));
+        tela.getBotaoBuscaCondicaoPagamento().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F7, 0), "EVENTO");
+        tela.getBotaoBuscaCondicaoPagamento().getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_ENTER, 0), "EVENTO");
+        tela.getBotaoBuscaCondicaoPagamento().getActionMap().put("EVENTO", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buscaCondicaoPagamentoEventAction();
+            }
+        });
+    }
+    private void cancelarItemFaturadoEventListener() {
+        tela.getBotaoCancelaItemFaturado().addActionListener(a ->  System.out.println("testeeeeeeee4"));
+        tela.getBotaoCancelaItemFaturado().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F4, 0), "EVENTO");
+        tela.getBotaoCancelaItemFaturado().getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_ENTER, 0), "EVENTO");
+        tela.getBotaoCancelaItemFaturado().getActionMap().put("EVENTO", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("testeeeeeeee4");
+            }
+        });
+    }
+    private void cancelarVendaEventListener() {
+        tela.getBotaoCancelarVenda().addActionListener(a ->  System.out.println("testeeeeeeee5"));
+        tela.getBotaoCancelarVenda().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F2, 0), "EVENTO1");
+        tela.getBotaoCancelarVenda().getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_ENTER, 0), "EVENTO1");
+        tela.getBotaoCancelarVenda().getActionMap().put("EVENTO1", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("testeeeeeeee5");
+            }
+        });
+    }
+    private void finalizaVendaEventListener() {
+        tela.getBotaoFinalizarVenda().addActionListener(a ->  System.out.println("testeeeeeeee6"));
+        tela.getBotaoFinalizarVenda().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F3, 0), "EVENTO");
+        tela.getBotaoFinalizarVenda().getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_ENTER, 0), "EVENTO");
+        tela.getBotaoFinalizarVenda().getActionMap().put("EVENTO", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("testeeeeeeee6");
+            }
+        });
+    }
+    private void buscaVendedorEventListener() {
+        tela.getBotaoFinalizarVenda().addActionListener(a ->  System.out.println("testeeeeeeee7"));
+        tela.getBotaoFinalizarVenda().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F6, 0), "EVENTO");
+        tela.getBotaoFinalizarVenda().getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_ENTER, 0), "EVENTO");
+        tela.getBotaoFinalizarVenda().getActionMap().put("EVENTO", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buscaVendedorEventAction();
             }
         });
     }
 
-    private void cancelarEventListener() {
-        this.tela.getBotaoCancelar().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                cancelarEventAction(evt);
-            }
+    private void buscaClienteEventAction() {
+        ControllerBuscaCliente con = new ControllerBuscaCliente(cliente-> {
+            setCLiente(cliente);
         });
     }
 
-    private void gravarEventListener() {
-        this.tela.getBotaoGravar().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                gravarEventAction(evt);
-            }
+    private void buscaVendedorEventAction() {
+        ControllerBuscaVendedor con = new ControllerBuscaVendedor(vendedor-> {
+            setVendedor(vendedor);
         });
     }
-
-    private void buscarEventListener() {
-        this.tela.getBotaoBuscar().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                buscarEventAction(evt);
-            }
+    private void buscaCondicaoPagamentoEventAction() {
+        ControllerBuscaCondicaoPagamento con = new ControllerBuscaCondicaoPagamento(cp-> {
+            setCondicaoPagamento(cp);
         });
     }
-
-    private void sairEventListener() {
-        this.tela.getBotaoSair().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                sairEventAction(evt);
-            }
-        });
-    }
-
-    private void adicionarBairroEventListener() {
-        this.tela.getBotaoAdicionarBairro().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                cadastoBairroEventAction(evt);
-            }
-        });
-    }
-
-    private void adicionarCondicaoPagamentoEventListener() {
-        this.tela.getBotaoAdicionarCondicaoPagamento().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                adicionarCondicaoPagamentoEventAction(evt);
-            }
-        });
-    }
-
-    private void buscarBairroEventListener() {
-        tela.getBotaoBuscaBairro().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                buscarBairroEventAction(evt);
-            }
-        });
-    }
-    
-    private void buscarCondicaoPagamentoEventListener() {
-        tela.getBotaoBuscarCondicaoPagamento().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                buscarCondicaoPagamentoEventAction(evt);
-            }
-        });
-    }
-    
-    private void buscarCondicaoPagamentoEventAction(MouseEvent evt) {
-        if (tela.getBotaoBuscarCondicaoPagamento().isEnabled()) {
-            ControllerBuscaCondicaoPagamento con = new ControllerBuscaCondicaoPagamento(cidade -> {
-                setCondicaoPagamento(cidade);
-                setFormStatus(true);
-            });
-        }
-    }
-
-    private void buscarBairroEventAction(MouseEvent evt) {
-        if (tela.getBotaoBuscaBairro().isEnabled()) {
-            ControllerBuscaBairro con = new ControllerBuscaBairro(bairro -> {
-                setBairro(bairro);
-                setFormStatus(true);
-            });
-        }
-    }
-
-    private void novoEventAction(MouseEvent evt) {
-        if (tela.getBotaoNovo().isEnabled()) {
-            setFormStatus(true);
-        }
-    }
-
-    private void cancelarEventAction(MouseEvent evt) {
-        if (tela.getBotaoCancelar().isEnabled()) {
-            setFormStatus(false);
-            venda = new Venda();
-            cleanForm();
-        }
-    }
-
-    private void gravarEventAction(MouseEvent evt) {
-        if (!tela.getBotaoGravar().isEnabled()) {
-            return;
-        }
-        try {
-            vendaService.createOrUpdate(getVenda());
-            setFormStatus(false);
-            venda = new Venda();
-            cleanForm();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(tela, e.getMessage());
-        }
-    }
-
-    private void buscarEventAction(MouseEvent evt) {
-        ControllerBuscaVenda buscaController = new ControllerBuscaVenda(venda -> {
-            setVenda(venda);
-            setFormStatus(true);
-        });
-    }
-
-    private void adicionarCondicaoPagamentoEventAction(MouseEvent evt) {
-        ControllerCadastroCondicaoPagamento controllerCadastroCondicaoPagamento = new ControllerCadastroCondicaoPagamento();
-    }
-
-    private void cadastoBairroEventAction(MouseEvent evt) {
-        ControllerCadastroBairro controllerCadastroBairro = new ControllerCadastroBairro();
-    }
-
-    private void sairEventAction(MouseEvent evt) {
-        this.tela.dispose();
-    }
-
     private void cleanForm() {
         tela.getIdClienteTextField().setText("");
         tela.getIdCondicaoPagamentoTextField().setText("");
@@ -258,15 +233,13 @@ public class ControllerCadastroVenda {
      private void init() {
         vendaService = new VendaService();
         venda = new Venda();
-        novoEventListener();
-        cancelarEventListener();
-        gravarEventListener();
-        buscarEventListener();
-        sairEventListener();
-        adicionarBairroEventListener();
-        buscarBairroEventListener();
-        buscarCondicaoPagamentoEventListener();
-        adicionarCondicaoPagamentoEventListener();
+        buscaProdutoEventListener();
+        buscaClienteEventListener();
+        buscaCondicaoPagamentoEventListener();
+        cancelarItemFaturadoEventListener();
+        cancelarVendaEventListener();
+        finalizaVendaEventListener();
+        buscaVendedorEventListener();
         setDisabledForms();
         tela.setVisible(true);
     }
