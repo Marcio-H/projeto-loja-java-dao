@@ -32,7 +32,7 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
         botaoBuscar = new javax.swing.JButton();
         botaoSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -129,7 +129,7 @@ public class TelaCadastroCidade extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(optionMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 742, Short.MAX_VALUE)
+            .addComponent(optionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
             .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
