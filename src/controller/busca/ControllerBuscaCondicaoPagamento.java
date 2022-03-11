@@ -79,7 +79,7 @@ public class ControllerBuscaCondicaoPagamento {
     }
     
     private void addRows() {
-        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
+        DefaultTableModel tabela = (DefaultTableModel) tela.getTable().getModel();
         condicaoPagamentoService.read().stream().forEach(condicaoPagamento -> {
             tabela.addRow(new Object[]{condicaoPagamento.getId(),
                 condicaoPagamento.getDescricao(),
