@@ -69,7 +69,7 @@ public class CaracteristicaProduto {
         return estoque;
     }
 
-    public void setEstoque(int quantidade) {
+    public void setEstoque(int estoque) {
         this.estoque = estoque;
     }
 }

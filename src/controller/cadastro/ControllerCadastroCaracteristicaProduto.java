@@ -1,5 +1,8 @@
 package controller.cadastro;
 
+import controller.busca.ControllerBuscaCaracteristicaProduto;
+import controller.busca.ControllerBuscaCor;
+import controller.busca.ControllerBuscaProduto;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
@@ -25,7 +28,7 @@ public class ControllerCadastroCaracteristicaProduto {
             caracteristicaProduto.setId(Long.parseLong(tela.getId().getText()));
         } catch (Exception e) {}
         caracteristicaProduto.setTamanho(tela.getTamanho().getText());
-        caracteristicaProduto.setBarra(tela.getTamanho().getText());
+        caracteristicaProduto.setBarra(tela.getCodigoBarras().getText());
         try {
             caracteristicaProduto.setEstoque(Integer.parseInt(tela.getEstoque().getText()));
         } catch (Exception e) {
@@ -58,6 +61,8 @@ public class ControllerCadastroCaracteristicaProduto {
         cancelarEventListener();
         gravarEventListener();
         buscarEventListener();
+        buscaProdutoEventListener();
+        buscaCorEventListener();
         sairEventListener();
         this.tela.getId().setEnabled(false);
         setFormStatus(false);
@@ -158,14 +163,44 @@ public class ControllerCadastroCaracteristicaProduto {
             e.printStackTrace();
         }
     }
-    
-    private void buscarEventAction(MouseEvent evt) {
-//        ControllerBuscaBairro buscaController = new ControllerBuscaBairro(bairro -> {
-//            setBairro(bairro);
-//            setFormStatus(true);
-//        });
+
+    private void buscaCorEventListener() {
+        this.tela.getBuscarCor().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                buscaCorEventAction(evt);
+            }
+        });
     }
     
+    private void buscaProdutoEventListener() {
+        this.tela.getBuscarProduto().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                buscaProdutoEventAction(evt);
+            }
+        });
+    }
+    private void buscarEventAction(MouseEvent evt) {
+        ControllerBuscaCaracteristicaProduto buscaController = new ControllerBuscaCaracteristicaProduto(cp -> {
+            setCaracteristicaProduto(cp);
+            setFormStatus(true);
+        });
+    }
+    private void buscaCorEventAction(MouseEvent evt) {
+       if (tela.getBotaoBuscar().isEnabled()) {
+            ControllerBuscaCor con = new ControllerBuscaCor(cor -> {
+                setCor(cor);
+                setFormStatus(true);
+            });
+        }
+    }
+    private void buscaProdutoEventAction(MouseEvent evt) {
+       if (tela.getBuscarProduto().isEnabled()) {
+            ControllerBuscaProduto con = new ControllerBuscaProduto(produto -> {
+                setProduto(produto);
+                setFormStatus(true);
+            });
+        }
+    }
     private void sairEventAction(MouseEvent evt) {
         this.tela.dispose();
     }
