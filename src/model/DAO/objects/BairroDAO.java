@@ -11,7 +11,7 @@ public class BairroDAO extends BaseDAO<Bairro> implements InterfaceDAO<Bairro>{
     
     @Override
     public Bairro create(Bairro objeto) {
-        return this.abstractCreate(objeto);
+        return abstractCreate(objeto);
     }
 
     @Override

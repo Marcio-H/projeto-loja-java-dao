@@ -5,10 +5,11 @@ import model.bo.Bairro;
 import model.DAO.objects.BairroDAO;
 
 public class BairroService {
-    private BairroDAO bairroDao; 
+
+    private BairroDAO bairroDao;
 
     public BairroService() {
-     this.bairroDao = new BairroDAO();
+     bairroDao = new BairroDAO();
    }
 
     public void createOrUpdate(Bairro objeto) {

@@ -18,9 +18,11 @@ public class CaracteristicaProduto {
     
     private String barra;
     
-    private int quantidade;
+    private int estoque;
 
     public CaracteristicaProduto() {
+        produto =  new Produto();
+        cor = new Cor();
     }
 
     public Long getId() {
@@ -63,11 +65,11 @@ public class CaracteristicaProduto {
         this.barra = barra;
     }
 
-    public int getQuantidade() {
-        return quantidade;
+    public int getEstoque() {
+        return estoque;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void setEstoque(int quantidade) {
+        this.estoque = estoque;
     }
 }

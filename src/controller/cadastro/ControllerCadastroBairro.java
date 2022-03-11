@@ -60,7 +60,7 @@ public class ControllerCadastroBairro {
         });
     }
     
-     private void novoEventAction(MouseEvent evt) {
+    private void novoEventAction(MouseEvent evt) {
         if (tela.getBotaoNovo().isEnabled()) {
             setFormStatus(true);
         }
@@ -129,19 +129,19 @@ public class ControllerCadastroBairro {
     }
     
     private void sairEventAction(MouseEvent evt) {
-        this.tela.dispose();
+        tela.dispose();
     }
     
     public void setFormStatus(boolean status) {
-        this.tela.getDescricaoTextField().setEnabled(status);
-        this.tela.getBotaoNovo().setEnabled(!status);
-        this.tela.getBotaoCancelar().setEnabled(status);
-        this.tela.getBotaoGravar().setEnabled(status);
+        tela.getDescricaoTextField().setEnabled(status);
+        tela.getBotaoNovo().setEnabled(!status);
+        tela.getBotaoCancelar().setEnabled(status);
+        tela.getBotaoGravar().setEnabled(status);
     }
     
     private void cleanForm() {
-        this.tela.getId().setText("");
-        this.tela.getDescricaoTextField().setText("");
+        tela.getId().setText("");
+        tela.getDescricaoTextField().setText("");
     }
     
     public static void main(String[] args) {
