@@ -297,7 +297,7 @@ public class ControllerPDV {
                 quantidade * produto.getProduto().getValor()
             });
                 item++;
-                atualizaValor(produto.getProduto().getValor());
+                atualizaValor(produto.getProduto().getValor()* quantidade);
             } catch (Exception e) {}
             tela.getCodigoBarraProdutoTextField().setText("");
             tela.getQuantidadeTextField().setText("1");
@@ -354,9 +354,5 @@ public class ControllerPDV {
         tela.getNomeClienteTextField().setEditable(false);
         tela.getNomeVendedorTextField().setEditable(false);
         tela.getDescricaoCondicaoPagamentoTextField().setEditable(false);
-    }
-
-    public static void main(String[] args) {
-        ControllerPDV controllerCadastroVenda = new ControllerPDV();
     }
 }
