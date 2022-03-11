@@ -18,6 +18,7 @@ import javax.swing.AbstractAction;
 import controller.busca.ControllerBuscaCliente;
 import controller.busca.ControllerBuscaVendedor;
 import controller.busca.ControllerBuscaCondicaoPagamento;
+import controller.busca.ControllerBuscaCaracteristicaProduto;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -90,6 +91,7 @@ public class ControllerPDV {
         finalizaVendaEventListener();
         buscaVendedorEventListener();
         onEnterBarraEventListener();
+        selectBarraProdutoEventListener();
         setDisabledForms();
         cleanForm();
         tela.setVisible(true);
@@ -140,17 +142,33 @@ public class ControllerPDV {
     }
 
     private void buscaProdutoEventListener() {
-        tela.getBotaoBuscaProduto().addActionListener(a ->  System.out.println("testeeeeeeee1"));
-        tela.getBotaoBuscaProduto().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F1, 0), "EVENTO");
+        tela.getBotaoBuscaProduto().addMouseListener(new MouseAdapter() {;
+            public void mouseClicked(MouseEvent evt) {
+                buscaProdutoEventAction();
+            }
+        });
+
+
+        tela.getBotaoBuscaProduto().addActionListener(a ->  buscaProdutoEventAction());
         tela.getBotaoBuscaProduto().getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_ENTER, 0), "EVENTO");
         tela.getBotaoBuscaProduto().getActionMap().put("EVENTO", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("testeeeeeeee1");
+                buscaProdutoEventAction();
             }
          });
     }
     
+    private void selectBarraProdutoEventListener() { 
+        tela.getBotaoBuscaProduto().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F1, 0), "EVENTO");
+        tela.getBotaoBuscaProduto().getActionMap().put("EVENTO", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectBarraProdutoEventAction();
+            }
+         });
+    }
+
     private void buscaClienteEventListener() {
         tela.getBotaoBuscaCliente().addMouseListener(new MouseAdapter() {;
             public void mouseClicked(MouseEvent evt) {
@@ -266,6 +284,11 @@ public class ControllerPDV {
         });
     }
     
+    private void buscaProdutoEventAction() {
+        ControllerBuscaCaracteristicaProduto con = new ControllerBuscaCaracteristicaProduto(cp-> {
+        });
+    }
+
     private void onEnterBarraEventAction() {
         CaracteristicaProduto produto = caracteristicaProdutoService.findByBarra(tela.getCodigoBarraProdutoTextField().getText());
         
@@ -288,6 +311,10 @@ public class ControllerPDV {
         }
     }
     
+    private void selectBarraProdutoEventAction() {
+        tela.getCodigoBarraProdutoTextField().requestFocus();
+    }
+
     private void cleanForm() {
         tela.getIdClienteTextField().setText("");
         tela.getIdCondicaoPagamentoTextField().setText("");
