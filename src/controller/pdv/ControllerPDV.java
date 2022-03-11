@@ -199,7 +199,7 @@ public class ControllerPDV {
         tela.getBotaoCancelarVenda().getActionMap().put("EVENTO1", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("testeeeeeeee5");
+                cleanForm();
             }
         });
     }
@@ -211,7 +211,7 @@ public class ControllerPDV {
         tela.getBotaoFinalizarVenda().getActionMap().put("EVENTO", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("testeeeeeeee6");
+                cleanForm();
             }
         });
     }
@@ -344,7 +344,6 @@ public class ControllerPDV {
         tabela.setNumRows(0);
         tela.getValotTotal().setText("R$ 00,00");
         item = 1;
-        tela.getTableProdutos().removeAll();
         total = 0;
     }
 
