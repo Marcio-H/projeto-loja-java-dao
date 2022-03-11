@@ -307,10 +307,4 @@ public class ControllerCadastroProduto {
         this.tela.getTipoProdutoTextField().setText("");
         this.tela.getTamanhoTextField().setText("");
     }
-    
-    public static void main(String[] args) {
-        ControllerCadastroProduto controllerCadastroProduto = new ControllerCadastroProduto();
-        
-        controllerCadastroProduto.tela.setVisible(true);
-    }
 }

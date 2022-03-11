@@ -1,17 +1,17 @@
-package controller.menu;
+package controller;
 
 import controller.cadastro.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import view.menu.Menu;
+import view.app.TelaApp;
 import controller.pdv.ControllerPDV;
 
-public class ControllerMenu {
+public class ControllerApp {
     
-    private Menu tela;
+    private TelaApp tela;
 
-    public ControllerMenu() {
-        tela = new Menu();
+    public ControllerApp() {
+        tela = new TelaApp();
         tela.setVisible(true);
         cadastroBairroEventListener();
         cadastroCaracteristicaProdutoEventListener();
@@ -87,6 +87,6 @@ public class ControllerMenu {
     }
 
     public static void main(String[] args) {
-       new ControllerMenu();
+       new ControllerApp();
     }
 }

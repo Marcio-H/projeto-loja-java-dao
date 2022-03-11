@@ -143,10 +143,4 @@ public class ControllerCadastroBairro {
         tela.getId().setText("");
         tela.getDescricaoTextField().setText("");
     }
-    
-    public static void main(String[] args) {
-        ControllerCadastroBairro controllerCadastroBairro = new ControllerCadastroBairro();
-        
-        controllerCadastroBairro.tela.setVisible(true);
-    }
 }

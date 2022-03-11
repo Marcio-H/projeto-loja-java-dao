@@ -145,10 +145,4 @@ public class ControllerCadastroTamanho {
         this.tela.getId().setText("");
         this.tela.getDescricaoTextField().setText("");
     }
-    
-    public static void main(String[] args) {
-        ControllerCadastroTamanho controllerCadastroTamanho = new ControllerCadastroTamanho();
-        
-        controllerCadastroTamanho.tela.setVisible(true);
-    }
 }

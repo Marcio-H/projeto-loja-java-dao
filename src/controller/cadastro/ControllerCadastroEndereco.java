@@ -249,8 +249,4 @@ public class ControllerCadastroEndereco {
         setFormStatus(false);
         tela.setVisible(true);
     }
-
-    public static void main(String[] args) {
-        ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco();
-    }
 }

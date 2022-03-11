@@ -263,8 +263,4 @@ public class ControllerCadastroCaracteristicaProduto {
 
         tela.getDescricaoCor().setText(cor.getDescricao());
     }
-
-    public static void main(String[] args) {
-        ControllerCadastroCaracteristicaProduto a = new ControllerCadastroCaracteristicaProduto();
-    }
 }

@@ -143,10 +143,4 @@ public class ControllerCadastroTipoProduto {
         this.tela.getId().setText("");
         this.tela.getDescricaoTextField().setText("");
     }
-    
-    public static void main(String[] args) {
-        ControllerCadastroTipoProduto controllerCadastroTipoProduto = new ControllerCadastroTipoProduto();
-        
-        controllerCadastroTipoProduto.tela.setVisible(true);
-    }
 }

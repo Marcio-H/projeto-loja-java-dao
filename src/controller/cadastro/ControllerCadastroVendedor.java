@@ -319,8 +319,4 @@ public class ControllerCadastroVendedor {
         setFieldsUnable();
         tela.setVisible(true);
     }
-
-    public static void main(String[] args) {
-        ControllerCadastroVendedor controllerCadastroVendedor = new ControllerCadastroVendedor();
-    }
 }

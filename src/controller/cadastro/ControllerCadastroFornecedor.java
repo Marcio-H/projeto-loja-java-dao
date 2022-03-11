@@ -305,8 +305,4 @@ public class ControllerCadastroFornecedor {
         setFieldsUnable();
         tela.setVisible(true);
     }
-
-    public static void main(String[] args) {
-        ControllerCadastroFornecedor controllerCadastroBairro = new ControllerCadastroFornecedor();
-    }
 }

@@ -164,8 +164,4 @@ public class ControllerCadastroCondicaoPagamento {
         tela.getNumeroDiasAtePrimeiraParcela().setText("");
         tela.getNumeroDiasEntreParcelas().setText("");
     }
-    
-    public static void main(String[] args) {
-        new ControllerCadastroCondicaoPagamento();
-    }
 }

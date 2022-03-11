@@ -145,10 +145,4 @@ public class ControllerCadastroMarca {
         this.tela.getId().setText("");
         this.tela.getDescricaoTextField().setText("");
     }
-    
-    public static void main(String[] args) {
-        ControllerCadastroMarca controllerCadastroMarca = new ControllerCadastroMarca();
-        
-        controllerCadastroMarca.tela.setVisible(true);
-    }
 }

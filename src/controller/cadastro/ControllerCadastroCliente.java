@@ -319,8 +319,4 @@ public class ControllerCadastroCliente {
         setFieldsUnable();
         tela.setVisible(true);
     }
-
-    public static void main(String[] args) {
-        ControllerCadastroCliente controllerCadastroCliente = new ControllerCadastroCliente();
-    }
 }

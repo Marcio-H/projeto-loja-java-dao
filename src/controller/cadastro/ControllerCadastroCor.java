@@ -144,8 +144,4 @@ public class ControllerCadastroCor {
         this.tela.getId().setText("");
         this.tela.getDescricaoTextField().setText("");
     }
-
-    public static void main(String[] args) {
-        ControllerCadastroCor controllerCadastroCor = new ControllerCadastroCor();
-    }
 }

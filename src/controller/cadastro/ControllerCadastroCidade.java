@@ -148,10 +148,4 @@ public class ControllerCadastroCidade {
         this.tela.getDescricaoTextField().setText("");
         this.tela.getUfTextField().setText("");
     }
-    
-    public static void main(String[] args) {
-        ControllerCadastroCidade controllerCadastroCidade = new ControllerCadastroCidade();
-        
-        controllerCadastroCidade.tela.setVisible(true);
-    }
 }
