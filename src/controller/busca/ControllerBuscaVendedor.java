@@ -35,10 +35,12 @@ public class ControllerBuscaVendedor {
         selectFirstRow();
         carregarToEnterEventListener();
     }
+
     private void selectFirstRow() {
         tela.getTable().requestFocus();
         tela.getTable().setRowSelectionInterval(0,0);
     }
+
     private void addRows() {
         DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
         VendedorService.read().stream().forEach(vendedor -> {
@@ -61,6 +63,7 @@ public class ControllerBuscaVendedor {
             }
         });
     }
+
     private void carregarToEnterEventListener() {
         tela.getTable().getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_ENTER, 0), "EVENTO");
         tela.getTable().getActionMap().put("EVENTO", new AbstractAction() {

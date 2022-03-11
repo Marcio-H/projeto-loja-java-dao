@@ -8,7 +8,6 @@ import static java.awt.event.KeyEvent.VK_F4;
 import static java.awt.event.KeyEvent.VK_F5;
 import static java.awt.event.KeyEvent.VK_F6;
 import static java.awt.event.KeyEvent.VK_F7;
-import static java.awt.event.KeyEvent.VK_TAB;
 import static javax.swing.JComponent.WHEN_FOCUSED;
 import static javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW;
 import static javax.swing.KeyStroke.getKeyStroke;
@@ -19,7 +18,6 @@ import controller.busca.ControllerBuscaCliente;
 import controller.busca.ControllerBuscaVendedor;
 import controller.busca.ControllerBuscaCondicaoPagamento;
 import controller.busca.ControllerBuscaCaracteristicaProduto;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
@@ -39,6 +37,7 @@ public class ControllerPDV {
     private VendaService vendaService;
     private CaracteristicaProdutoService caracteristicaProdutoService;
     private static int item = 1;
+    private static float total = 0;
 
     public ControllerPDV() {
         tela = new TelaPDV();
@@ -56,28 +55,6 @@ public class ControllerPDV {
 //
 //        return venda;
 //    }
-
-    public void setVenda(Venda venda) {
-        this.venda.setId(venda.getId());
-        this.venda.setTotal(venda.getTotal());
-        this.venda.setDesconto(venda.getDesconto());
-//        this.tela.getId().setText(String.valueOf(venda.getId()));
-//        this.venda.setCep(venda.getCep());
-//        this.tela.getCep().setText(venda.getCep());
-//        this.venda.setLogradouro(venda.getLogradouro());
-//        this.tela.getLogradouro().setText(venda.getLogradouro());
-
-        if (venda.getCliente()!= null) {
-            setCLiente(venda.getCliente());
-        }
-        if (venda.getCondicaoPagamento() != null) {
-            setCondicaoPagamento(venda.getCondicaoPagamento());
-        }
-
-        if(venda.getVendedor() != null) {
-            setVendedor(venda.getVendedor());
-        }
-    }
 
     private void init() {
         vendaService = new VendaService();
@@ -148,8 +125,6 @@ public class ControllerPDV {
             }
         });
 
-
-        tela.getBotaoBuscaProduto().addActionListener(a ->  buscaProdutoEventAction());
         tela.getBotaoBuscaProduto().getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_ENTER, 0), "EVENTO");
         tela.getBotaoBuscaProduto().getActionMap().put("EVENTO", new AbstractAction() {
             @Override
@@ -160,8 +135,8 @@ public class ControllerPDV {
     }
     
     private void selectBarraProdutoEventListener() { 
-        tela.getBotaoBuscaProduto().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F1, 0), "EVENTO");
-        tela.getBotaoBuscaProduto().getActionMap().put("EVENTO", new AbstractAction() {
+        tela.getCodigoBarraProdutoTextField().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F1, 0), "FOCUS");
+        tela.getCodigoBarraProdutoTextField().getActionMap().put("FOCUS", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectBarraProdutoEventAction();
@@ -286,12 +261,17 @@ public class ControllerPDV {
     
     private void buscaProdutoEventAction() {
         ControllerBuscaCaracteristicaProduto con = new ControllerBuscaCaracteristicaProduto(cp-> {
+            addRow(cp);
         });
     }
 
     private void onEnterBarraEventAction() {
         CaracteristicaProduto produto = caracteristicaProdutoService.findByBarra(tela.getCodigoBarraProdutoTextField().getText());
         
+        addRow(produto);
+    }
+    
+    private void addRow(CaracteristicaProduto produto) {
         if (produto != null) {
             try {
                 DefaultTableModel tabela = (DefaultTableModel) tela.getTableProdutos().getModel();
@@ -305,10 +285,16 @@ public class ControllerPDV {
                 quantidade * produto.getProduto().getValor()
             });
                 item++;
+                atualizaValor(produto.getProduto().getValor());
             } catch (Exception e) {}
             tela.getCodigoBarraProdutoTextField().setText("");
             tela.getQuantidadeTextField().setText("1");
         }
+    }
+    
+    private void atualizaValor(float valor) {
+        total += valor;
+        tela.getValotTotal().setText(String.format("R$%.2f", total));
     }
     
     private void selectBarraProdutoEventAction() {
@@ -327,6 +313,8 @@ public class ControllerPDV {
         tabela.setNumRows(0);
         tela.getValotTotal().setText("R$ 00,00");
         item = 1;
+        tela.getTableProdutos().removeAll();
+        total = 0;
     }
 
     private void setDisabledForms() {
