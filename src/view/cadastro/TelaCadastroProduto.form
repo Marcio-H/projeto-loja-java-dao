@@ -124,7 +124,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="178" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="valorFormattedTextField" max="32767" attributes="0"/>
                               </Group>
@@ -511,17 +511,6 @@
                   <Insets value="[5, 30, 5, 30]"/>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="botaoAddCaracteristica">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagens/mais.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Add Caracteristica"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoAddCaracteristicaActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoBuscar">
               <Properties>

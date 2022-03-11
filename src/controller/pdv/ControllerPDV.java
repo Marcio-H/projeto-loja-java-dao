@@ -1,7 +1,5 @@
 package controller.pdv;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import static java.awt.event.KeyEvent.VK_ENTER;
 import static java.awt.event.KeyEvent.VK_F1;
 import static java.awt.event.KeyEvent.VK_F2;
@@ -10,36 +8,40 @@ import static java.awt.event.KeyEvent.VK_F4;
 import static java.awt.event.KeyEvent.VK_F5;
 import static java.awt.event.KeyEvent.VK_F6;
 import static java.awt.event.KeyEvent.VK_F7;
-import javax.swing.AbstractAction;
 import static javax.swing.JComponent.WHEN_FOCUSED;
 import static javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW;
+import static javax.swing.KeyStroke.getKeyStroke;
+
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
 import controller.busca.ControllerBuscaCliente;
 import controller.busca.ControllerBuscaVendedor;
 import controller.busca.ControllerBuscaCondicaoPagamento;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import static javax.swing.KeyStroke.getKeyStroke;
 import javax.swing.table.DefaultTableModel;
+import model.bo.CaracteristicaProduto;
 import model.bo.CondicaoPagamento;
 import model.bo.Cliente;
 import model.bo.Vendedor;
 import model.bo.Venda;
+import service.CaracteristicaProdutoService;
 import service.VendaService;
 import view.pdv.TelaPDV;
 
-public class ControllerPDV implements ActionListener{
+public class ControllerPDV {
 
     private TelaPDV tela;
     private Venda venda;
     private VendaService vendaService;
+    private CaracteristicaProdutoService caracteristicaProdutoService;
 
     public ControllerPDV() {
         tela = new TelaPDV();
         init();
     }
-    public void actionPerformed(ActionEvent e) {
-       
-    }
+    
+
 //    public Venda getVenda() {
 //        try {
 //            venda.setId(Long.parseLong(tela.getId().getText()));
@@ -71,6 +73,22 @@ public class ControllerPDV implements ActionListener{
         if(venda.getVendedor() != null) {
             setVendedor(venda.getVendedor());
         }
+    }
+
+    private void init() {
+        vendaService = new VendaService();
+        venda = new Venda();
+        caracteristicaProdutoService = new CaracteristicaProdutoService();
+        buscaProdutoEventListener();
+        buscaClienteEventListener();
+        buscaCondicaoPagamentoEventListener();
+        cancelarItemFaturadoEventListener();
+        cancelarVendaEventListener();
+        finalizaVendaEventListener();
+        buscaVendedorEventListener();
+        onEnterBarraEventListener();
+        setDisabledForms();
+        tela.setVisible(true);
     }
 
     private void setCLiente(Cliente cliente) {
@@ -212,6 +230,16 @@ public class ControllerPDV implements ActionListener{
             }
         });
     }
+    
+    private void onEnterBarraEventListener() {
+        tela.getCodigoBarraProdutoTextField().getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_ENTER, 0), "EVENTO");
+        tela.getCodigoBarraProdutoTextField().getActionMap().put("EVENTO", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onEnterBarraEventAction();
+            }
+        });
+    }
 
     private void buscaClienteEventAction() {
         ControllerBuscaCliente con = new ControllerBuscaCliente(cliente-> {
@@ -230,6 +258,14 @@ public class ControllerPDV implements ActionListener{
             setCondicaoPagamento(cp);
         });
     }
+    
+    private void onEnterBarraEventAction() {
+        CaracteristicaProduto produto = caracteristicaProdutoService.findByBarra(tela.getCodigoBarraProdutoTextField().getText());
+        
+        if (produto != null) {
+            
+        }
+    }
 
     private void cleanForm() {
         tela.getIdClienteTextField().setText("");
@@ -238,7 +274,7 @@ public class ControllerPDV implements ActionListener{
         tela.getNomeClienteTextField().setText("");
         tela.getNomeVendedorTextField().setText("");
         tela.getDescricaoCondicaoPagamentoTextField().setText("");
-        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTableProdutos().getModel();
+        DefaultTableModel tabela = (DefaultTableModel) tela.getTableProdutos().getModel();
         tabela.setNumRows(0);
         tela.getValotTotal().setText("R$ 00,00");   
     }
@@ -250,20 +286,6 @@ public class ControllerPDV implements ActionListener{
         tela.getNomeClienteTextField().setEditable(false);
         tela.getNomeVendedorTextField().setEditable(false);
         tela.getDescricaoCondicaoPagamentoTextField().setEditable(false);
-    }
-    
-     private void init() {
-        vendaService = new VendaService();
-        venda = new Venda();
-        buscaProdutoEventListener();
-        buscaClienteEventListener();
-        buscaCondicaoPagamentoEventListener();
-        cancelarItemFaturadoEventListener();
-        cancelarVendaEventListener();
-        finalizaVendaEventListener();
-        buscaVendedorEventListener();
-        setDisabledForms();
-        tela.setVisible(true);
     }
 
     public static void main(String[] args) {

@@ -27,4 +27,8 @@ public class CaracteristicaProdutoService {
     public CaracteristicaProduto readById(Long id) {
         return caracteristicaProdutoDAO.read(id);
     }
+    
+    public CaracteristicaProduto findByBarra(String barra) {
+        return caracteristicaProdutoDAO.findByBarra(barra);
+    }
 }

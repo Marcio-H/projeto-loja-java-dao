@@ -48,7 +48,6 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         botaoNovo = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
         botaoGravar = new javax.swing.JButton();
-        botaoAddCaracteristica = new javax.swing.JButton();
         botaoBuscar = new javax.swing.JButton();
         botaoSair = new javax.swing.JButton();
 
@@ -246,7 +245,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                         .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(formLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(0, 178, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(valorFormattedTextField)))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -294,15 +293,6 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         botaoGravar.setMargin(new java.awt.Insets(5, 30, 5, 30));
         optionMenu.add(botaoGravar);
 
-        botaoAddCaracteristica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mais.png"))); // NOI18N
-        botaoAddCaracteristica.setText("Add Caracteristica");
-        botaoAddCaracteristica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAddCaracteristicaActionPerformed(evt);
-            }
-        });
-        optionMenu.add(botaoAddCaracteristica);
-
         botaoBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
         botaoBuscar.setText("Buscar");
         botaoBuscar.setMargin(new java.awt.Insets(5, 30, 5, 30));
@@ -345,16 +335,11 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaoAddCaracteristicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAddCaracteristicaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoAddCaracteristicaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionarMarcaBotao;
     private javax.swing.JButton adicionarTamanhoBotao;
     private javax.swing.JButton adicionarTipoProdutoBotao;
-    private javax.swing.JButton botaoAddCaracteristica;
     private javax.swing.JButton botaoBuscar;
     private javax.swing.JButton botaoCancelar;
     private javax.swing.JButton botaoGravar;
@@ -491,10 +476,6 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
     public void setTamanhoTextField(JTextField tamanhoTextField) {
         this.tamanhoTextField = tamanhoTextField;
-    }
-
-    public JButton getBotaoAddCaracteristica() {
-       return botaoAddCaracteristica;
     }
 
     public JPanel getForm() {
