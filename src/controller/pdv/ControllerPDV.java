@@ -8,6 +8,7 @@ import static java.awt.event.KeyEvent.VK_F4;
 import static java.awt.event.KeyEvent.VK_F5;
 import static java.awt.event.KeyEvent.VK_F6;
 import static java.awt.event.KeyEvent.VK_F7;
+import static java.awt.event.KeyEvent.VK_TAB;
 import static javax.swing.JComponent.WHEN_FOCUSED;
 import static javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW;
 import static javax.swing.KeyStroke.getKeyStroke;
@@ -17,6 +18,7 @@ import javax.swing.AbstractAction;
 import controller.busca.ControllerBuscaCliente;
 import controller.busca.ControllerBuscaVendedor;
 import controller.busca.ControllerBuscaCondicaoPagamento;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
@@ -35,6 +37,7 @@ public class ControllerPDV {
     private Venda venda;
     private VendaService vendaService;
     private CaracteristicaProdutoService caracteristicaProdutoService;
+    private static int item = 1;
 
     public ControllerPDV() {
         tela = new TelaPDV();
@@ -88,6 +91,7 @@ public class ControllerPDV {
         buscaVendedorEventListener();
         onEnterBarraEventListener();
         setDisabledForms();
+        cleanForm();
         tela.setVisible(true);
     }
 
@@ -180,6 +184,7 @@ public class ControllerPDV {
             }
         });
     }
+
     private void cancelarItemFaturadoEventListener() {
         tela.getBotaoCancelaItemFaturado().addActionListener(a ->  System.out.println("testeeeeeeee4"));
         tela.getBotaoCancelaItemFaturado().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F4, 0), "EVENTO");
@@ -191,6 +196,7 @@ public class ControllerPDV {
             }
         });
     }
+
     private void cancelarVendaEventListener() {
 
         tela.getBotaoCancelarVenda().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F2, 0), "EVENTO1");
@@ -202,6 +208,7 @@ public class ControllerPDV {
             }
         });
     }
+
     private void finalizaVendaEventListener() {
         tela.getBotaoFinalizarVenda().addActionListener(a ->  System.out.println("testeeeeeeee6"));
         tela.getBotaoFinalizarVenda().getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_F3, 0), "EVENTO");
@@ -263,20 +270,36 @@ public class ControllerPDV {
         CaracteristicaProduto produto = caracteristicaProdutoService.findByBarra(tela.getCodigoBarraProdutoTextField().getText());
         
         if (produto != null) {
+            try {
+                DefaultTableModel tabela = (DefaultTableModel) tela.getTableProdutos().getModel();
+                Integer quantidade = Integer.valueOf(tela.getQuantidadeTextField().getText());
             
+                tabela.addRow(new Object[] {
+                item,
+                produto.getProduto().getDescricao(),
+                quantidade,
+                produto.getProduto().getValor(),
+                quantidade * produto.getProduto().getValor()
+            });
+                item++;
+            } catch (Exception e) {}
+            tela.getCodigoBarraProdutoTextField().setText("");
+            tela.getQuantidadeTextField().setText("1");
         }
     }
-
+    
     private void cleanForm() {
         tela.getIdClienteTextField().setText("");
         tela.getIdCondicaoPagamentoTextField().setText("");
         tela.getIdVendedorTextField().setText("");
         tela.getNomeClienteTextField().setText("");
         tela.getNomeVendedorTextField().setText("");
+        tela.getQuantidadeTextField().setText("1");
         tela.getDescricaoCondicaoPagamentoTextField().setText("");
         DefaultTableModel tabela = (DefaultTableModel) tela.getTableProdutos().getModel();
         tabela.setNumRows(0);
-        tela.getValotTotal().setText("R$ 00,00");   
+        tela.getValotTotal().setText("R$ 00,00");
+        item = 1;
     }
 
     private void setDisabledForms() {
