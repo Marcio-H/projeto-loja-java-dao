@@ -22,6 +22,7 @@ import controller.busca.ControllerBuscaCaracteristicaProduto;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.CaracteristicaProduto;
 import model.bo.CondicaoPagamento;
@@ -210,7 +211,7 @@ public class ControllerPDV {
         tela.getBotaoCancelaItemFaturado().getActionMap().put("EVENTO", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("testeeeeeeee4");
+                cancelarItemFaturadoEventAction();
             }
         });
     }
@@ -266,6 +267,16 @@ public class ControllerPDV {
         });
     }
 
+    private void removeRowTableEventListener() {
+        tela.getTableProdutos().getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_ENTER, 0), "EVENTO");
+        tela.getTableProdutos().getActionMap().put("EVENTO", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeRowTableEventAction();
+            }
+        });
+    }
+
     private void buscaClienteEventAction() {
         ControllerBuscaCliente con = new ControllerBuscaCliente(cliente-> {
             setCLiente(cliente);
@@ -314,6 +325,21 @@ public class ControllerPDV {
     private void selectBarraProdutoEventAction() {
         tela.getCodigoBarraProdutoTextField().requestFocus();
     }
+
+    private void cancelarItemFaturadoEventAction() {
+       try {
+          tela.getTableProdutos().requestFocus();
+          tela.getTableProdutos().setRowSelectionInterval(0,0);
+          removeRowTableEventListener();
+       } catch (Exception e) {
+         JOptionPane.showMessageDialog(tela, String.format("Nenhum produto para selecionar", e.getMessage()));
+       }
+    }
+
+    private void removeRowTableEventAction() {
+       int index = tela.getTableProdutos().getSelectedRow();
+       tela.getTableProdutos().removeRowSelectionInterval(index, index+1);
+    } 
 
     private void cleanForm() {
         tela.getIdClienteTextField().setText("");
