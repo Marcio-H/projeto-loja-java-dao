@@ -302,7 +302,7 @@
                             <Column editable="true" title="Produto" type="java.lang.Object"/>
                             <Column editable="false" title="QTD" type="java.lang.Object"/>
                             <Column editable="false" title="Valor" type="java.lang.Object"/>
-                            <Column editable="false" title="Total" type="java.lang.Object"/>
+                            <Column editable="false" title="Total" type="java.lang.Float"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

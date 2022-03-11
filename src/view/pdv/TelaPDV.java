@@ -135,9 +135,16 @@ public class TelaPDV extends javax.swing.JFrame {
                 "Item", "Produto", "QTD", "Valor", "Total"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, true, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];

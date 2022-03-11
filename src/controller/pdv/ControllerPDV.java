@@ -70,6 +70,7 @@ public class ControllerPDV {
         buscaVendedorEventListener();
         onEnterBarraEventListener();
         selectBarraProdutoEventListener();
+        removeRowTableEventListener();
         setDisabledForms();
         cleanForm();
         tela.setVisible(true);
@@ -316,7 +317,6 @@ public class ControllerPDV {
        try {
           tela.getTableProdutos().requestFocus();
           tela.getTableProdutos().setRowSelectionInterval(0,0);
-          removeRowTableEventListener();
        } catch (Exception e) {
          JOptionPane.showMessageDialog(tela, String.format("Nenhum produto para selecionar", e.getMessage()));
        }
@@ -324,7 +324,12 @@ public class ControllerPDV {
 
     private void removeRowTableEventAction() {
        int index = tela.getTableProdutos().getSelectedRow();
-       tela.getTableProdutos().removeRowSelectionInterval(index, index+1);
+
+       DefaultTableModel table = (DefaultTableModel) tela.getTableProdutos().getModel();
+       Float value = (Float) table.getValueAt(index, 4);
+       total -= value;
+       tela.getValotTotal().setText(String.format("R$%.2f", total));
+       table.removeRow(index);
     } 
 
     private void cleanForm() {
