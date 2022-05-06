@@ -1,8 +1,20 @@
-package view.busca;
+package br.com.praticas.loja.view.busca.impl;
 
-public class TelaBuscaCliente extends javax.swing.JFrame {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
-    public TelaBuscaCliente() {
+import org.springframework.stereotype.Component;
+
+import br.com.praticas.loja.view.busca.TelaBusca;
+
+@Component("tipo_produto")
+public class TelaBuscaTipoProduto extends JFrame implements TelaBusca {
+
+    public TelaBuscaTipoProduto() {
         initComponents();
     }
 
@@ -10,15 +22,15 @@ public class TelaBuscaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        head = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        body = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
-        optionMenu = new javax.swing.JPanel();
-        carregar = new javax.swing.JButton();
-        sair = new javax.swing.JButton();
+        jPanel1 = new JPanel();
+        head = new JPanel();
+        jLabel2 = new JLabel();
+        body = new JPanel();
+        jScrollPane1 = new JScrollPane();
+        tabela = new JTable();
+        optionMenu = new JPanel();
+        carregar = new JButton();
+        sair = new JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -31,24 +43,24 @@ public class TelaBuscaCliente extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Cliente");
+        jLabel2.setText("Tipo de produto");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel2.setPreferredSize(new java.awt.Dimension(41, 80));
         head.add(jLabel2, java.awt.BorderLayout.CENTER);
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Nome", "Email", "CPF"
+                "Id", "Descrição"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Long.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -59,16 +71,13 @@ public class TelaBuscaCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        table.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(table);
-        if (table.getColumnModel().getColumnCount() > 0) {
-            table.getColumnModel().getColumn(0).setMinWidth(75);
-            table.getColumnModel().getColumn(0).setPreferredWidth(10);
-            table.getColumnModel().getColumn(0).setMaxWidth(75);
-            table.getColumnModel().getColumn(1).setResizable(false);
-            table.getColumnModel().getColumn(2).setResizable(false);
-            table.getColumnModel().getColumn(3).setResizable(false);
-            table.getColumnModel().getColumn(3).setPreferredWidth(30);
+        tabela.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabela);
+        if (tabela.getColumnModel().getColumnCount() > 0) {
+            tabela.getColumnModel().getColumn(0).setMinWidth(75);
+            tabela.getColumnModel().getColumn(0).setPreferredWidth(10);
+            tabela.getColumnModel().getColumn(0).setMaxWidth(75);
+            tabela.getColumnModel().getColumn(1).setResizable(false);
         }
 
         javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
@@ -137,28 +146,34 @@ public class TelaBuscaCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel body;
-    private javax.swing.JButton carregar;
-    private javax.swing.JPanel head;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel optionMenu;
-    private javax.swing.JButton sair;
-    private javax.swing.JTable table;
+    private JPanel body;
+    private JPanel head;
+    private JButton carregar;
+    private JButton sair;
+    private JLabel jLabel2;
+    private JPanel jPanel1;
+    private JScrollPane jScrollPane1;
+    private JTable tabela;
+    private JPanel optionMenu;
     // End of variables declaration//GEN-END:variables
+	@Override
+	public JTable getTabela() {
+		return tabela;
+	}
 
-    public javax.swing.JTable getTable() {
-        return table;
-    }
-    
-    public javax.swing.JButton getCarregar() {
-        return carregar;
-    }
-    
-    public javax.swing.JButton getSair() {
-        return sair;
-    }
+	@Override
+	public JButton getBotaoCarregar() {
+		return carregar;
+	}
+
+	@Override
+	public JButton getBotaoSair() {
+		return sair;
+	}
+
+	@Override
+	public void setVisible(Boolean bool) {
+		setVisible(bool);
+	}
 }

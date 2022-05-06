@@ -1,12 +1,12 @@
-package br.com.praticas.loja.view;
+package br.com.praticas.loja.view.cadastro.impl;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class FormModeloCadastro extends javax.swing.JFrame {
+public class TelaCadastroTipoProduto extends javax.swing.JFrame {
 
-    public FormModeloCadastro() {
+    public TelaCadastroTipoProduto() {
         initComponents();
     }
 
@@ -20,6 +20,8 @@ public class FormModeloCadastro extends javax.swing.JFrame {
         form = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        descricaoTextField = new javax.swing.JTextField();
         optionMenu = new javax.swing.JPanel();
         botaoNovo = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
@@ -27,7 +29,7 @@ public class FormModeloCadastro extends javax.swing.JFrame {
         botaoBuscar = new javax.swing.JButton();
         botaoSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -38,12 +40,14 @@ public class FormModeloCadastro extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Título");
+        jLabel2.setText("Tipo de Produto");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel2.setPreferredSize(new java.awt.Dimension(41, 80));
         head.add(jLabel2, java.awt.BorderLayout.CENTER);
 
         jLabel1.setText("Id");
+
+        jLabel3.setText("Descrição");
 
         javax.swing.GroupLayout formLayout = new javax.swing.GroupLayout(form);
         form.setLayout(formLayout);
@@ -52,9 +56,14 @@ public class FormModeloCadastro extends javax.swing.JFrame {
             .addGroup(formLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(descricaoTextField)
+                    .addGroup(formLayout.createSequentialGroup()
+                        .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         formLayout.setVerticalGroup(
             formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -63,7 +72,11 @@ public class FormModeloCadastro extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(descricaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         optionMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -97,7 +110,7 @@ public class FormModeloCadastro extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(optionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
+            .addComponent(optionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
             .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -131,15 +144,17 @@ public class FormModeloCadastro extends javax.swing.JFrame {
     private javax.swing.JButton botaoGravar;
     private javax.swing.JButton botaoNovo;
     private javax.swing.JButton botaoSair;
+    private javax.swing.JTextField descricaoTextField;
     private javax.swing.JPanel form;
     private javax.swing.JPanel head;
     private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel optionMenu;
     // End of variables declaration//GEN-END:variables
-    
+
     public JButton getBotaoBuscar() {
         return botaoBuscar;
     }
@@ -162,6 +177,10 @@ public class FormModeloCadastro extends javax.swing.JFrame {
 
     public JTextField getId() {
         return id;
+    }
+
+    public JTextField getDescricaoTextField() {
+        return descricaoTextField;
     }
 
     public JPanel getForm() {

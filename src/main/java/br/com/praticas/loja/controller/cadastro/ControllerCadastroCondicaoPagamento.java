@@ -10,12 +10,11 @@ import view.cadastro.TelaCadastroCondicaoPagamento;
 
 public class ControllerCadastroCondicaoPagamento {
     
-    private TelaCadastroCondicaoPagamento tela;
+    private TelaCadastroCondicaoPagamentoImpl tela;
     private CondicaoPagamento condicaoPagamento;
     private CondicaoPagamentoService condicaoPagamentoService;
     
     public ControllerCadastroCondicaoPagamento() {
-        tela = new TelaCadastroCondicaoPagamento();
         init();
     }
     

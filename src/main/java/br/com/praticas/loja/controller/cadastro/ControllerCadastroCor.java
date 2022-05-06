@@ -9,17 +9,16 @@ import view.cadastro.TelaCadastroCor;
 
 public class ControllerCadastroCor {
 
-    private TelaCadastroCor tela;
+    private TelaCadastroCorImpl tela;
     private Cor cor;
     private CorService corService;
 
     public ControllerCadastroCor() {
-        tela = new TelaCadastroCor();
+        tela = new TelaCadastroCorImpl();
         init();
     }
 
-    public ControllerCadastroCor(TelaCadastroCor telaCadastroCor) {
-        this.tela = telaCadastroCor;
+    public ControllerCadastroCor(TelaCadastroCorImpl telaCadastroCor) {
         init();
     }
 

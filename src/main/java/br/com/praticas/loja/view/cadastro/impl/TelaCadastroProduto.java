@@ -1,4 +1,4 @@
-package view.cadastro;
+package br.com.praticas.loja.view.cadastro.impl;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;

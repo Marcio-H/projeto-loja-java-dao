@@ -1,21 +1,27 @@
-package controller.busca;
+package br.com.praticas.loja.controller.busca;
 
-import model.bo.Marca;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
-import service.MarcaService;
-import view.busca.TelaBuscaMarca;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import br.com.praticas.loja.model.Marca;
+import br.com.praticas.loja.view.busca.TelaBusca;
 
 public class ControllerBuscaMarca {
-    private TelaBuscaMarca tela;
+
+	@Autowired
+	@Qualifier("marca")
+    private TelaBusca tela;
+
+	
     private MarcaService marcaService;
     private Consumer<Marca> carregarCallBack;
 
      public ControllerBuscaMarca(Consumer<Marca> carregarCallBack) {
-        tela = new TelaBuscaMarca();
         this.carregarCallBack = carregarCallBack;
         init();
     }
@@ -24,7 +30,7 @@ public class ControllerBuscaMarca {
         tela.setVisible(true);
         marcaService = new MarcaService();
         addRows();
-        this.tela.getTable().setSelectionMode(0);
+        this.tela.getTabela().setSelectionMode(0);
         carregarEventListener();
         sairEventListener();
     }
@@ -38,9 +44,9 @@ public class ControllerBuscaMarca {
     }
     
     private void carregarEventAction(MouseEvent evt) {
-        int index = tela.getTable().getSelectedRow();
+        int index = tela.getTabela().getSelectedRow();
         if (index >= 0) {
-            Long id = (long) tela.getTable().getValueAt(index, 0);
+            Long id = (long) tela.getTabela().getValueAt(index, 0);
             carregarCallBack.accept(marcaService.readById(id));
             tela.dispose();
         }

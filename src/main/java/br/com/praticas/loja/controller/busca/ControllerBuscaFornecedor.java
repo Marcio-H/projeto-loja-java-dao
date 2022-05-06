@@ -1,21 +1,28 @@
-package controller.busca;
+package br.com.praticas.loja.controller.busca;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
-import model.bo.Fornecedor;
-import service.FornecedorService;
-import view.busca.TelaBuscaFornecedor;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import br.com.praticas.loja.model.Fornecedor;
+import br.com.praticas.loja.view.busca.TelaBusca;
 
 public class ControllerBuscaFornecedor {
     
-    private TelaBuscaFornecedor tela;
+	@Autowired
     private FornecedorService fornecedorService;
+	
+	@Autowired
+	@Qualifier("fornecedor")
+    private TelaBusca tela;
+    
     private Consumer<Fornecedor> carregarCallBack;
     
     public ControllerBuscaFornecedor(Consumer<Fornecedor> carregarCallBack) {
-        tela = new TelaBuscaFornecedor();
         this.carregarCallBack = carregarCallBack;
         init();
     }
@@ -23,14 +30,14 @@ public class ControllerBuscaFornecedor {
     private void init() {
         fornecedorService = new FornecedorService();
         addRows();
-        this.tela.getTable().setSelectionMode(0);
+        this.tela.getTabela().setSelectionMode(0);
         carregarEventListener();
         sairEventListener();
         tela.setVisible(true);
     }
     
     private void addRows() {
-        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
+        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTabela().getModel();
         fornecedorService.read().stream().forEach(fornecedor -> {
             tabela.addRow(new Object[]{fornecedor.getId(),
                 fornecedor.getNome(),
@@ -57,9 +64,9 @@ public class ControllerBuscaFornecedor {
     }
     
     private void carregarEventAction(MouseEvent evt) {
-        int index = tela.getTable().getSelectedRow();
+        int index = tela.getTabela().getSelectedRow();
         if (index >= 0) {
-            Long id = (long) tela.getTable().getValueAt(index, 0);
+            Long id = (long) tela.getTabela().getValueAt(index, 0);
             carregarCallBack.accept(fornecedorService.readById(id));
             tela.dispose();
         }

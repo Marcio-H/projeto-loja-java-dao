@@ -1,6 +1,18 @@
-package view;
+package br.com.praticas.loja.view;
 
-public class ControllerBuscaCliente extends javax.swing.JFrame {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+import org.springframework.stereotype.Component;
+
+import br.com.praticas.loja.view.busca.TelaBusca;
+
+@Component("busca")
+public class ControllerBuscaCliente extends JFrame implements TelaBusca {
 
     public ControllerBuscaCliente() {
         initComponents();
@@ -10,15 +22,15 @@ public class ControllerBuscaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        head = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        body = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        optionMenu = new javax.swing.JPanel();
-        carregar = new javax.swing.JButton();
-        sair = new javax.swing.JButton();
+        jPanel1 = new JPanel();
+        head = new JPanel();
+        jLabel2 = new JLabel();
+        body = new JPanel();
+        jScrollPane1 = new JScrollPane();
+        tabela = new JTable();
+        optionMenu = new JPanel();
+        carregar = new JButton();
+        sair = new JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -36,7 +48,7 @@ public class ControllerBuscaCliente extends javax.swing.JFrame {
         jLabel2.setPreferredSize(new java.awt.Dimension(41, 80));
         head.add(jLabel2, java.awt.BorderLayout.CENTER);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -59,12 +71,12 @@ public class ControllerBuscaCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(75);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(10);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(75);
+        tabela.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabela);
+        if (tabela.getColumnModel().getColumnCount() > 0) {
+            tabela.getColumnModel().getColumn(0).setMinWidth(75);
+            tabela.getColumnModel().getColumn(0).setPreferredWidth(10);
+            tabela.getColumnModel().getColumn(0).setMaxWidth(75);
         }
 
         javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
@@ -135,26 +147,29 @@ public class ControllerBuscaCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel body;
-    private javax.swing.JButton carregar;
-    private javax.swing.JPanel head;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JPanel optionMenu;
-    private javax.swing.JButton sair;
+    private JPanel body;
+    private JButton carregar;
+    private JPanel head;
+    private JLabel jLabel2;
+    private JPanel jPanel1;
+    private JScrollPane jScrollPane1;
+    private JTable tabela;
+    private JPanel optionMenu;
+    private JButton sair;
     // End of variables declaration//GEN-END:variables
 
-    public javax.swing.JButton getCarregar() {
-        return carregar;
-    }
-    
-    public javax.swing.JButton getSair() {
-        return sair;
-    }
-    
-    public javax.swing.JTable getTable() {
-        return jTable1;
-    }
+	@Override
+	public JTable getTabela() {
+		return tabela;
+	}
+
+	@Override
+	public JButton getBotaoCarregar() {
+		return carregar;
+	}
+
+	@Override
+	public JButton getBotaoSair() {
+		return sair;
+	}
 }

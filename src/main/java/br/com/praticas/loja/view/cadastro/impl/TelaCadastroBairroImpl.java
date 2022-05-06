@@ -1,12 +1,21 @@
-package view.cadastro;
+package br.com.praticas.loja.view.cadastro.impl;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
-public class TelaCadastroMarca extends javax.swing.JFrame {
+import org.springframework.stereotype.Component;
 
-    public TelaCadastroMarca() {
+import br.com.praticas.loja.view.cadastro.TelaCadastroBairro;
+
+@Component("bairro")
+public class TelaCadastroBairroImpl extends JFrame implements TelaCadastroBairro {
+
+    public TelaCadastroBairroImpl() {
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         initComponents();
     }
 
@@ -14,22 +23,21 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        head = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        form = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        descricaoTextField = new javax.swing.JTextField();
-        optionMenu = new javax.swing.JPanel();
-        botaoNovo = new javax.swing.JButton();
-        botaoCancelar = new javax.swing.JButton();
-        botaoGravar = new javax.swing.JButton();
-        botaoBuscar = new javax.swing.JButton();
-        botaoSair = new javax.swing.JButton();
+        jPanel1 = new JPanel();
+        head = new JPanel();
+        jLabel2 = new JLabel();
+        form = new JPanel();
+        jLabel1 = new JLabel();
+        id = new JTextField();
+        jLabel3 = new JLabel();
+        descricao = new JTextField();
+        optionMenu = new JPanel();
+        novo = new JButton();
+        cancelar = new JButton();
+        gravar = new JButton();
+        buscar = new JButton();
+        sair = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -40,7 +48,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Marca");
+        jLabel2.setText("Bairro");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel2.setPreferredSize(new java.awt.Dimension(41, 80));
         head.add(jLabel2, java.awt.BorderLayout.CENTER);
@@ -56,7 +64,7 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
             .addGroup(formLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descricaoTextField)
+                    .addComponent(descricao)
                     .addGroup(formLayout.createSequentialGroup()
                         .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -75,42 +83,42 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descricaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         optionMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        botaoNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/file.png"))); // NOI18N
-        botaoNovo.setText("Novo");
-        botaoNovo.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        optionMenu.add(botaoNovo);
+        novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/file.png"))); // NOI18N
+        novo.setText("Novo");
+        novo.setMargin(new java.awt.Insets(5, 30, 5, 30));
+        optionMenu.add(novo);
 
-        botaoCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancel.png"))); // NOI18N
-        botaoCancelar.setText("Cancelar");
-        botaoCancelar.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        optionMenu.add(botaoCancelar);
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancel.png"))); // NOI18N
+        cancelar.setText("Cancelar");
+        cancelar.setMargin(new java.awt.Insets(5, 30, 5, 30));
+        optionMenu.add(cancelar);
 
-        botaoGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
-        botaoGravar.setText("Gravar");
-        botaoGravar.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        optionMenu.add(botaoGravar);
+        gravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
+        gravar.setText("Gravar");
+        gravar.setMargin(new java.awt.Insets(5, 30, 5, 30));
+        optionMenu.add(gravar);
 
-        botaoBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
-        botaoBuscar.setText("Buscar");
-        botaoBuscar.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        optionMenu.add(botaoBuscar);
+        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search.png"))); // NOI18N
+        buscar.setText("Buscar");
+        buscar.setMargin(new java.awt.Insets(5, 30, 5, 30));
+        optionMenu.add(buscar);
 
-        botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/exit.png"))); // NOI18N
-        botaoSair.setText("Sair");
-        botaoSair.setMargin(new java.awt.Insets(5, 30, 5, 30));
-        optionMenu.add(botaoSair);
+        sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/exit.png"))); // NOI18N
+        sair.setText("Sair");
+        sair.setMargin(new java.awt.Insets(5, 30, 5, 30));
+        optionMenu.add(sair);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(optionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+            .addComponent(optionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 797, Short.MAX_VALUE)
             .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -137,53 +145,60 @@ public class TelaCadastroMarca extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoBuscar;
-    private javax.swing.JButton botaoCancelar;
-    private javax.swing.JButton botaoGravar;
-    private javax.swing.JButton botaoNovo;
-    private javax.swing.JButton botaoSair;
-    private javax.swing.JTextField descricaoTextField;
-    private javax.swing.JPanel form;
-    private javax.swing.JPanel head;
-    private javax.swing.JTextField id;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel optionMenu;
+    private JButton buscar;
+    private JButton cancelar;
+    private JButton gravar;
+    private JButton novo;
+    private JButton sair;
+    private JTextField descricao;
+    private JPanel form;
+    private JPanel head;
+    private JTextField id;
+    private JLabel jLabel1;
+    private JLabel jLabel2;
+    private JLabel jLabel3;
+    private JPanel jPanel1;
+    private JPanel optionMenu;
     // End of variables declaration//GEN-END:variables
 
+    @Override
     public JButton getBotaoBuscar() {
-        return botaoBuscar;
+        return buscar;
     }
 
+    @Override
     public JButton getBotaoCancelar() {
-        return botaoCancelar;
+        return cancelar;
     }
 
+    @Override
     public JButton getBotaoGravar() {
-        return botaoGravar;
+        return gravar;
     }
 
+    @Override
     public JButton getBotaoNovo() {
-        return botaoNovo;
+        return novo;
     }
 
+    @Override
     public JButton getBotaoSair() {
-        return botaoSair;
+        return sair;
     }
 
+    @Override
     public JTextField getId() {
         return id;
     }
 
+    @Override
     public JTextField getDescricaoTextField() {
-        return descricaoTextField;
+        return descricao;
     }
 
-    public JPanel getForm() {
-        return form;
-    }
+	@Override
+	public void setVisible(Boolean bool) {
+		setVisible(bool);
+	}
 }

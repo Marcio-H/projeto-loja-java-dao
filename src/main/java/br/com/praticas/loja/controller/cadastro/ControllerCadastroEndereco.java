@@ -14,12 +14,11 @@ import view.cadastro.TelaCadastroEndereco;
 
 public class ControllerCadastroEndereco {
 
-    private TelaCadastroEndereco tela;
+    private TelaCadastroEnderecoImpl tela;
     private Endereco endereco;
     private EnderecoService enderecoService;
 
     public ControllerCadastroEndereco() {
-        tela = new TelaCadastroEndereco();
         init();
     }
 

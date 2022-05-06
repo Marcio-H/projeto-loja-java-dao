@@ -1,13 +1,21 @@
-package view.cadastro;
+package br.com.praticas.loja.view.cadastro.impl;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-public class TelaCadastroEndereco extends javax.swing.JFrame {
+import org.springframework.stereotype.Component;
 
-    public TelaCadastroEndereco() {
+import br.com.praticas.loja.view.cadastro.TelaCadatroEndereco;
+
+@Component("endereco")
+public class TelaCadastroEnderecoImpl extends JFrame implements TelaCadatroEndereco {
+
+    public TelaCadastroEnderecoImpl() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         initComponents();
     }
@@ -16,36 +24,36 @@ public class TelaCadastroEndereco extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        head = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        form = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        cep = new javax.swing.JFormattedTextField();
-        jLabel4 = new javax.swing.JLabel();
-        logradouro = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        descricaoCidade = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        uf = new javax.swing.JTextField();
-        buscarCidadeBotao = new javax.swing.JButton();
-        adicionarCidadeBotao = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        descricaoBairro = new javax.swing.JTextField();
-        buscaBairroBotao = new javax.swing.JButton();
-        adicionarBairroBotao = new javax.swing.JButton();
-        optionMenu = new javax.swing.JPanel();
-        botaoNovo = new javax.swing.JButton();
-        botaoCancelar = new javax.swing.JButton();
-        botaoGravar = new javax.swing.JButton();
-        botaoBuscar = new javax.swing.JButton();
-        botaoSair = new javax.swing.JButton();
+        jPanel1 = new JPanel();
+        head = new JPanel();
+        jLabel2 = new JLabel();
+        form = new JPanel();
+        jLabel1 = new JLabel();
+        id = new JTextField();
+        jLabel3 = new JLabel();
+        cep = new JFormattedTextField();
+        jLabel4 = new JLabel();
+        logradouro = new JTextField();
+        jPanel2 = new JPanel();
+        jLabel5 = new JLabel();
+        jLabel6 = new JLabel();
+        descricaoCidade = new JTextField();
+        jLabel7 = new JLabel();
+        ufCidade = new JTextField();
+        buscarCidadeBotao = new JButton();
+        adicionarCidadeBotao = new JButton();
+        jPanel3 = new JPanel();
+        jLabel8 = new JLabel();
+        jLabel9 = new JLabel();
+        descricaoBairro = new JTextField();
+        buscaBairroBotao = new JButton();
+        adicionarBairroBotao = new JButton();
+        optionMenu = new JPanel();
+        botaoNovo = new JButton();
+        botaoCancelar = new JButton();
+        botaoGravar = new JButton();
+        botaoBuscar = new JButton();
+        botaoSair = new JButton();
 
         setResizable(false);
 
@@ -100,7 +108,7 @@ public class TelaCadastroEndereco extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(descricaoCidade)
                         .addGap(18, 18, 18)
-                        .addComponent(uf, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ufCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -136,7 +144,7 @@ public class TelaCadastroEndereco extends javax.swing.JFrame {
                         .addGap(72, 72, 72)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(descricaoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(uf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(ufCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -295,103 +303,115 @@ public class TelaCadastroEndereco extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton adicionarBairroBotao;
-    private javax.swing.JButton adicionarCidadeBotao;
-    private javax.swing.JButton botaoBuscar;
-    private javax.swing.JButton botaoCancelar;
-    private javax.swing.JButton botaoGravar;
-    private javax.swing.JButton botaoNovo;
-    private javax.swing.JButton botaoSair;
-    private javax.swing.JButton buscaBairroBotao;
-    private javax.swing.JButton buscarCidadeBotao;
-    private javax.swing.JFormattedTextField cep;
-    private javax.swing.JTextField descricaoBairro;
-    private javax.swing.JTextField descricaoCidade;
-    private javax.swing.JPanel form;
-    private javax.swing.JPanel head;
-    private javax.swing.JTextField id;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField logradouro;
-    private javax.swing.JPanel optionMenu;
-    private javax.swing.JTextField uf;
+    private JButton adicionarBairroBotao;
+    private JButton adicionarCidadeBotao;
+    private JButton botaoBuscar;
+    private JButton botaoCancelar;
+    private JButton botaoGravar;
+    private JButton botaoNovo;
+    private JButton botaoSair;
+    private JButton buscaBairroBotao;
+    private JButton buscarCidadeBotao;
+    private JFormattedTextField cep;
+    private JTextField descricaoBairro;
+    private JTextField descricaoCidade;
+    private JPanel form;
+    private JPanel head;
+    private JTextField id;
+    private JLabel jLabel1;
+    private JLabel jLabel2;
+    private JLabel jLabel3;
+    private JLabel jLabel4;
+    private JLabel jLabel5;
+    private JLabel jLabel6;
+    private JLabel jLabel7;
+    private JLabel jLabel8;
+    private JLabel jLabel9;
+    private JPanel jPanel1;
+    private JPanel jPanel2;
+    private JPanel jPanel3;
+    private JTextField logradouro;
+    private JPanel optionMenu;
+    private JTextField ufCidade;
     // End of variables declaration//GEN-END:variables
 
+    @Override
     public JButton getBotaoBuscar() {
         return botaoBuscar;
     }
 
+    @Override
     public JButton getBotaoCancelar() {
         return botaoCancelar;
     }
 
+    @Override
     public JButton getBotaoGravar() {
         return botaoGravar;
     }
 
+    @Override
     public JButton getBotaoNovo() {
         return botaoNovo;
     }
 
+    @Override
     public JButton getBotaoSair() {
         return botaoSair;
     }
 
+    @Override
     public JTextField getId() {
         return id;
     }
 
-    public JPanel getForm() {
-        return form;
-    }
-
+    @Override
     public JButton getBotaoAdicionarBairro() {
         return adicionarBairroBotao;
     }
 
+    @Override
     public JButton getBotaoBuscarBairro() {
         return buscaBairroBotao;
     }
 
+    @Override
     public JButton getBotaoBuscarCidade() {
         return buscarCidadeBotao;
     }
 
-    public JButton getBotaoBuscaBairro() {
-        return buscaBairroBotao;
-    }
-
+    @Override
     public JButton getBotaoAdicionarCidade() {
         return adicionarCidadeBotao;
     }
 
-    public javax.swing.JFormattedTextField getCep() {
-        return cep;
-    }
+	@Override
+	public void setVisible(Boolean bool) {
+		setVisible(bool);
+	}
 
-    public javax.swing.JTextField getLogradouro() {
-        return logradouro;
-    }
-    
-    public JTextField getDescricaoBairro() {
-        return descricaoBairro;
-    }
-    
-    public JTextField getDescricaoCidade() {
-        return descricaoCidade;
-    }
-    
-    public JTextField getUfCidade() {
-        return uf;
-    }
+	@Override
+	public JTextField getCepTextField() {
+		return cep;
+	}
+
+	@Override
+	public JTextField getLogradouroTextField() {
+		return logradouro;
+	}
+
+	@Override
+	public JTextField getDescricaoBairroTextField() {
+		return descricaoBairro;
+	}
+
+	@Override
+	public JTextField getDescricaoCidadeTextField() {
+		return descricaoCidade;
+	}
+
+	@Override
+	public JTextField getUfCidadeTextField() {
+		return ufCidade;
+	}
 }

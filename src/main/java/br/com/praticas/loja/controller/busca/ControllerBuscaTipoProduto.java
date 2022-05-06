@@ -1,21 +1,25 @@
-package controller.busca;
+package br.com.praticas.loja.controller.busca;
 
-import model.bo.TipoProduto;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
-import service.TipoProdutoService;
-import view.busca.TelaBuscaCor;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import br.com.praticas.loja.model.TipoProduto;
+import br.com.praticas.loja.view.busca.TelaBusca;
 
 public class ControllerBuscaTipoProduto {
-    private TelaBuscaCor tela;
+
+	@Autowired
+	@Qualifier("tipo_produto")
+    private TelaBusca tela;
     private TipoProdutoService tipoProdutoService;
     private Consumer<TipoProduto> carregarCallBack;
 
      public ControllerBuscaTipoProduto(Consumer<TipoProduto> carregarCallBack) {
-        tela = new TelaBuscaCor();
         this.carregarCallBack = carregarCallBack;
         init();
     }
@@ -24,7 +28,7 @@ public class ControllerBuscaTipoProduto {
         tela.setVisible(true);
         tipoProdutoService = new TipoProdutoService();
         addRows();
-        this.tela.getTable().setSelectionMode(0);
+        this.tela.getTabela().setSelectionMode(0);
         carregarEventListener();
         sairEventListener();
     }
@@ -38,9 +42,9 @@ public class ControllerBuscaTipoProduto {
     }
     
     private void carregarEventAction(MouseEvent evt) {
-        int index = tela.getTable().getSelectedRow();
+        int index = tela.getTabela().getSelectedRow();
         if (index >= 0) {
-            Long id = (long) tela.getTable().getValueAt(index, 0);
+            Long id = (long) tela.getTabela().getValueAt(index, 0);
             carregarCallBack.accept(tipoProdutoService.readById(id));
             tela.dispose();
         }
@@ -59,7 +63,7 @@ public class ControllerBuscaTipoProduto {
     }
     
     private void addRows() {
-        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
+        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTabela().getModel();
         tipoProdutoService.read().stream().forEach(tipoProduto -> {
             tabela.addRow(new Object[]{ tipoProduto.getId(), 
                                         tipoProduto.getDescricao()

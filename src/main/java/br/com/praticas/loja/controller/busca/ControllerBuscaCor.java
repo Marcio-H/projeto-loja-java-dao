@@ -1,21 +1,27 @@
-package controller.busca;
+package br.com.praticas.loja.controller.busca;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
-import model.bo.Cor;
-import service.CorService;
-import view.busca.TelaBuscaCor;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import br.com.praticas.loja.model.Cor;
+import br.com.praticas.loja.view.busca.TelaBusca;
 
 public class ControllerBuscaCor {
 
-    private TelaBuscaCor tela;
+	@Autowired
+	@Qualifier("cidade")
+    private TelaBusca tela;
+
+	
     private CorService corService;
     private Consumer<Cor> carregarCallBack;
 
     public ControllerBuscaCor(Consumer<Cor> carregarCallBack) {
-        tela = new TelaBuscaCor();
         this.carregarCallBack = carregarCallBack;
         init();
     }
@@ -24,7 +30,7 @@ public class ControllerBuscaCor {
         tela.setVisible(true);
         corService = new CorService();
         addRows();
-        this.tela.getTable().setSelectionMode(0);
+        this.tela.getTabela().setSelectionMode(0);
         carregarEventListener();
         sairEventListener();
     }
@@ -38,9 +44,9 @@ public class ControllerBuscaCor {
     }
 
     private void carregarEventAction(MouseEvent evt) {
-        int index = tela.getTable().getSelectedRow();
+        int index = tela.getTabela().getSelectedRow();
         if (index >= 0) {
-            Long id = (long) tela.getTable().getValueAt(index, 0);
+            Long id = (long) tela.getTabela().getValueAt(index, 0);
             carregarCallBack.accept(corService.readById(id));
             tela.dispose();
         }
@@ -59,7 +65,7 @@ public class ControllerBuscaCor {
     }
 
     private void addRows() {
-        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
+        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTabela().getModel();
         corService.read().stream().forEach(cor -> {
             tabela.addRow(new Object[]{cor.getId(),
                 cor.getDescricao()

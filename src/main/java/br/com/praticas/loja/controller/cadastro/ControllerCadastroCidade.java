@@ -9,17 +9,11 @@ import view.cadastro.TelaCadastroCidade;
 
 public class ControllerCadastroCidade {
     
-    private TelaCadastroCidade tela;
+    private TelaCadastroCidadeImpl tela;
     private Cidade cidade;
     private CidadeService cidadeService;
     
     public ControllerCadastroCidade() {
-        tela = new TelaCadastroCidade();
-        init();
-    }
-
-    public ControllerCadastroCidade(TelaCadastroCidade telaCadastroCidade) {
-        this.tela = telaCadastroCidade;
         init();
     }
     

@@ -1,21 +1,27 @@
-package controller.busca;
+package br.com.praticas.loja.controller.busca;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
-import model.bo.Endereco;
-import service.EnderecoService;
-import view.busca.TelaBuscaEndereco;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import br.com.praticas.loja.model.Endereco;
+import br.com.praticas.loja.view.busca.TelaBusca;
 
 public class ControllerBuscaEndereco {
-    private TelaBuscaEndereco tela;
+    
+	@Autowired
+	@Qualifier("endereco")
+    private TelaBusca tela;
+
+	
     private EnderecoService enderecoService;
     private Consumer<Endereco> carregarCallBack;
 
      public ControllerBuscaEndereco(Consumer<Endereco> carregarCallBack) {
-        tela = new TelaBuscaEndereco();
         this.carregarCallBack = carregarCallBack;
         init();
     }
@@ -24,7 +30,7 @@ public class ControllerBuscaEndereco {
         tela.setVisible(true);
         enderecoService = new EnderecoService();
         addRows();
-        this.tela.getTable().setSelectionMode(0);
+        this.tela.getTabela().setSelectionMode(0);
         carregarEventListener();
         sairEventListener();
     }
@@ -38,9 +44,9 @@ public class ControllerBuscaEndereco {
     }
     
     private void carregarEventAction(MouseEvent evt) {
-        int index = tela.getTable().getSelectedRow();
+        int index = tela.getTabela().getSelectedRow();
         if (index >= 0) {
-            Long id = (long) tela.getTable().getValueAt(index, 0);
+            Long id = (long) tela.getTabela().getValueAt(index, 0);
             carregarCallBack.accept(enderecoService.readById(id));
             tela.dispose();
         }
@@ -59,7 +65,7 @@ public class ControllerBuscaEndereco {
     }
     
     private void addRows() {
-        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
+        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTabela().getModel();
         enderecoService.read().stream().forEach(endereco -> {
             tabela.addRow(new Object[]{ endereco.getId(), 
                                         endereco.getCep(),

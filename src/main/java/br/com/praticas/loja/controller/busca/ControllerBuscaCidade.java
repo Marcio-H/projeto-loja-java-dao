@@ -1,21 +1,28 @@
-package controller.busca;
+package br.com.praticas.loja.controller.busca;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.table.DefaultTableModel;
-import model.bo.Cidade;
-import service.CidadeService;
-import view.busca.TelaBuscaCidade;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import br.com.praticas.loja.model.Cidade;
+import br.com.praticas.loja.view.busca.TelaBusca;
 
 public class ControllerBuscaCidade {
     
-    private TelaBuscaCidade tela;
+	@Autowired
+	@Qualifier("cidade")
+    private TelaBusca tela;
+
+	
     private CidadeService cidadeService;
+
     private Consumer<Cidade> carregarCallBack;
     
     public ControllerBuscaCidade(Consumer<Cidade> carregarCallBack) {
-        tela = new TelaBuscaCidade();
         this.carregarCallBack = carregarCallBack;
         init();
     }
@@ -24,7 +31,7 @@ public class ControllerBuscaCidade {
         tela.setVisible(true);
         cidadeService = new CidadeService();
         addRows();
-        this.tela.getTable().setSelectionMode(0);
+        this.tela.getTabela().setSelectionMode(0);
         carregarEventListener();
         sairEventListener();
     }
@@ -38,9 +45,9 @@ public class ControllerBuscaCidade {
     }
     
     private void carregarEventAction(MouseEvent evt) {
-        int index = tela.getTable().getSelectedRow();
+        int index = tela.getTabela().getSelectedRow();
         if (index >= 0) {
-            Long id = (long) tela.getTable().getValueAt(index, 0);
+            Long id = (long) tela.getTabela().getValueAt(index, 0);
             carregarCallBack.accept(cidadeService.readById(id));
             tela.dispose();
         }
@@ -59,7 +66,7 @@ public class ControllerBuscaCidade {
     }
     
     private void addRows() {
-        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTable().getModel();
+        DefaultTableModel tabela = (DefaultTableModel) this.tela.getTabela().getModel();
         cidadeService.read().stream().forEach(cidade -> {
             tabela.addRow(new Object[]{ cidade.getId(), 
                                         cidade.getDescricao(),

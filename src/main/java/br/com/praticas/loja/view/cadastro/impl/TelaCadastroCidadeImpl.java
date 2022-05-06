@@ -1,33 +1,43 @@
-package view.cadastro;
+package br.com.praticas.loja.view.cadastro.impl;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class TelaCadastroTipoProduto extends javax.swing.JFrame {
+import org.springframework.stereotype.Component;
 
-    public TelaCadastroTipoProduto() {
+import br.com.praticas.loja.view.cadastro.TelaCadastroCidade;
+
+@Component("cidade")
+public class TelaCadastroCidadeImpl extends JFrame implements TelaCadastroCidade {
+
+    public TelaCadastroCidadeImpl() {
         initComponents();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        head = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        form = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        descricaoTextField = new javax.swing.JTextField();
-        optionMenu = new javax.swing.JPanel();
-        botaoNovo = new javax.swing.JButton();
-        botaoCancelar = new javax.swing.JButton();
-        botaoGravar = new javax.swing.JButton();
-        botaoBuscar = new javax.swing.JButton();
-        botaoSair = new javax.swing.JButton();
+        jPanel1 = new JPanel();
+        head = new JPanel();
+        jLabel2 = new JLabel();
+        form = new JPanel();
+        jLabel1 = new JLabel();
+        id = new JTextField();
+        jLabel3 = new JLabel();
+        descricao = new JTextField();
+        uf = new JFormattedTextField();
+        jLabel4 = new JLabel();
+        optionMenu = new JPanel();
+        botaoNovo = new JButton();
+        botaoCancelar = new JButton();
+        botaoGravar = new JButton();
+        botaoBuscar = new JButton();
+        botaoSair = new JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -40,7 +50,7 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Tipo de Produto");
+        jLabel2.setText("Cidade");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel2.setPreferredSize(new java.awt.Dimension(41, 80));
         head.add(jLabel2, java.awt.BorderLayout.CENTER);
@@ -49,6 +59,14 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
 
         jLabel3.setText("Descrição");
 
+        try {
+            uf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("UU")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel4.setText("UF");
+
         javax.swing.GroupLayout formLayout = new javax.swing.GroupLayout(form);
         form.setLayout(formLayout);
         formLayout.setHorizontalGroup(
@@ -56,13 +74,17 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
             .addGroup(formLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descricaoTextField)
+                    .addComponent(descricao)
                     .addGroup(formLayout.createSequentialGroup()
                         .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(uf, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addContainerGap())
         );
         formLayout.setVerticalGroup(
@@ -73,9 +95,13 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descricaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(uf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -110,7 +136,7 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(optionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
+            .addComponent(optionMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
             .addComponent(head, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -119,8 +145,8 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(head, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(form, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(form, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(optionMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -139,51 +165,65 @@ public class TelaCadastroTipoProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoBuscar;
-    private javax.swing.JButton botaoCancelar;
-    private javax.swing.JButton botaoGravar;
-    private javax.swing.JButton botaoNovo;
-    private javax.swing.JButton botaoSair;
-    private javax.swing.JTextField descricaoTextField;
-    private javax.swing.JPanel form;
-    private javax.swing.JPanel head;
-    private javax.swing.JTextField id;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel optionMenu;
+    private JButton botaoBuscar;
+    private JButton botaoCancelar;
+    private JButton botaoGravar;
+    private JButton botaoNovo;
+    private JButton botaoSair;
+    private JTextField descricao;
+    private JPanel form;
+    private JPanel head;
+    private JTextField id;
+    private JLabel jLabel1;
+    private JLabel jLabel2;
+    private JLabel jLabel3;
+    private JLabel jLabel4;
+    private JPanel jPanel1;
+    private JPanel optionMenu;
+    private JFormattedTextField uf;
     // End of variables declaration//GEN-END:variables
-
+    @Override
     public JButton getBotaoBuscar() {
         return botaoBuscar;
     }
 
+    @Override
     public JButton getBotaoCancelar() {
         return botaoCancelar;
     }
 
+    @Override
     public JButton getBotaoGravar() {
         return botaoGravar;
     }
 
+    @Override
     public JButton getBotaoNovo() {
         return botaoNovo;
     }
 
+    @Override
     public JButton getBotaoSair() {
         return botaoSair;
     }
 
+    @Override
     public JTextField getId() {
         return id;
     }
 
+    @Override
     public JTextField getDescricaoTextField() {
-        return descricaoTextField;
+        return descricao;
     }
 
-    public JPanel getForm() {
-        return form;
+    @Override
+    public JFormattedTextField getUfTextField() {
+        return uf;
     }
+
+	@Override
+	public void setVisible(Boolean bool) {
+		setVisible(bool);
+	}
 }
