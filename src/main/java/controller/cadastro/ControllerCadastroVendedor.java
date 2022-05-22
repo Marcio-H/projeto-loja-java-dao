@@ -74,7 +74,12 @@ public class ControllerCadastroVendedor {
         this.vendedor.setPercentagemComissaoVenda(vendedor.getPercentagemComissaoVenda());
         tela.getPorcentagemComissaoVendaFormattedTextField().setText(String.valueOf(vendedor.getPercentagemComissaoVenda()));
         this.vendedor.setTelefones(vendedor.getTelefones());
-        vendedor.getTelefones().forEach(telefone -> tela.getTelefoneComboBox().addItem(telefone.getTelefone()));
+        System.out.println("antes");
+        vendedor.getTelefones().forEach(telefone -> {
+        	System.out.println("debug:" + telefone.getTelefone());
+        	tela.getTelefoneComboBox().addItem(telefone.getTelefone());
+        });
+        System.out.println("depois");
     }
 
     private void novoEventListener() {
@@ -179,6 +184,8 @@ public class ControllerCadastroVendedor {
 
     private void buscarEventAction(MouseEvent evt) {
         ControllerBuscaVendedor buscaController = new ControllerBuscaVendedor(vendedor -> {
+        	System.out.println("telefones" + vendedor.getTelefones());
+        	vendedor.getTelefones().forEach(tel -> System.out.println(tel.getTelefone()));
             setVendedor(vendedor);
             setFormStatus(true);
         });
@@ -207,6 +214,7 @@ public class ControllerCadastroVendedor {
         new ControllerCadastroTelefone(telefone -> {
             vendedor.getTelefones().add(TelefoneVendedor.builder()
             		.telefone(telefone)
+            		.vendedor(vendedor)
             		.build());
             tela.getTelefoneComboBox().addItem(telefone);
         });

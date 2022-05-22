@@ -28,7 +28,6 @@ public abstract class BaseDAOImpl<T, ID> implements BaseDAO<T, ID> {
 	        entityManager.getTransaction().begin();
 	        entityManager.persist(object);
 	        entityManager.flush();
-	        entityManager.clear();
 	        entityManager.getTransaction().commit();
 		} catch (Exception ex) {
 			ex.printStackTrace();
