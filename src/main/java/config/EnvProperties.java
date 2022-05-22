@@ -1,14 +1,15 @@
 package config;
 
-import exception.EnvironmentException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import exception.EnvironmentException;
+
 public class EnvProperties {
 
-    private static final String ENVIRONMENT_PATH = "src/env.properties";
+    private static final String ENVIRONMENT_PATH = "src/main/resources/env.properties";
 
     private static final String DRIVER_PROPERTIE = "driver";
 
