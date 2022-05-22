@@ -5,7 +5,7 @@ import domain.Marca;
 
 public class MarcaDAO extends BaseDAOImpl<Marca, Long> {
 
-	MarcaDAO() {
+	public MarcaDAO() {
 		super(Marca.class, Marca::getId);
 	}
 

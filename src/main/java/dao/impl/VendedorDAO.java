@@ -5,7 +5,7 @@ import domain.Vendedor;
 
 public class VendedorDAO extends BaseDAOImpl<Vendedor, Long> {
 
-	VendedorDAO() {
+	public VendedorDAO() {
 		super(Vendedor.class, Vendedor::getId);
 	}
 

@@ -4,7 +4,7 @@ import domain.Produto;
 
 public class ProdutoDAO extends BaseDAOImpl<Produto, Long> {
 
-	ProdutoDAO() {
+	public ProdutoDAO() {
 		super(Produto.class, Produto::getId);
 	}
 

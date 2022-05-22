@@ -4,7 +4,7 @@ import domain.Tamanho;
 
 public class TamanhoDAO extends BaseDAOImpl<Tamanho, Long> {
 
-	TamanhoDAO() {
+	public TamanhoDAO() {
 		super(Tamanho.class, Tamanho::getId);
 	}
 

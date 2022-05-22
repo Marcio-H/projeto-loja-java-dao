@@ -4,7 +4,7 @@ import domain.TelefoneVendedor;
 
 public class TelefoneVendedorDAO extends BaseDAOImpl<TelefoneVendedor, Long> {
 
-	TelefoneVendedorDAO() {
+	public TelefoneVendedorDAO() {
 		super(TelefoneVendedor.class, TelefoneVendedor::getId);
 	}
 
