@@ -1,6 +1,8 @@
 package domain;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,13 +13,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import model.Telefone;
 
+@Entity(name = "telefone_vendedor")
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TelefoneVendedor {
+public class TelefoneVendedor implements Telefone<Long> {
      
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +30,6 @@ public class TelefoneVendedor {
     @Column
     private String telefone;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Vendedor vendedor;
 }

@@ -53,21 +53,14 @@ public class ControllerCadastroEndereco {
     }
 
     private void setBairro(Bairro bairro) {
-        Bairro enderecoBairro = endereco.getBairro();
-
-        enderecoBairro.setId(bairro.getId());
-        enderecoBairro.setDescricao(bairro.getDescricao());
+        endereco.setBairro(bairro);
         tela.getDescricaoBairro().setText(bairro.getDescricao());
     }
 
     private void setCidade(Cidade cidade) {
-        Cidade enderecoCidade = endereco.getCidade();
- 
-        enderecoCidade.setId(cidade.getId());
-        enderecoCidade.setDescricao(cidade.getDescricao());
-        tela.getDescricaoCidade().setText(cidade.getDescricao());
-        enderecoCidade.setUf(cidade.getUf());
-        tela.getUfCidade().setText(cidade.getUf());
+       endereco.setCidade(cidade);
+       tela.getDescricaoCidade().setText(cidade.getDescricao());
+       tela.getUfCidade().setText(cidade.getUf());
     }
 
     private void novoEventListener() {

@@ -181,13 +181,23 @@ CREATE TABLE pagar(
     FOREIGN KEY (compra_id) REFERENCES compra(id)
 );
 
-CREATE TABLE telefone(
+CREATE TABLE telefone_vendedor (
+	id SERIAL NOT NULL PRIMARY KEY,
+	telefone VARCHAR(17) NOT NULL,
+	vendedor_id SERIAL,
+	FOREIGN KEY (vendedor_id) REFERENCES vendedor(id)
+);
+
+CREATE TABLE telefone_cliente(
+	id SERIAL NOT NULL PRIMARY KEY,
+	telefone VARCHAR(17) NOT NULL,
+	cliente_id SERIAL,
+	FOREIGN KEY (cliente_id) REFERENCES cliente(id)
+);
+
+CREATE TABLE telefone_fornecedor(
 	id SERIAL NOT NULL PRIMARY KEY,
 	telefone VARCHAR(17) NOT NULL,
 	fornecedor_id SERIAL,
-	cliente_id SERIAL,
-	vendedor_id SERIAL,
-	FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id),
-	FOREIGN KEY (cliente_id) REFERENCES cliente(id),
-	FOREIGN KEY (vendedor_id) REFERENCES vendedor(id)
+	FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id)
 );

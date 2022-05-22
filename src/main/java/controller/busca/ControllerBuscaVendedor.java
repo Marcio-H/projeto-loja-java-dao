@@ -40,8 +40,12 @@ public class ControllerBuscaVendedor {
     }
 
     private void selectFirstRow() {
-        tela.getTable().requestFocus();
-        tela.getTable().setRowSelectionInterval(0,0);
+        try {
+        	tela.getTable().requestFocus();
+        	tela.getTable().setRowSelectionInterval(0,0);
+        } catch (Exception e) {
+			//does nothing
+		}
     }
 
     private void addRows() {

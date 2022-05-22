@@ -6,7 +6,11 @@
     <class>domain.Cidade</class>
     <class>domain.Endereco</class>
     <class>domain.Cliente</class>
+    <class>domain.TelefoneCliente</class>
     <class>domain.Fornecedor</class>
+    <class>domain.TelefoneFornecedor</class>
+    <class>domain.TelefoneVendedor</class>
+    <class>domain.Vendedor</class>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/projeto_loja_java_dao?verifyServerCertificate=false&amp;useSSL=false&amp;requireSSL=false&amp;serverTimezone=UTC"/>

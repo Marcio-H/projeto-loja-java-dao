@@ -2,7 +2,6 @@ package controller.cadastro;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -12,8 +11,8 @@ import controller.busca.ControllerBuscaVendedor;
 import domain.Bairro;
 import domain.Cidade;
 import domain.Endereco;
+import domain.TelefoneVendedor;
 import domain.Vendedor;
-import domain.bo.Telefone;
 import service.TelefoneService;
 import service.VendedorService;
 import view.cadastro.TelaCadastroVendedor;
@@ -24,9 +23,6 @@ public class ControllerCadastroVendedor {
     private Vendedor vendedor;
     private VendedorService vendedorService;
     private TelefoneService telefoneService;
-    
-    // TODO: Implementar TelefoneVendedor
-    private List<Telefone> telefones;
 
     public ControllerCadastroVendedor() {
         tela = new TelaCadastroVendedor();
@@ -77,6 +73,8 @@ public class ControllerCadastroVendedor {
         tela.getPorcentagemComissaoRecebimentoFormattedTextField().setText(String.valueOf(vendedor.getPercentagemComissaoRecebimento()));
         this.vendedor.setPercentagemComissaoVenda(vendedor.getPercentagemComissaoVenda());
         tela.getPorcentagemComissaoVendaFormattedTextField().setText(String.valueOf(vendedor.getPercentagemComissaoVenda()));
+        this.vendedor.setTelefones(vendedor.getTelefones());
+        vendedor.getTelefones().forEach(telefone -> tela.getTelefoneComboBox().addItem(telefone.getTelefone()));
     }
 
     private void novoEventListener() {
@@ -161,7 +159,6 @@ public class ControllerCadastroVendedor {
         if (tela.getBotaoCancelar().isEnabled()) {
             vendedor = new Vendedor();
             setFormStatus(false);
-            telefones.clear();
             cleanForm();
         }
     }
@@ -172,13 +169,8 @@ public class ControllerCadastroVendedor {
         }
         try {
             Vendedor vendedorCriado = vendedorService.createOrUpdate(getVendedor());
-            telefones.stream().forEach(telefone -> {
-                telefone.setVendedor(vendedorCriado);
-                telefoneService.createOrUpdate(telefone);
-            });
             setFormStatus(false);
             cleanForm();
-            telefones.clear();
             vendedor = new Vendedor();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(tela, e.getMessage());
@@ -188,10 +180,6 @@ public class ControllerCadastroVendedor {
     private void buscarEventAction(MouseEvent evt) {
         ControllerBuscaVendedor buscaController = new ControllerBuscaVendedor(vendedor -> {
             setVendedor(vendedor);
-            telefones.addAll(telefoneService.findByVendedor(vendedor));
-            telefones.forEach(telefone -> {
-                tela.getTelefoneComboBox().addItem(telefone.getTelefone());
-            });
             setFormStatus(true);
         });
     }
@@ -206,9 +194,8 @@ public class ControllerCadastroVendedor {
         }
         int index = tela.getTelefoneComboBox().getSelectedIndex();
         if (index >= 0) {
-            Telefone deletedTelefone = telefones.remove(index);
+            TelefoneVendedor deletedTelefone = vendedor.getTelefones().remove(index);
             tela.getTelefoneComboBox().removeItemAt(index);
-            telefoneService.delete(deletedTelefone);
         }
     }
 
@@ -217,9 +204,11 @@ public class ControllerCadastroVendedor {
             return;
         }
 
-        ControllerCadastroTelefone con = new ControllerCadastroTelefone(telefone -> {
-            telefones.add(telefone);
-            tela.getTelefoneComboBox().addItem(telefone.getTelefone());
+        new ControllerCadastroTelefone(telefone -> {
+            vendedor.getTelefones().add(TelefoneVendedor.builder()
+            		.telefone(telefone)
+            		.build());
+            tela.getTelefoneComboBox().addItem(telefone);
         });
     }
     
@@ -243,22 +232,12 @@ public class ControllerCadastroVendedor {
     }
     
     private void setEndereco(Endereco endereco) {
-        Endereco vendedorEndereco = vendedor.getEndereco();
-        Cidade vendedorCidade = vendedorEndereco.getCidade();
-        Bairro vendedorBairro = vendedorEndereco.getBairro();
-        
-        vendedorEndereco.setId(endereco.getId());
-        vendedorEndereco.setCep(endereco.getCep());
+    	vendedor.setEndereco(endereco);        
+
         tela.getCepTextField().setText(endereco.getCep());
-        vendedorEndereco.setLogradouro(endereco.getLogradouro());
         tela.getLogradouroTextField().setText(endereco.getLogradouro());
-        vendedorCidade.setId(endereco.getCidade().getId());
-        vendedorCidade.setDescricao(endereco.getCidade().getDescricao());
         tela.getCidadeTextField().setText(endereco.getCidade().getDescricao());
-        vendedorCidade.setUf(endereco.getCidade().getUf());
         tela.getUfTextFIeld().setText(endereco.getCidade().getUf());
-        vendedorBairro.setId(endereco.getBairro().getId());
-        vendedorBairro.setDescricao(endereco.getBairro().getDescricao());
         tela.getBairroTextField().setText(endereco.getBairro().getDescricao());
     }
 
@@ -307,7 +286,6 @@ public class ControllerCadastroVendedor {
     private void init() {
         vendedorService = new VendedorService();
         vendedor = new Vendedor();
-        telefones = new ArrayList<>();
         telefoneService = new TelefoneService();
         novoEventListener();
         cancelarEventListener();
