@@ -20,7 +20,6 @@ public class TelefoneClienteService implements BaseServiceTelefone<TelefoneClien
         	telefoneClienteDao.update(objeto);
         }
     }
-    
     public List<TelefoneCliente> read() {
         return telefoneClienteDao.read();
     }

@@ -10,7 +10,7 @@ class BairoDAOTests {
 	@Test
 	void createBairro() {
 		Bairro bairro = Bairro.builder()
-				.descricao("TESTE")
+				.descricao("TESTE1")
 				.build();
 		BairroDAO bairroDAO = new BairroDAO();
 		

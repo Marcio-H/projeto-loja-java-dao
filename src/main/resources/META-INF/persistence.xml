@@ -8,10 +8,10 @@
     <class>domain.Cliente</class>
     <class>domain.Fornecedor</class>
     <properties>
-      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://172.17.0.1:5432/ifsc?verifyServerCertificate=false&amp;useSSL=false&amp;requireSSL=false&amp;serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/projeto_loja_java_dao?verifyServerCertificate=false&amp;useSSL=false&amp;requireSSL=false&amp;serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.password" value="postgres"/>
+      <property name="javax.persistence.jdbc.password" value="Londrina25"/>
     </properties>
   </persistence-unit>
 </persistence>
