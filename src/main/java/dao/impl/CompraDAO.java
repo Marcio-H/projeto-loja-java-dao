@@ -5,7 +5,7 @@ import domain.Compra;
 public class CompraDAO extends BaseDAOImpl<Compra, Long> {
 
 	public CompraDAO() {
-		super(Compra.class);
+		super(Compra.class, Compra::getId);
 	}
 
 }

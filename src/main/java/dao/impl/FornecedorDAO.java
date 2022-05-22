@@ -4,7 +4,7 @@ import domain.Fornecedor;
 
 public class FornecedorDAO extends BaseDAOImpl<Fornecedor, Long> {
 
-	public FornecedorDAO(Class<Fornecedor> claz) {
-		super(Fornecedor.class);
+	public FornecedorDAO() {
+		super(Fornecedor.class, Fornecedor::getId);
 	}
 }

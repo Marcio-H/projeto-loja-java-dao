@@ -5,6 +5,6 @@ import domain.CondicaoPagamento;
 public class CondicaoPagamentoDAO extends BaseDAOImpl<CondicaoPagamento, Long> {
 
 	public CondicaoPagamentoDAO() {
-		super(CondicaoPagamento.class);
+		super(CondicaoPagamento.class, CondicaoPagamento::getId);
 	}
 }
